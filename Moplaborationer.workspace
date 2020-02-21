@@ -6,7 +6,9 @@
   <Project Name="graphicdisplay" Path="graphicdisplay/graphicdisplay.project" Active="No"/>
   <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
   <Project Name="getsetpsr" Path="getsetpsr/getsetpsr.project" Active="No"/>
-  <Project Name="sys_tick" Path="sys_tick/sys_tick.project" Active="Yes"/>
+  <Project Name="sys_tick" Path="sys_tick/sys_tick.project" Active="No"/>
+  <Project Name="flipflop_irq" Path="flipflop_irq/flipflop_irq.project" Active="No"/>
+  <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -17,6 +19,8 @@
       <Project Name="autopong" ConfigName="Debug"/>
       <Project Name="getsetpsr" ConfigName="Debug"/>
       <Project Name="sys_tick" ConfigName="Debug"/>
+      <Project Name="flipflop_irq" ConfigName="Debug"/>
+      <Project Name="flipflop_irq_ack" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -27,6 +31,8 @@
       <Project Name="autopong" ConfigName="Release"/>
       <Project Name="getsetpsr" ConfigName="Release"/>
       <Project Name="sys_tick" ConfigName="Release"/>
+      <Project Name="flipflop_irq" ConfigName="Release"/>
+      <Project Name="flipflop_irq_ack" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
