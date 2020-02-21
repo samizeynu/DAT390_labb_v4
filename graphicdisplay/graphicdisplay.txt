@@ -1,0 +1,1 @@
+./Debug/graphic.c.o ./Debug/keyboard.c.o ./Debug/ascii.c.o ./Debug/delay.c.o ./Debug/main.c.o   

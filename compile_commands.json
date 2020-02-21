@@ -1,0 +1,21 @@
+[{
+  "file": "Z:\\DATlaborationer\\asciidisplay\\startup.c",
+  "directory": "Z:\\DATlaborationer\\asciidisplay",
+  "command": "clang  -c Z:\\DATlaborationer\\asciidisplay\\startup.c -o Z:\\DATlaborationer\\asciidisplay\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "Z:\\DATlaborationer\\basic_io\\startup.c",
+  "directory": "Z:\\DATlaborationer\\basic_io",
+  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\startup.c -o Z:\\DATlaborationer\\basic_io\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "Z:\\DATlaborationer\\basic_io\\main.c",
+  "directory": "Z:\\DATlaborationer\\basic_io",
+  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\main.c -o Z:\\DATlaborationer\\basic_io\\main.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "Z:\\DATlaborationer\\basic_io\\startup.h",
+  "directory": "Z:\\DATlaborationer\\basic_io",
+  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\startup.h -o Z:\\DATlaborationer\\basic_io\\startup.h.o  -DUSBDM -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "Z:\\DATlaborationer\\delay\\startup.c",
+  "directory": "Z:\\DATlaborationer\\delay",
+  "command": "clang  -c Z:\\DATlaborationer\\delay\\startup.c -o Z:\\DATlaborationer\\delay\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }]
