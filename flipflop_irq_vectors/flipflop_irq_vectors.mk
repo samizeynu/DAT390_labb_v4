@@ -3,10 +3,10 @@
 ## any manual changes will be erased      
 ##
 ## Debug
-ProjectName            :=flipflop_irq_ack
+ProjectName            :=flipflop_irq_vectors
 ConfigurationName      :=Debug
 WorkspacePath          :=C:/Users/Andre/Desktop/DAT390_labb_v4
-ProjectPath            :=C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack
+ProjectPath            :=C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_vectors
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -32,7 +32,7 @@ Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E
-ObjectsFileList        :="flipflop_irq_ack.txt"
+ObjectsFileList        :="flipflop_irq_vectors.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
@@ -86,8 +86,8 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 
 PostBuild:
 	@echo Executing Post Build commands ...
-	arm-none-eabi-objcopy -S -O srec  ./Debug/flipflop_irq_ack.elf ./Debug/flipflop_irq_ack.s19
-	arm-none-eabi-objdump -D -S ./Debug/flipflop_irq_ack.elf > ./Debug/flipflop_irq_ack.dass
+	arm-none-eabi-objcopy -S -O srec  ./Debug/flipflop_irq_vectors.elf ./Debug/flipflop_irq_vectors.s19
+	arm-none-eabi-objdump -D -S ./Debug/flipflop_irq_vectors.elf > ./Debug/flipflop_irq_vectors.dass
 	@echo Done
 
 MakeIntermediateDirs:
@@ -104,7 +104,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c $(IntermediateDirectory)/startup.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_vectors/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(DependSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
 

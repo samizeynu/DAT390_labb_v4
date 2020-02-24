@@ -52,11 +52,11 @@ void out7seg (unsigned char c){
 }*/
 
 void init_flipflop(){
-	GPIO_MODER_LOW_D = 0x5555;
-	GPIO_MODER_LOW_E = 0x0000;
+	GPIO_MODER_LOW_D = 0x5555;						//GPIO D b0 - b7 utgångar	
+	GPIO_MODER_LOW_E = 0x0000;						//GPIO E b0 - b7 ingångar	
 	
-	SYSCFG_EXTICR1 &= ~0xF000; 						//PE3 = 4 till avbrottslina EXTI3 
-	SYSCFG_EXTICR1 |= 0x4000;
+	SYSCFG_EXTICR1 &= ~0xF000; 						//nollställer EXTI3
+	SYSCFG_EXTICR1 |= 0x4000;						//PE3 = 4 till avbrottslina EXTI3 
 	
 	EXTI_IMR |= 8; 									//aktivera avbrott EXTI3 : motsvarande bit b3 i registern
 //	EXTI_FTSR &= ~8;								//maskera negativ flank

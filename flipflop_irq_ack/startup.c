@@ -26,17 +26,17 @@ void irq_handler(){
 		EXTI_PR |= 8; 							//kvittera avbrottet
 			x = GPIO_IDR_E_LOW;
 			if(x & (1<<0)){
-				GPIO_ODR_E_LOW |= (1<<4); //kvittera irq0
+				GPIO_ODR_E_LOW |= (1<<4); 		//kvittera irq0
 				count++;
 				GPIO_ODR_E_LOW &= ~(1<<4);
 			}
 			if(x & 2){
-				GPIO_ODR_E_LOW |= (1<<5); //kvittera irq1
+				GPIO_ODR_E_LOW |= (1<<5); 		//kvittera irq1
 				count = 0;
 				GPIO_ODR_E_LOW &= ~(1<<5);
 			}
 			if(x & 4){
-				GPIO_ODR_E_LOW |= (1<<6); //kvittera irq2
+				GPIO_ODR_E_LOW |= (1<<6); 		//kvittera irq2
 				GPIO_ODR_D_LOW ^= 0xFF;
 				GPIO_ODR_E_LOW &= ~(1<<6);
 			}

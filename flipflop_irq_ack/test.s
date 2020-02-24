@@ -118,7 +118,7 @@
   94 0028 0122     		movs	r2, #1
   95 002a 1340     		ands	r3, r2
   96 002c 16D0     		beq	.L4
-  29:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<4); //kvittera irq0
+  29:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<4); 		//kvittera irq0
   97              		.loc 1 29 0
   98 002e 294B     		ldr	r3, .L7+8
   99 0030 1B78     		ldrb	r3, [r3]
@@ -156,7 +156,7 @@
  127 0060 0222     		movs	r2, #2
  128 0062 1340     		ands	r3, r2
  129 0064 12D0     		beq	.L5
-  34:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<5); //kvittera irq1
+  34:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<5); 		//kvittera irq1
  130              		.loc 1 34 0
  131 0066 1B4B     		ldr	r3, .L7+8
  132 0068 1B78     		ldrb	r3, [r3]
@@ -190,7 +190,7 @@
  156 0090 0422     		movs	r2, #4
  157 0092 1340     		ands	r3, r2
  158 0094 16D0     		beq	.L6
-  39:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<6); //kvittera irq2
+  39:C:/Users/Andre/Desktop/DAT390_labb_v4/flipflop_irq_ack\startup.c **** 				GPIO_ODR_E_LOW |= (1<<6); 		//kvittera irq2
  159              		.loc 1 39 0
  160 0096 0F4B     		ldr	r3, .L7+8
  161 0098 1B78     		ldrb	r3, [r3]

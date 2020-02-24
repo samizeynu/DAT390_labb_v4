@@ -66,23 +66,28 @@ void startup(void) __attribute__((naked)) __attribute__((section (".start_sectio
 #define EXTI_IMR	(*((unsigned int*)(EXTI_BASE)))
 #define EXTI_FTSR	(*((unsigned int*)(EXTI_BASE + 0xC)))
 #define EXTI_RTSR	(*((unsigned int*)(EXTI_BASE + 0x8)))
-#define EXTI_PR		(*((unsigned int*)(EXTI_BASE + 0x14)))
+#define EXTI_PR		(*((volatile unsigned int*)(EXTI_BASE + 0x14)))
 #define SCB_VTOR (*(volatile unsigned int *) 0xE000ED08)
 #define NVIC_BASE	0xE000E100
 #define NVIC_ISER0	(*((unsigned int*)(NVIC_BASE)))
 
+
 //INTERRUPT BITS AND VECTORS
-#define EXTI3_IRQVEC ((void (**) (void)) 0x2001C064)
-#define EXTI2_IRQVEC ((void (**) (void)) 0x2001C060)
-#define EXTI1_IRQVEC ((void (**) (void)) 0x2001C05C)
+#define EXTI3_IRQVEC (*((void (**) (void)) 0x2001C064))
+#define EXTI2_IRQVEC (*((void (**) (void)) 0x2001C060))
+#define EXTI1_IRQVEC (*((void (**) (void)) 0x2001C05C))
+#define EXTI0_IRQVEC (*((void (**) (void)) 0x2001C058))
 
 #define NVIC_EXTI3_BPOS	(1<<9)
 #define NVIC_EXTI2_BPOS (1<<8)
 #define NVIC_EXTI1_BPOS (1<<7)
+#define NVIC_EXTI0_BPOS (1<<6)
 
 #define	EXTI3_BPOS	(1<<3)
 #define	EXTI2_BPOS	(1<<2)
 #define	EXTI1_BPOS	(1<<1)
+#define	EXTI0_BPOS	(1<<0)
+
 
 //TYPEDEFS
 typedef unsigned char uint8_t;

@@ -59,7 +59,7 @@ void irq_handler(){
 20000038:	2201      	movs	r2, #1
 2000003a:	4013      	ands	r3, r2
 2000003c:	d016      	beq.n	2000006c <irq_handler+0x5c>
-				GPIO_ODR_E_LOW |= (1<<4); //kvittera irq0
+				GPIO_ODR_E_LOW |= (1<<4); 		//kvittera irq0
 2000003e:	4b29      	ldr	r3, [pc, #164]	; (200000e4 <irq_handler+0xd4>)
 20000040:	781b      	ldrb	r3, [r3, #0]
 20000042:	b2db      	uxtb	r3, r3
@@ -92,7 +92,7 @@ void irq_handler(){
 20000070:	2202      	movs	r2, #2
 20000072:	4013      	ands	r3, r2
 20000074:	d012      	beq.n	2000009c <irq_handler+0x8c>
-				GPIO_ODR_E_LOW |= (1<<5); //kvittera irq1
+				GPIO_ODR_E_LOW |= (1<<5); 		//kvittera irq1
 20000076:	4b1b      	ldr	r3, [pc, #108]	; (200000e4 <irq_handler+0xd4>)
 20000078:	781b      	ldrb	r3, [r3, #0]
 2000007a:	b2db      	uxtb	r3, r3
@@ -121,7 +121,7 @@ void irq_handler(){
 200000a0:	2204      	movs	r2, #4
 200000a2:	4013      	ands	r3, r2
 200000a4:	d016      	beq.n	200000d4 <irq_handler+0xc4>
-				GPIO_ODR_E_LOW |= (1<<6); //kvittera irq2
+				GPIO_ODR_E_LOW |= (1<<6); 		//kvittera irq2
 200000a6:	4b0f      	ldr	r3, [pc, #60]	; (200000e4 <irq_handler+0xd4>)
 200000a8:	781b      	ldrb	r3, [r3, #0]
 200000aa:	b2db      	uxtb	r3, r3
