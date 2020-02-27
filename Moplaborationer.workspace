@@ -8,8 +8,10 @@
   <Project Name="getsetpsr" Path="getsetpsr/getsetpsr.project" Active="No"/>
   <Project Name="sys_tick" Path="sys_tick/sys_tick.project" Active="No"/>
   <Project Name="flipflop_irq" Path="flipflop_irq/flipflop_irq.project" Active="No"/>
-  <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="Yes"/>
+  <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="No"/>
   <Project Name="flipflop_irq_vectors" Path="flipflop_irq_vectors/flipflop_irq_vectors.project" Active="No"/>
+  <Project Name="usart_polling" Path="usart_polling/usart_polling.project" Active="Yes"/>
+  <Project Name="1_GAME" Path="spel/spel.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -23,6 +25,8 @@
       <Project Name="flipflop_irq" ConfigName="Debug"/>
       <Project Name="flipflop_irq_ack" ConfigName="Debug"/>
       <Project Name="flipflop_irq_vectors" ConfigName="Debug"/>
+      <Project Name="usart_polling" ConfigName="Debug"/>
+      <Project Name="1_GAME" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -36,6 +40,8 @@
       <Project Name="flipflop_irq" ConfigName="Release"/>
       <Project Name="flipflop_irq_ack" ConfigName="Release"/>
       <Project Name="flipflop_irq_vectors" ConfigName="Release"/>
+      <Project Name="usart_polling" ConfigName="Release"/>
+      <Project Name="1_GAME" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

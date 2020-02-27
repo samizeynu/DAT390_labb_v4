@@ -130,6 +130,7 @@ monitor restart</PostConnectCommands>
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="structs.c"/>
     <File Name="delays.c"/>
     <File Name="graphics.c"/>
     <File Name="main.c"/>
