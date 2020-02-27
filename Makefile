@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ usart_polling - Debug ]----------"
-	@cd "usart_polling" && "$(MAKE)" -f  "usart_polling.mk" && "$(MAKE)" -f  "usart_polling.mk" PostBuild
+	@echo "----------Building project:[ SDLproject - Debug ]----------"
+	@cd "SDLproject" && "$(MAKE)" -f  "SDLproject.mk" && "$(MAKE)" -f  "SDLproject.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ usart_polling - Debug ]----------"
-	@cd "usart_polling" && "$(MAKE)" -f  "usart_polling.mk" clean
+	@echo "----------Cleaning project:[ SDLproject - Debug ]----------"
+	@cd "SDLproject" && "$(MAKE)" -f  "SDLproject.mk" clean

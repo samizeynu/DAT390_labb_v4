@@ -103,7 +103,9 @@ void graphic_write(unsigned char value, unsigned char controller);
 void graphic_write_command(uint8_t command, uint8_t controller);
 void graphic_write_data(uint8_t data, uint8_t controller);
 void graphic_clear_screen(void);
-void pixel (unsigned int x, unsigned int y, unsigned int set);
+void pixel (unsigned int x, unsigned int y);
+
+//void pixel_old_version (unsigned int x, unsigned int y, unsigned int set);
 
 //GENERAL FUNCTIONS
 //void init_app();

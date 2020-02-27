@@ -8,13 +8,13 @@ void set_object_speed(POBJECT o, int speedx, int speedy){
  
 void draw_object(POBJECT o){
 	for(int i= 0; i<= o->geo->numpoints; i++){
-		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 1);
+		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y);
 	}
 }
 
 void clear_object(POBJECT o){
 	for(int i= 0; i<= o->geo->numpoints; i++){
-		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 0);
+		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y);
 	}
 }
  

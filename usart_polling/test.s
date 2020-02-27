@@ -116,18 +116,18 @@
   98              		.cfi_offset 14, -4
   99 0002 00AF     		add	r7, sp, #0
  100              		.cfi_def_cfa_register 7
-  21:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1->brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet 
+  21:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1.brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet o
  101              		.loc 1 21 0
  102 0004 054B     		ldr	r3, .L3
  103 0006 064A     		ldr	r2, .L3+4
  104 0008 1A81     		strh	r2, [r3, #8]
-  22:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1->cr2 = 0;
+  22:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1.cr2 = 0;
  105              		.loc 1 22 0
  106 000a 044B     		ldr	r3, .L3
  107 000c 0022     		movs	r2, #0
  108 000e 1A82     		strh	r2, [r3, #16]
   23:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	
-  24:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1->cr1 = BIT_UE | BIT_TE | BIT_RE;
+  24:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	USART1.cr1 = BIT_UE | BIT_TE | BIT_RE;
  109              		.loc 1 24 0
  110 0010 024B     		ldr	r3, .L3
  111 0012 044A     		ldr	r2, .L3+8
@@ -166,7 +166,7 @@
  143              		.cfi_offset 14, -4
  144 002a 00AF     		add	r7, sp, #0
  145              		.cfi_def_cfa_register 7
-  28:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	if((USART1->sr & BIT_RXNE) == BIT_RXNE)
+  28:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	if((USART1.sr & BIT_RXNE) == BIT_RXNE)
  146              		.loc 1 28 0
  147 002c 084B     		ldr	r3, .L8
  148 002e 1B88     		ldrh	r3, [r3]
@@ -176,7 +176,7 @@
  152 0036 1340     		ands	r3, r2
  153 0038 202B     		cmp	r3, #32
  154 003a 04D1     		bne	.L6
-  29:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 		return (char)USART1->dr;
+  29:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 		return (char)USART1.dr;
  155              		.loc 1 29 0
  156 003c 044B     		ldr	r3, .L8
  157 003e 9B88     		ldrh	r3, [r3, #4]
@@ -226,11 +226,11 @@
  198 005a 0200     		movs	r2, r0
  199 005c FB1D     		adds	r3, r7, #7
  200 005e 1A70     		strb	r2, [r3]
-  35:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	while(USART1->sr & BIT_TXE){
+  35:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	while(USART1.sr & BIT_TXE){
  201              		.loc 1 35 0
  202 0060 04E0     		b	.L11
  203              	.L12:
-  36:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 		USART1->dr = (unsigned short) c;
+  36:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 		USART1.dr = (unsigned short) c;
  204              		.loc 1 36 0
  205 0062 084A     		ldr	r2, .L13
  206 0064 FB1D     		adds	r3, r7, #7
@@ -238,7 +238,7 @@
  208 0068 9BB2     		uxth	r3, r3
  209 006a 9380     		strh	r3, [r2, #4]
  210              	.L11:
-  35:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	while(USART1->sr & BIT_TXE){
+  35:C:/Users/Andre/Desktop/DAT390_labb_v4/usart_polling\startup.c **** 	while(USART1.sr & BIT_TXE){
  211              		.loc 1 35 0
  212 006c 054B     		ldr	r3, .L13
  213 006e 1B88     		ldrh	r3, [r3]

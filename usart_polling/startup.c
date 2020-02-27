@@ -18,22 +18,22 @@ __asm volatile(
 }
 
 void _inituart(){
-	USART1->brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet och decimalet
-	USART1->cr2 = 0;
+	USART1.brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet och decimalet
+	USART1.cr2 = 0;
 	
-	USART1->cr1 = BIT_UE | BIT_TE | BIT_RE;
+	USART1.cr1 = BIT_UE | BIT_TE | BIT_RE;
 }
 
 char _tstchar(){ 
-	if((USART1->sr & BIT_RXNE) == BIT_RXNE)
-		return (char)USART1->dr;
+	if((USART1.sr & BIT_RXNE) == BIT_RXNE)
+		return (char)USART1.dr;
 	
 	return 0;
 }
 
 void _outchar(char c){
-	while(USART1->sr & BIT_TXE){
-		USART1->dr = (unsigned short) c;
+	while(USART1.sr & BIT_TXE){
+		USART1.dr = (unsigned short) c;
 	}
 }
 

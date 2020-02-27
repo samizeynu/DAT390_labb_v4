@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\Andre\Desktop\DAT390_labb_v4\Moplaborationer.workspace">
-  <int Value="0" Name="m_selectedTab"/>
+  <int Value="2" Name="m_selectedTab"/>
   <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\Moplaborationer.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\usart_polling\startup.h" Name="FileName"/>
-      <int Value="148" Name="FirstVisibleLine"/>
-      <int Value="89" Name="CurrentLine"/>
+      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\SDLproject\renderer.c" Name="FileName"/>
+      <int Value="134" Name="FirstVisibleLine"/>
+      <int Value="156" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\usart_polling\startup.c" Name="FileName"/>
-      <int Value="20" Name="FirstVisibleLine"/>
-      <int Value="26" Name="CurrentLine"/>
+      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\SDLproject\renderer.h" Name="FileName"/>
+      <int Value="30" Name="FirstVisibleLine"/>
+      <int Value="52" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\SDLproject\main.c" Name="FileName"/>
+      <int Value="27" Name="FirstVisibleLine"/>
+      <int Value="68" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

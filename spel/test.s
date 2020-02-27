@@ -893,316 +893,359 @@
  777 03aa 80BD     		pop	{r7, pc}
  778              		.cfi_endproc
  779              	.LFE10:
- 781              		.align	1
- 782              		.global	pixel
- 783              		.syntax unified
- 784              		.code	16
- 785              		.thumb_func
- 786              		.fpu softvfp
- 788              	pixel:
- 789              	.LFB11:
+ 781              		.comm	backBuffer,1024,4
+ 782              		.align	1
+ 783              		.global	pixel
+ 784              		.syntax unified
+ 785              		.code	16
+ 786              		.thumb_func
+ 787              		.fpu softvfp
+ 789              	pixel:
+ 790              	.LFB11:
  128:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 
- 129:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** void pixel (unsigned int x, unsigned int y, unsigned int set){
- 790              		.loc 1 129 0
- 791              		.cfi_startproc
- 792              		@ args = 0, pretend = 0, frame = 32
- 793              		@ frame_needed = 1, uses_anonymous_args = 0
- 794 03ac B0B5     		push	{r4, r5, r7, lr}
- 795              		.cfi_def_cfa_offset 16
- 796              		.cfi_offset 4, -16
- 797              		.cfi_offset 5, -12
- 798              		.cfi_offset 7, -8
- 799              		.cfi_offset 14, -4
- 800 03ae 88B0     		sub	sp, sp, #32
- 801              		.cfi_def_cfa_offset 48
- 802 03b0 00AF     		add	r7, sp, #0
- 803              		.cfi_def_cfa_register 7
- 804 03b2 F860     		str	r0, [r7, #12]
- 805 03b4 B960     		str	r1, [r7, #8]
- 806 03b6 7A60     		str	r2, [r7, #4]
- 130:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	uint8_t mask, c, controller;
- 131:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	int index;
- 132:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if (y < 1 || y > 64 || x < 1 || x > 128) 
- 807              		.loc 1 132 0
- 808 03b8 BB68     		ldr	r3, [r7, #8]
- 809 03ba 002B     		cmp	r3, #0
- 810 03bc 00D1     		bne	.LCB654
- 811 03be A9E0     		b	.L62	@long jump
- 812              	.LCB654:
- 813              		.loc 1 132 0 is_stmt 0 discriminator 1
- 814 03c0 BB68     		ldr	r3, [r7, #8]
- 815 03c2 402B     		cmp	r3, #64
- 816 03c4 00D9     		bls	.LCB657
- 817 03c6 A5E0     		b	.L62	@long jump
- 818              	.LCB657:
- 819              		.loc 1 132 0 discriminator 2
- 820 03c8 FB68     		ldr	r3, [r7, #12]
- 821 03ca 002B     		cmp	r3, #0
- 822 03cc 00D1     		bne	.LCB660
- 823 03ce A1E0     		b	.L62	@long jump
- 824              	.LCB660:
- 825              		.loc 1 132 0 discriminator 3
- 826 03d0 FB68     		ldr	r3, [r7, #12]
- 827 03d2 802B     		cmp	r3, #128
- 828 03d4 00D9     		bls	.LCB663
- 829 03d6 9DE0     		b	.L62	@long jump
- 830              	.LCB663:
- 133:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		return;
- 134:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
- 135:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	index = (y-1) / 8;
- 831              		.loc 1 135 0 is_stmt 1
- 832 03d8 BB68     		ldr	r3, [r7, #8]
- 833 03da 013B     		subs	r3, r3, #1
- 834 03dc DB08     		lsrs	r3, r3, #3
- 835 03de BB61     		str	r3, [r7, #24]
+ 129:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** uint8_t backBuffer[1024]; // 128 * 64 / 8
+ 130:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 
+ 131:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** void pixel (unsigned int x, unsigned int y){
+ 791              		.loc 1 131 0
+ 792              		.cfi_startproc
+ 793              		@ args = 0, pretend = 0, frame = 16
+ 794              		@ frame_needed = 1, uses_anonymous_args = 0
+ 795 03ac 80B5     		push	{r7, lr}
+ 796              		.cfi_def_cfa_offset 8
+ 797              		.cfi_offset 7, -8
+ 798              		.cfi_offset 14, -4
+ 799 03ae 84B0     		sub	sp, sp, #16
+ 800              		.cfi_def_cfa_offset 24
+ 801 03b0 00AF     		add	r7, sp, #0
+ 802              		.cfi_def_cfa_register 7
+ 803 03b2 7860     		str	r0, [r7, #4]
+ 804 03b4 3960     		str	r1, [r7]
+ 132:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	uint8_t mask;
+ 133:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	int index = 0;
+ 805              		.loc 1 133 0
+ 806 03b6 0023     		movs	r3, #0
+ 807 03b8 FB60     		str	r3, [r7, #12]
+ 134:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if (y < 1 || y > 64 || x < 1 || x > 128) 
+ 808              		.loc 1 134 0
+ 809 03ba 3B68     		ldr	r3, [r7]
+ 810 03bc 002B     		cmp	r3, #0
+ 811 03be 32D0     		beq	.L48
+ 812              		.loc 1 134 0 is_stmt 0 discriminator 1
+ 813 03c0 3B68     		ldr	r3, [r7]
+ 814 03c2 402B     		cmp	r3, #64
+ 815 03c4 2FD8     		bhi	.L48
+ 816              		.loc 1 134 0 discriminator 2
+ 817 03c6 7B68     		ldr	r3, [r7, #4]
+ 818 03c8 002B     		cmp	r3, #0
+ 819 03ca 2CD0     		beq	.L48
+ 820              		.loc 1 134 0 discriminator 3
+ 821 03cc 7B68     		ldr	r3, [r7, #4]
+ 822 03ce 802B     		cmp	r3, #128
+ 823 03d0 29D8     		bhi	.L48
+ 135:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		return;
  136:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
- 137:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	switch((y-1) % 8){
- 836              		.loc 1 137 0
- 837 03e0 BB68     		ldr	r3, [r7, #8]
- 838 03e2 013B     		subs	r3, r3, #1
- 839 03e4 0722     		movs	r2, #7
- 840 03e6 1340     		ands	r3, r2
- 841 03e8 072B     		cmp	r3, #7
- 842 03ea 2CD8     		bhi	.L47
- 843 03ec 9A00     		lsls	r2, r3, #2
- 844 03ee 4B4B     		ldr	r3, .L63
- 845 03f0 D318     		adds	r3, r2, r3
- 846 03f2 1B68     		ldr	r3, [r3]
- 847 03f4 9F46     		mov	pc, r3
- 848              		.section	.rodata
- 849              		.align	2
- 850              	.L49:
- 851 0000 F6030000 		.word	.L48
- 852 0004 00040000 		.word	.L50
- 853 0008 0A040000 		.word	.L51
- 854 000c 14040000 		.word	.L52
- 855 0010 1E040000 		.word	.L53
- 856 0014 28040000 		.word	.L54
- 857 0018 32040000 		.word	.L55
- 858 001c 3C040000 		.word	.L56
- 859              		.text
- 860              	.L48:
- 138:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 0: mask = 1; break;
- 861              		.loc 1 138 0
- 862 03f6 1F23     		movs	r3, #31
- 863 03f8 FB18     		adds	r3, r7, r3
- 864 03fa 0122     		movs	r2, #1
- 865 03fc 1A70     		strb	r2, [r3]
- 866 03fe 22E0     		b	.L47
- 867              	.L50:
- 139:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 1: mask = 2; break;
- 868              		.loc 1 139 0
- 869 0400 1F23     		movs	r3, #31
- 870 0402 FB18     		adds	r3, r7, r3
- 871 0404 0222     		movs	r2, #2
- 872 0406 1A70     		strb	r2, [r3]
- 873 0408 1DE0     		b	.L47
- 874              	.L51:
- 140:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 2: mask = 4; break;
- 875              		.loc 1 140 0
- 876 040a 1F23     		movs	r3, #31
- 877 040c FB18     		adds	r3, r7, r3
- 878 040e 0422     		movs	r2, #4
- 879 0410 1A70     		strb	r2, [r3]
- 880 0412 18E0     		b	.L47
- 881              	.L52:
- 141:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 3: mask = 8; break;
- 882              		.loc 1 141 0
- 883 0414 1F23     		movs	r3, #31
- 884 0416 FB18     		adds	r3, r7, r3
- 885 0418 0822     		movs	r2, #8
- 886 041a 1A70     		strb	r2, [r3]
- 887 041c 13E0     		b	.L47
- 888              	.L53:
- 142:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 4: mask = 0x10; break;
- 889              		.loc 1 142 0
- 890 041e 1F23     		movs	r3, #31
- 891 0420 FB18     		adds	r3, r7, r3
- 892 0422 1022     		movs	r2, #16
- 893 0424 1A70     		strb	r2, [r3]
- 894 0426 0EE0     		b	.L47
- 895              	.L54:
- 143:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 5: mask = 0x20; break;
- 896              		.loc 1 143 0
- 897 0428 1F23     		movs	r3, #31
- 898 042a FB18     		adds	r3, r7, r3
- 899 042c 2022     		movs	r2, #32
- 900 042e 1A70     		strb	r2, [r3]
- 901 0430 09E0     		b	.L47
- 902              	.L55:
- 144:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 6: mask = 0x40; break;
- 903              		.loc 1 144 0
- 904 0432 1F23     		movs	r3, #31
- 905 0434 FB18     		adds	r3, r7, r3
- 906 0436 4022     		movs	r2, #64
- 907 0438 1A70     		strb	r2, [r3]
- 908 043a 04E0     		b	.L47
- 909              	.L56:
- 145:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		case 7: mask = 0x80; break;
- 910              		.loc 1 145 0
- 911 043c 1F23     		movs	r3, #31
- 912 043e FB18     		adds	r3, r7, r3
- 913 0440 8022     		movs	r2, #128
- 914 0442 1A70     		strb	r2, [r3]
- 915 0444 C046     		nop
- 916              	.L47:
- 146:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	}
- 147:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
- 148:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if (!set)
- 917              		.loc 1 148 0
- 918 0446 7B68     		ldr	r3, [r7, #4]
- 919 0448 002B     		cmp	r3, #0
- 920 044a 03D1     		bne	.L57
- 149:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		mask &= ~mask;
- 921              		.loc 1 149 0
- 922 044c 1F23     		movs	r3, #31
- 923 044e FB18     		adds	r3, r7, r3
- 924 0450 0022     		movs	r2, #0
- 925 0452 1A70     		strb	r2, [r3]
- 926              	.L57:
- 150:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if(x > 64){
- 927              		.loc 1 150 0
- 928 0454 FB68     		ldr	r3, [r7, #12]
- 929 0456 402B     		cmp	r3, #64
- 930 0458 07D9     		bls	.L58
- 151:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		controller = B_CS2;
- 931              		.loc 1 151 0
- 932 045a 1E23     		movs	r3, #30
- 933 045c FB18     		adds	r3, r7, r3
- 934 045e 1022     		movs	r2, #16
- 935 0460 1A70     		strb	r2, [r3]
- 152:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		x = x-65;
- 936              		.loc 1 152 0
- 937 0462 FB68     		ldr	r3, [r7, #12]
- 938 0464 413B     		subs	r3, r3, #65
- 939 0466 FB60     		str	r3, [r7, #12]
- 940 0468 06E0     		b	.L59
- 941              	.L58:
- 153:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	}
- 154:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	else{
- 155:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		controller = B_CS1;
- 942              		.loc 1 155 0
- 943 046a 1E23     		movs	r3, #30
- 944 046c FB18     		adds	r3, r7, r3
- 945 046e 0822     		movs	r2, #8
- 946 0470 1A70     		strb	r2, [r3]
- 156:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		x = x-1;
- 947              		.loc 1 156 0
- 948 0472 FB68     		ldr	r3, [r7, #12]
- 949 0474 013B     		subs	r3, r3, #1
- 950 0476 FB60     		str	r3, [r7, #12]
- 951              	.L59:
- 157:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	}
- 158:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	graphic_write_command(LCD_SET_ADD | x, controller);
- 952              		.loc 1 158 0
- 953 0478 FB68     		ldr	r3, [r7, #12]
- 954 047a DBB2     		uxtb	r3, r3
- 955 047c 4022     		movs	r2, #64
- 956 047e 1343     		orrs	r3, r2
- 957 0480 DAB2     		uxtb	r2, r3
- 958 0482 1E25     		movs	r5, #30
- 959 0484 7B19     		adds	r3, r7, r5
- 960 0486 1B78     		ldrb	r3, [r3]
- 961 0488 1900     		movs	r1, r3
- 962 048a 1000     		movs	r0, r2
- 963 048c FFF7FEFF 		bl	graphic_write_command
- 159:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	graphic_write_command(LCD_SET_PAGE | index, controller);
- 964              		.loc 1 159 0
- 965 0490 BB69     		ldr	r3, [r7, #24]
- 966 0492 5BB2     		sxtb	r3, r3
- 967 0494 4822     		movs	r2, #72
- 968 0496 5242     		rsbs	r2, r2, #0
- 969 0498 1343     		orrs	r3, r2
- 970 049a 5BB2     		sxtb	r3, r3
- 971 049c DAB2     		uxtb	r2, r3
- 972 049e 7B19     		adds	r3, r7, r5
- 973 04a0 1B78     		ldrb	r3, [r3]
- 974 04a2 1900     		movs	r1, r3
- 975 04a4 1000     		movs	r0, r2
- 976 04a6 FFF7FEFF 		bl	graphic_write_command
- 160:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	c = graphic_read_data(controller);
- 977              		.loc 1 160 0
- 978 04aa 1723     		movs	r3, #23
- 979 04ac FC18     		adds	r4, r7, r3
- 980 04ae 7B19     		adds	r3, r7, r5
- 981 04b0 1B78     		ldrb	r3, [r3]
- 982 04b2 1800     		movs	r0, r3
- 983 04b4 FFF7FEFF 		bl	graphic_read_data
- 984 04b8 0300     		movs	r3, r0
- 985 04ba 2370     		strb	r3, [r4]
- 161:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	graphic_write_data(LCD_SET_ADD | x, controller);
- 986              		.loc 1 161 0
- 987 04bc FB68     		ldr	r3, [r7, #12]
- 988 04be DBB2     		uxtb	r3, r3
- 989 04c0 4022     		movs	r2, #64
- 990 04c2 1343     		orrs	r3, r2
- 991 04c4 DAB2     		uxtb	r2, r3
- 992 04c6 7B19     		adds	r3, r7, r5
- 993 04c8 1B78     		ldrb	r3, [r3]
- 994 04ca 1900     		movs	r1, r3
- 995 04cc 1000     		movs	r0, r2
- 996 04ce FFF7FEFF 		bl	graphic_write_data
- 162:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
- 163:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if(set)
- 997              		.loc 1 163 0
- 998 04d2 7B68     		ldr	r3, [r7, #4]
- 999 04d4 002B     		cmp	r3, #0
- 1000 04d6 09D0     		beq	.L60
- 164:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		mask = mask | c;
- 1001              		.loc 1 164 0
- 1002 04d8 1F22     		movs	r2, #31
- 1003 04da BB18     		adds	r3, r7, r2
- 1004 04dc B918     		adds	r1, r7, r2
- 1005 04de 1722     		movs	r2, #23
- 1006 04e0 BA18     		adds	r2, r7, r2
- 1007 04e2 0978     		ldrb	r1, [r1]
- 1008 04e4 1278     		ldrb	r2, [r2]
- 1009 04e6 0A43     		orrs	r2, r1
- 1010 04e8 1A70     		strb	r2, [r3]
- 1011 04ea 08E0     		b	.L61
- 1012              	.L60:
- 165:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	else
- 166:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		mask = mask & c;
- 1013              		.loc 1 166 0
- 1014 04ec 1F22     		movs	r2, #31
- 1015 04ee BB18     		adds	r3, r7, r2
- 1016 04f0 BA18     		adds	r2, r7, r2
- 1017 04f2 1721     		movs	r1, #23
- 1018 04f4 7918     		adds	r1, r7, r1
- 1019 04f6 1278     		ldrb	r2, [r2]
- 1020 04f8 0978     		ldrb	r1, [r1]
- 1021 04fa 0A40     		ands	r2, r1
- 1022 04fc 1A70     		strb	r2, [r3]
- 1023              	.L61:
- 167:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		
- 168:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	graphic_write_data(mask, controller);
- 1024              		.loc 1 168 0
- 1025 04fe 1E23     		movs	r3, #30
- 1026 0500 FB18     		adds	r3, r7, r3
- 1027 0502 1A78     		ldrb	r2, [r3]
- 1028 0504 1F23     		movs	r3, #31
- 1029 0506 FB18     		adds	r3, r7, r3
- 1030 0508 1B78     		ldrb	r3, [r3]
- 1031 050a 1100     		movs	r1, r2
- 1032 050c 1800     		movs	r0, r3
- 1033 050e FFF7FEFF 		bl	graphic_write_data
- 1034 0512 00E0     		b	.L43
- 1035              	.L62:
- 133:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
- 1036              		.loc 1 133 0
- 1037 0514 C046     		nop
- 1038              	.L43:
- 169:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** }
- 1039              		.loc 1 169 0
- 1040 0516 BD46     		mov	sp, r7
- 1041 0518 08B0     		add	sp, sp, #32
- 1042              		@ sp needed
- 1043 051a B0BD     		pop	{r4, r5, r7, pc}
- 1044              	.L64:
- 1045              		.align	2
- 1046              	.L63:
- 1047 051c 00000000 		.word	.L49
- 1048              		.cfi_endproc
- 1049              	.LFE11:
- 1051              	.Letext0:
- 1052              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/startup.h"
+ 137:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	mask = 1 << ((y-1) % 8);
+ 824              		.loc 1 137 0 is_stmt 1
+ 825 03d2 3B68     		ldr	r3, [r7]
+ 826 03d4 013B     		subs	r3, r3, #1
+ 827 03d6 0722     		movs	r2, #7
+ 828 03d8 1340     		ands	r3, r2
+ 829 03da 0122     		movs	r2, #1
+ 830 03dc 9A40     		lsls	r2, r2, r3
+ 831 03de 0B23     		movs	r3, #11
+ 832 03e0 FB18     		adds	r3, r7, r3
+ 833 03e2 1A70     		strb	r2, [r3]
+ 138:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
+ 139:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	if(x > 64){
+ 834              		.loc 1 139 0
+ 835 03e4 7B68     		ldr	r3, [r7, #4]
+ 836 03e6 402B     		cmp	r3, #64
+ 837 03e8 05D9     		bls	.L47
+ 140:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		index = 512;
+ 838              		.loc 1 140 0
+ 839 03ea 8023     		movs	r3, #128
+ 840 03ec 9B00     		lsls	r3, r3, #2
+ 841 03ee FB60     		str	r3, [r7, #12]
+ 141:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		x -= 65;
+ 842              		.loc 1 141 0
+ 843 03f0 7B68     		ldr	r3, [r7, #4]
+ 844 03f2 413B     		subs	r3, r3, #65
+ 845 03f4 7B60     		str	r3, [r7, #4]
+ 846              	.L47:
+ 142:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	}
+ 143:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
+ 144:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	index += x + ((y-1) / 8) * 64; 
+ 847              		.loc 1 144 0
+ 848 03f6 3B68     		ldr	r3, [r7]
+ 849 03f8 013B     		subs	r3, r3, #1
+ 850 03fa DB08     		lsrs	r3, r3, #3
+ 851 03fc 9A01     		lsls	r2, r3, #6
+ 852 03fe 7B68     		ldr	r3, [r7, #4]
+ 853 0400 D218     		adds	r2, r2, r3
+ 854 0402 FB68     		ldr	r3, [r7, #12]
+ 855 0404 D318     		adds	r3, r2, r3
+ 856 0406 FB60     		str	r3, [r7, #12]
+ 145:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
+ 146:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	backBuffer[index] |= mask;
+ 857              		.loc 1 146 0
+ 858 0408 094A     		ldr	r2, .L49
+ 859 040a FB68     		ldr	r3, [r7, #12]
+ 860 040c D318     		adds	r3, r2, r3
+ 861 040e 1A78     		ldrb	r2, [r3]
+ 862 0410 0B23     		movs	r3, #11
+ 863 0412 FB18     		adds	r3, r7, r3
+ 864 0414 1B78     		ldrb	r3, [r3]
+ 865 0416 1343     		orrs	r3, r2
+ 866 0418 D9B2     		uxtb	r1, r3
+ 867 041a 054A     		ldr	r2, .L49
+ 868 041c FB68     		ldr	r3, [r7, #12]
+ 869 041e D318     		adds	r3, r2, r3
+ 870 0420 0A1C     		adds	r2, r1, #0
+ 871 0422 1A70     		strb	r2, [r3]
+ 872 0424 00E0     		b	.L43
+ 873              	.L48:
+ 135:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	
+ 874              		.loc 1 135 0
+ 875 0426 C046     		nop
+ 876              	.L43:
+ 147:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** }
+ 877              		.loc 1 147 0
+ 878 0428 BD46     		mov	sp, r7
+ 879 042a 04B0     		add	sp, sp, #16
+ 880              		@ sp needed
+ 881 042c 80BD     		pop	{r7, pc}
+ 882              	.L50:
+ 883 042e C046     		.align	2
+ 884              	.L49:
+ 885 0430 00000000 		.word	backBuffer
+ 886              		.cfi_endproc
+ 887              	.LFE11:
+ 889              		.align	1
+ 890              		.global	graphic_draw_screen
+ 891              		.syntax unified
+ 892              		.code	16
+ 893              		.thumb_func
+ 894              		.fpu softvfp
+ 896              	graphic_draw_screen:
+ 897              	.LFB12:
+ 148:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 
+ 149:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** void graphic_draw_screen(void) {
+ 898              		.loc 1 149 0
+ 899              		.cfi_startproc
+ 900              		@ args = 0, pretend = 0, frame = 16
+ 901              		@ frame_needed = 1, uses_anonymous_args = 0
+ 902 0434 80B5     		push	{r7, lr}
+ 903              		.cfi_def_cfa_offset 8
+ 904              		.cfi_offset 7, -8
+ 905              		.cfi_offset 14, -4
+ 906 0436 84B0     		sub	sp, sp, #16
+ 907              		.cfi_def_cfa_offset 24
+ 908 0438 00AF     		add	r7, sp, #0
+ 909              		.cfi_def_cfa_register 7
+ 150:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	uint8_t i, j, controller, c;
+ 151:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	unsigned int k = 0;
+ 910              		.loc 1 151 0
+ 911 043a 0023     		movs	r3, #0
+ 912 043c BB60     		str	r3, [r7, #8]
+ 152:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	for(c = 0; c < 2; c++) {
+ 913              		.loc 1 152 0
+ 914 043e 0D23     		movs	r3, #13
+ 915 0440 FB18     		adds	r3, r7, r3
+ 916 0442 0022     		movs	r2, #0
+ 917 0444 1A70     		strb	r2, [r3]
+ 918 0446 4FE0     		b	.L52
+ 919              	.L59:
+ 153:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		controller = (c == 0) ? B_CS1 : B_CS2;
+ 920              		.loc 1 153 0
+ 921 0448 0D23     		movs	r3, #13
+ 922 044a FB18     		adds	r3, r7, r3
+ 923 044c 1B78     		ldrb	r3, [r3]
+ 924 044e 002B     		cmp	r3, #0
+ 925 0450 01D1     		bne	.L53
+ 926              		.loc 1 153 0 is_stmt 0 discriminator 1
+ 927 0452 0822     		movs	r2, #8
+ 928 0454 00E0     		b	.L54
+ 929              	.L53:
+ 930              		.loc 1 153 0 discriminator 2
+ 931 0456 1022     		movs	r2, #16
+ 932              	.L54:
+ 933              		.loc 1 153 0 discriminator 4
+ 934 0458 FB1D     		adds	r3, r7, #7
+ 935 045a 1A70     		strb	r2, [r3]
+ 154:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		for(j = 0; j < 8; j++) {
+ 936              		.loc 1 154 0 is_stmt 1 discriminator 4
+ 937 045c 0E23     		movs	r3, #14
+ 938 045e FB18     		adds	r3, r7, r3
+ 939 0460 0022     		movs	r2, #0
+ 940 0462 1A70     		strb	r2, [r3]
+ 941 0464 35E0     		b	.L55
+ 942              	.L58:
+ 155:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			graphic_write_command(LCD_SET_PAGE | j, controller);
+ 943              		.loc 1 155 0
+ 944 0466 0E23     		movs	r3, #14
+ 945 0468 FB18     		adds	r3, r7, r3
+ 946 046a 1B78     		ldrb	r3, [r3]
+ 947 046c 4822     		movs	r2, #72
+ 948 046e 5242     		rsbs	r2, r2, #0
+ 949 0470 1343     		orrs	r3, r2
+ 950 0472 DAB2     		uxtb	r2, r3
+ 951 0474 FB1D     		adds	r3, r7, #7
+ 952 0476 1B78     		ldrb	r3, [r3]
+ 953 0478 1900     		movs	r1, r3
+ 954 047a 1000     		movs	r0, r2
+ 955 047c FFF7FEFF 		bl	graphic_write_command
+ 156:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			graphic_write_command(LCD_SET_ADD | 0, controller);
+ 956              		.loc 1 156 0
+ 957 0480 FB1D     		adds	r3, r7, #7
+ 958 0482 1B78     		ldrb	r3, [r3]
+ 959 0484 1900     		movs	r1, r3
+ 960 0486 4020     		movs	r0, #64
+ 961 0488 FFF7FEFF 		bl	graphic_write_command
+ 157:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			for(i = 0; i <= 63; i++, k++) {
+ 962              		.loc 1 157 0
+ 963 048c 0F23     		movs	r3, #15
+ 964 048e FB18     		adds	r3, r7, r3
+ 965 0490 0022     		movs	r2, #0
+ 966 0492 1A70     		strb	r2, [r3]
+ 967 0494 12E0     		b	.L56
+ 968              	.L57:
+ 158:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 				graphic_write_data(backBuffer[k], controller);
+ 969              		.loc 1 158 0 discriminator 3
+ 970 0496 194A     		ldr	r2, .L60
+ 971 0498 BB68     		ldr	r3, [r7, #8]
+ 972 049a D318     		adds	r3, r2, r3
+ 973 049c 1A78     		ldrb	r2, [r3]
+ 974 049e FB1D     		adds	r3, r7, #7
+ 975 04a0 1B78     		ldrb	r3, [r3]
+ 976 04a2 1900     		movs	r1, r3
+ 977 04a4 1000     		movs	r0, r2
+ 978 04a6 FFF7FEFF 		bl	graphic_write_data
+ 157:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			for(i = 0; i <= 63; i++, k++) {
+ 979              		.loc 1 157 0 discriminator 3
+ 980 04aa 0F21     		movs	r1, #15
+ 981 04ac 7B18     		adds	r3, r7, r1
+ 982 04ae 1A78     		ldrb	r2, [r3]
+ 983 04b0 7B18     		adds	r3, r7, r1
+ 984 04b2 0132     		adds	r2, r2, #1
+ 985 04b4 1A70     		strb	r2, [r3]
+ 986 04b6 BB68     		ldr	r3, [r7, #8]
+ 987 04b8 0133     		adds	r3, r3, #1
+ 988 04ba BB60     		str	r3, [r7, #8]
+ 989              	.L56:
+ 157:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			for(i = 0; i <= 63; i++, k++) {
+ 990              		.loc 1 157 0 is_stmt 0 discriminator 1
+ 991 04bc 0F23     		movs	r3, #15
+ 992 04be FB18     		adds	r3, r7, r3
+ 993 04c0 1B78     		ldrb	r3, [r3]
+ 994 04c2 3F2B     		cmp	r3, #63
+ 995 04c4 E7D9     		bls	.L57
+ 154:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			graphic_write_command(LCD_SET_PAGE | j, controller);
+ 996              		.loc 1 154 0 is_stmt 1 discriminator 2
+ 997 04c6 0E21     		movs	r1, #14
+ 998 04c8 7B18     		adds	r3, r7, r1
+ 999 04ca 1A78     		ldrb	r2, [r3]
+ 1000 04cc 7B18     		adds	r3, r7, r1
+ 1001 04ce 0132     		adds	r2, r2, #1
+ 1002 04d0 1A70     		strb	r2, [r3]
+ 1003              	.L55:
+ 154:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 			graphic_write_command(LCD_SET_PAGE | j, controller);
+ 1004              		.loc 1 154 0 is_stmt 0 discriminator 1
+ 1005 04d2 0E23     		movs	r3, #14
+ 1006 04d4 FB18     		adds	r3, r7, r3
+ 1007 04d6 1B78     		ldrb	r3, [r3]
+ 1008 04d8 072B     		cmp	r3, #7
+ 1009 04da C4D9     		bls	.L58
+ 152:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		controller = (c == 0) ? B_CS1 : B_CS2;
+ 1010              		.loc 1 152 0 is_stmt 1 discriminator 2
+ 1011 04dc 0D21     		movs	r1, #13
+ 1012 04de 7B18     		adds	r3, r7, r1
+ 1013 04e0 1A78     		ldrb	r2, [r3]
+ 1014 04e2 7B18     		adds	r3, r7, r1
+ 1015 04e4 0132     		adds	r2, r2, #1
+ 1016 04e6 1A70     		strb	r2, [r3]
+ 1017              	.L52:
+ 152:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		controller = (c == 0) ? B_CS1 : B_CS2;
+ 1018              		.loc 1 152 0 is_stmt 0 discriminator 1
+ 1019 04e8 0D23     		movs	r3, #13
+ 1020 04ea FB18     		adds	r3, r7, r3
+ 1021 04ec 1B78     		ldrb	r3, [r3]
+ 1022 04ee 012B     		cmp	r3, #1
+ 1023 04f0 AAD9     		bls	.L59
+ 159:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	}	}	}
+ 160:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** }
+ 1024              		.loc 1 160 0 is_stmt 1
+ 1025 04f2 C046     		nop
+ 1026 04f4 BD46     		mov	sp, r7
+ 1027 04f6 04B0     		add	sp, sp, #16
+ 1028              		@ sp needed
+ 1029 04f8 80BD     		pop	{r7, pc}
+ 1030              	.L61:
+ 1031 04fa C046     		.align	2
+ 1032              	.L60:
+ 1033 04fc 00000000 		.word	backBuffer
+ 1034              		.cfi_endproc
+ 1035              	.LFE12:
+ 1037              		.align	1
+ 1038              		.global	clear_backBuffer
+ 1039              		.syntax unified
+ 1040              		.code	16
+ 1041              		.thumb_func
+ 1042              		.fpu softvfp
+ 1044              	clear_backBuffer:
+ 1045              	.LFB13:
+ 161:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 
+ 162:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** void clear_backBuffer() {
+ 1046              		.loc 1 162 0
+ 1047              		.cfi_startproc
+ 1048              		@ args = 0, pretend = 0, frame = 8
+ 1049              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1050 0500 80B5     		push	{r7, lr}
+ 1051              		.cfi_def_cfa_offset 8
+ 1052              		.cfi_offset 7, -8
+ 1053              		.cfi_offset 14, -4
+ 1054 0502 82B0     		sub	sp, sp, #8
+ 1055              		.cfi_def_cfa_offset 16
+ 1056 0504 00AF     		add	r7, sp, #0
+ 1057              		.cfi_def_cfa_register 7
+ 163:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	int i;
+ 164:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 	for (i = 0; i < 1024; i++)
+ 1058              		.loc 1 164 0
+ 1059 0506 0023     		movs	r3, #0
+ 1060 0508 7B60     		str	r3, [r7, #4]
+ 1061 050a 07E0     		b	.L63
+ 1062              	.L64:
+ 165:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		backBuffer[i] = 0;
+ 1063              		.loc 1 165 0 discriminator 3
+ 1064 050c 074A     		ldr	r2, .L65
+ 1065 050e 7B68     		ldr	r3, [r7, #4]
+ 1066 0510 D318     		adds	r3, r2, r3
+ 1067 0512 0022     		movs	r2, #0
+ 1068 0514 1A70     		strb	r2, [r3]
+ 164:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		backBuffer[i] = 0;
+ 1069              		.loc 1 164 0 discriminator 3
+ 1070 0516 7B68     		ldr	r3, [r7, #4]
+ 1071 0518 0133     		adds	r3, r3, #1
+ 1072 051a 7B60     		str	r3, [r7, #4]
+ 1073              	.L63:
+ 164:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** 		backBuffer[i] = 0;
+ 1074              		.loc 1 164 0 is_stmt 0 discriminator 1
+ 1075 051c 7B68     		ldr	r3, [r7, #4]
+ 1076 051e 044A     		ldr	r2, .L65+4
+ 1077 0520 9342     		cmp	r3, r2
+ 1078 0522 F3DD     		ble	.L64
+ 166:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\graphics.c **** }
+ 1079              		.loc 1 166 0 is_stmt 1
+ 1080 0524 C046     		nop
+ 1081 0526 BD46     		mov	sp, r7
+ 1082 0528 02B0     		add	sp, sp, #8
+ 1083              		@ sp needed
+ 1084 052a 80BD     		pop	{r7, pc}
+ 1085              	.L66:
+ 1086              		.align	2
+ 1087              	.L65:
+ 1088 052c 00000000 		.word	backBuffer
+ 1089 0530 FF030000 		.word	1023
+ 1090              		.cfi_endproc
+ 1091              	.LFE13:
+ 1093              	.Letext0:
+ 1094              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/startup.h"

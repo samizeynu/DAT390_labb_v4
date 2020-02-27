@@ -126,9 +126,49 @@ void graphic_clear_screen(){
 	}
 }
 
-void pixel (unsigned int x, unsigned int y, unsigned int set){
+uint8_t backBuffer[1024]; // 128 * 64 / 8
+
+void pixel (unsigned int x, unsigned int y){
+	uint8_t mask;
+	int index = 0;
+	if (y < 1 || y > 64 || x < 1 || x > 128) 
+		return;
+	
+	mask = 1 << ((y-1) % 8);
+	
+	if(x > 64){
+		index = 512;
+		x -= 65;
+	}
+	
+	index += x + ((y-1) / 8) * 64; 
+	
+	backBuffer[index] |= mask;
+}
+
+void graphic_draw_screen(void) {
+	uint8_t i, j, controller, c;
+	unsigned int k = 0;
+	for(c = 0; c < 2; c++) {
+		controller = (c == 0) ? B_CS1 : B_CS2;
+		for(j = 0; j < 8; j++) {
+			graphic_write_command(LCD_SET_PAGE | j, controller);
+			graphic_write_command(LCD_SET_ADD | 0, controller);
+			for(i = 0; i <= 63; i++, k++) {
+				graphic_write_data(backBuffer[k], controller);
+	}	}	}
+}
+
+void clear_backBuffer() {
+	int i;
+	for (i = 0; i < 1024; i++)
+		backBuffer[i] = 0;
+}
+
+/*
+void pixel_old_version(unsigned int x, unsigned int y, unsigned int set){
 	uint8_t mask, c, controller;
-	int index;
+	int index = 0;
 	if (y < 1 || y > 64 || x < 1 || x > 128) 
 		return;
 	
@@ -149,7 +189,7 @@ void pixel (unsigned int x, unsigned int y, unsigned int set){
 		mask &= ~mask;
 	if(x > 64){
 		controller = B_CS2;
-		x = x-65;
+		x -= 65;
 	}
 	else{
 		controller = B_CS1;
@@ -166,90 +206,7 @@ void pixel (unsigned int x, unsigned int y, unsigned int set){
 		mask = mask & c;
 		
 	graphic_write_data(mask, controller);
-}
-
-/*
-//STRUCTS
-typedef struct tPoint{
-	unsigned char x;
-	unsigned char y;
-} POINT;
-
-#define MAX_POINTS 20
-
-typedef struct tGeometry{
-	int numpoints;
-	int sizex;
-	int sizey;
-	POINT px [MAX_POINTS];
-} GEOMETRY, *PGEOMETRY;
-
-GEOMETRY ball_geometry = {12,
- 4, 4, 
- { {0,1}, {0,2}, {1,0}, {1,1}, {1,2}, {1,3}, {2,0}, {2,1}, {2,2}, {2,3}, {3,1}, {3,2} } };
- 
-typedef struct tObj{
-	PGEOMETRY geo;
-	int dirx,diry;
-	int posx,posy;
-	void(*draw)(struct tObj *);
-	void(*clear)(struct tObj *);
-	void(*move)(struct tObj *);
-	void(*set_speed)(struct tObj *, int, int);
-} OBJECT,*POBJECT;
- 
-void set_object_speed(POBJECT o, int speedx, int speedy);
-void draw_object(POBJECT o);
-void clear_object(POBJECT o);
-void move_object(POBJECT o);
-
-static OBJECT ball =
-{
-	&ball_geometry,
-	0,0,
-	1,1,
-	draw_object,
-	clear_object,
-	move_object,
-	set_object_speed
-};
- 
-void set_object_speed(POBJECT o, int speedx, int speedy){
-	o->dirx = speedx;
-	o->diry = speedy;
-}	
- 
-void draw_object(POBJECT o){
-	for(int i= 0; i<= o->geo->numpoints; i++){
-		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 1);
-	}
-}
-
-void clear_object(POBJECT o){
-	for(int i= 0; i<= o->geo->numpoints; i++){
-		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 0);
-	}
-}
- 
-void move_object(POBJECT o){
-	o->clear(o);
-	if(o->posx < 1)
-		o->set_speed(o, -o->dirx, o->diry);
-	
-	if(o->posx > 128)
-		o->set_speed(o, -o->dirx, o->diry);
-		
-	if(o->posy < 1)
-		o->set_speed(o, o->dirx, -o->diry);
-		
-	if(o->posy > 64)
-		o->set_speed(o, o->dirx, -o->diry);
-		
-	o->draw(o);
-}
-
-*/
-
+}*/
 
  
  

@@ -172,7 +172,7 @@ typedef struct tag_usart{
 	volatile unsigned short gtpr;			//guard time and prescaler
 } USART;
 
-#define USART1	((USART *) 0x40011000)
+#define USART1	(*((USART *) 0x40011000))
 
 
 typedef struct tPoint{

@@ -31,16 +31,16 @@ __asm volatile(
 void _inituart(){
 20000010:	b580      	push	{r7, lr}
 20000012:	af00      	add	r7, sp, #0
-	USART1->brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet och decimalet
+	USART1.brr = 0x2D9; // baudrate 115200 : USARTDIV = 84 Mhz / (baudrate*16) : konvertera heltalet och decimalet
 20000014:	4b05      	ldr	r3, [pc, #20]	; (2000002c <_inituart+0x1c>)
 20000016:	4a06      	ldr	r2, [pc, #24]	; (20000030 <_inituart+0x20>)
 20000018:	811a      	strh	r2, [r3, #8]
-	USART1->cr2 = 0;
+	USART1.cr2 = 0;
 2000001a:	4b04      	ldr	r3, [pc, #16]	; (2000002c <_inituart+0x1c>)
 2000001c:	2200      	movs	r2, #0
 2000001e:	821a      	strh	r2, [r3, #16]
 	
-	USART1->cr1 = BIT_UE | BIT_TE | BIT_RE;
+	USART1.cr1 = BIT_UE | BIT_TE | BIT_RE;
 20000020:	4b02      	ldr	r3, [pc, #8]	; (2000002c <_inituart+0x1c>)
 20000022:	4a04      	ldr	r2, [pc, #16]	; (20000034 <_inituart+0x24>)
 20000024:	819a      	strh	r2, [r3, #12]
@@ -57,7 +57,7 @@ void _inituart(){
 char _tstchar(){ 
 20000038:	b580      	push	{r7, lr}
 2000003a:	af00      	add	r7, sp, #0
-	if((USART1->sr & BIT_RXNE) == BIT_RXNE)
+	if((USART1.sr & BIT_RXNE) == BIT_RXNE)
 2000003c:	4b08      	ldr	r3, [pc, #32]	; (20000060 <_tstchar+0x28>)
 2000003e:	881b      	ldrh	r3, [r3, #0]
 20000040:	b29b      	uxth	r3, r3
@@ -66,7 +66,7 @@ char _tstchar(){
 20000046:	4013      	ands	r3, r2
 20000048:	2b20      	cmp	r3, #32
 2000004a:	d104      	bne.n	20000056 <_tstchar+0x1e>
-		return (char)USART1->dr;
+		return (char)USART1.dr;
 2000004c:	4b04      	ldr	r3, [pc, #16]	; (20000060 <_tstchar+0x28>)
 2000004e:	889b      	ldrh	r3, [r3, #4]
 20000050:	b29b      	uxth	r3, r3
@@ -91,15 +91,15 @@ void _outchar(char c){
 2000006a:	0002      	movs	r2, r0
 2000006c:	1dfb      	adds	r3, r7, #7
 2000006e:	701a      	strb	r2, [r3, #0]
-	while(USART1->sr & BIT_TXE){
+	while(USART1.sr & BIT_TXE){
 20000070:	e004      	b.n	2000007c <_outchar+0x18>
-		USART1->dr = (unsigned short) c;
+		USART1.dr = (unsigned short) c;
 20000072:	4a08      	ldr	r2, [pc, #32]	; (20000094 <_outchar+0x30>)
 20000074:	1dfb      	adds	r3, r7, #7
 20000076:	781b      	ldrb	r3, [r3, #0]
 20000078:	b29b      	uxth	r3, r3
 2000007a:	8093      	strh	r3, [r2, #4]
-	while(USART1->sr & BIT_TXE){
+	while(USART1.sr & BIT_TXE){
 2000007c:	4b05      	ldr	r3, [pc, #20]	; (20000094 <_outchar+0x30>)
 2000007e:	881b      	ldrh	r3, [r3, #0]
 20000080:	b29b      	uxth	r3, r3

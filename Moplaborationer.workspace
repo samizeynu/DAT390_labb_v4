@@ -10,8 +10,9 @@
   <Project Name="flipflop_irq" Path="flipflop_irq/flipflop_irq.project" Active="No"/>
   <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="No"/>
   <Project Name="flipflop_irq_vectors" Path="flipflop_irq_vectors/flipflop_irq_vectors.project" Active="No"/>
-  <Project Name="usart_polling" Path="usart_polling/usart_polling.project" Active="Yes"/>
+  <Project Name="usart_polling" Path="usart_polling/usart_polling.project" Active="No"/>
   <Project Name="1_GAME" Path="spel/spel.project" Active="No"/>
+  <Project Name="SDLproject" Path="SDLproject/SDLproject.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
@@ -27,6 +28,7 @@
       <Project Name="flipflop_irq_vectors" ConfigName="Debug"/>
       <Project Name="usart_polling" ConfigName="Debug"/>
       <Project Name="1_GAME" ConfigName="Debug"/>
+      <Project Name="SDLproject" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
@@ -42,6 +44,7 @@
       <Project Name="flipflop_irq_vectors" ConfigName="Release"/>
       <Project Name="usart_polling" ConfigName="Release"/>
       <Project Name="1_GAME" ConfigName="Release"/>
+      <Project Name="SDLproject" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>
