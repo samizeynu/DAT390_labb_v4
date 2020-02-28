@@ -58,6 +58,48 @@ void startup(void) __attribute__((naked)) __attribute__((section (".start_sectio
 #define LCD_DISP_START	0xC0				
 #define LCD_BUSY		0x80
 
+//INTERRUPT REGISTERS
+#define SYSCFG_BASE		0x40013800	
+#define SYSCFG_EXTICR1	(*((unsigned int*)(SYSCFG_BASE + 0x8)))
+#define SYSCFG_EXTICR2	(*((unsigned int*)(SYSCFG_BASE + 0xC)))
+#define EXTI_BASE	0x40013C00
+#define EXTI_IMR	(*((unsigned int*)(EXTI_BASE)))
+#define EXTI_FTSR	(*((unsigned int*)(EXTI_BASE + 0xC)))
+#define EXTI_RTSR	(*((unsigned int*)(EXTI_BASE + 0x8)))
+#define EXTI_PR		(*((unsigned int*)(EXTI_BASE + 0x14)))
+#define SCB_VTOR (*(volatile unsigned int *) 0xE000ED08)
+#define NVIC_BASE	0xE000E100
+#define NVIC_ISER0	(*((unsigned int*)(NVIC_BASE)))
+
+
+//INTERRUPT BITS AND VECTORS
+#define EXTI3_IRQVEC ((void (**) (void)) 0x2001C064)
+#define EXTI2_IRQVEC ((void (**) (void)) 0x2001C060)
+#define EXTI1_IRQVEC ((void (**) (void)) 0x2001C05C)
+
+#define NVIC_EXTI3_BPOS	(1<<9)
+#define NVIC_EXTI2_BPOS (1<<8)
+#define NVIC_EXTI1_BPOS (1<<7)
+
+#define	EXTI3_BPOS	(1<<3)
+#define	EXTI2_BPOS	(1<<2)
+#define	EXTI1_BPOS	(1<<1)
+
+
+//USART BITS
+#define	BIT_TXE		(1<<7)	//Transmit data register empty : 0:busy - 1:ready
+#define BIT_RXNE	(1<<5)	//Receive data register not empty: 0:no content - 1:content available
+#define BIT_ORE		(1<<3)	//Overrun error: 0:no lost data - 1:fel
+#define BIT_NF		(1<<2)	//Noise detection: 0: no noise
+#define	BIT_FE		(1<<1)	//Framing error: 0: no error
+#define	BIT_PE		(1<<0)	//Parity error: 0: no error
+#define	USART_ERROR_FLAGS	(BIT_ORE | BIT_NF | BIT_FE | BIT_PE)
+
+#define BIT_UE	(1<<13)
+#define	BIT_TE	(1<<3)
+#define	BIT_RE	(1<<2)
+
+
 //TYPEDEFS
 typedef unsigned char uint8_t;
 
@@ -103,9 +145,11 @@ void graphic_write(unsigned char value, unsigned char controller);
 void graphic_write_command(uint8_t command, uint8_t controller);
 void graphic_write_data(uint8_t data, uint8_t controller);
 void graphic_clear_screen(void);
+//void pixel (unsigned int x, unsigned int y, unsigned int set);
 void pixel (unsigned int x, unsigned int y);
 
-//void pixel_old_version (unsigned int x, unsigned int y, unsigned int set);
+void graphic_draw_screen(void);
+void clear_backBuffer();
 
 //GENERAL FUNCTIONS
 //void init_app();
@@ -115,6 +159,25 @@ void graphic_init(void);
 
 
 //STRUCTS
+
+typedef struct tag_usart{
+	volatile unsigned short sr;				//status register
+	volatile unsigned short unused0;
+	volatile unsigned short dr;				//data register
+	volatile unsigned short unused1;
+	volatile unsigned short brr;			//baudrate register
+	volatile unsigned short unused2;
+	volatile unsigned short cr1;			//control register
+	volatile unsigned short unused3;
+	volatile unsigned short cr2;			//control register
+	volatile unsigned short unused4;
+	volatile unsigned short cr3;			//control register
+	volatile unsigned short unused5;
+	volatile unsigned short gtpr;			//guard time and prescaler
+} USART;
+
+#define USART1	(*((USART *) 0x40011000))
+
 
 typedef struct tPoint{
 	unsigned char x;
@@ -129,6 +192,7 @@ typedef struct tGeometry{
 	int sizey;
 	POINT px [MAX_POINTS];
 } GEOMETRY, *PGEOMETRY;
+
  
  typedef struct tObj{
 	 PGEOMETRY geo;
@@ -144,3 +208,4 @@ void set_object_speed(POBJECT o, int speedx, int speedy);
 void draw_object(POBJECT o);
 void clear_object(POBJECT o);
 void move_object(POBJECT o);
+

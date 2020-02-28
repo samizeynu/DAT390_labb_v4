@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ SDLproject - Debug ]----------"
-	@cd "SDLproject" && "$(MAKE)" -f  "SDLproject.mk" && "$(MAKE)" -f  "SDLproject.mk" PostBuild
+	@echo "----------Building project:[ 1_GAME - Debug ]----------"
+	@cd "spel" && "$(MAKE)" -f  "1_GAME.mk" && "$(MAKE)" -f  "1_GAME.mk" PostBuild
 clean:
-	@echo "----------Cleaning project:[ SDLproject - Debug ]----------"
-	@cd "SDLproject" && "$(MAKE)" -f  "SDLproject.mk" clean
+	@echo "----------Cleaning project:[ 1_GAME - Debug ]----------"
+	@cd "spel" && "$(MAKE)" -f  "1_GAME.mk" clean

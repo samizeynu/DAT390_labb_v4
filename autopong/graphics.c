@@ -158,7 +158,7 @@ void pixel (unsigned int x, unsigned int y, unsigned int set){
 	graphic_write_command(LCD_SET_ADD | x, controller);
 	graphic_write_command(LCD_SET_PAGE | index, controller);
 	c = graphic_read_data(controller);
-	graphic_write_data(LCD_SET_ADD | x, controller);
+	graphic_write_command(LCD_SET_ADD | x, controller);
 	
 	if(set)
 		mask = mask | c;

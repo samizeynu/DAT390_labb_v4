@@ -4,7 +4,7 @@
  */
  
 
-#include "startup.h"
+#include "game_startup.h"
 
 void app_init(void)
 {

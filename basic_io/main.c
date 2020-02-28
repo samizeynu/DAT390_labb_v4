@@ -1,4 +1,4 @@
-#include "startup.h"
+#include "game_startup.h"
 
 void startup ( void )
 {

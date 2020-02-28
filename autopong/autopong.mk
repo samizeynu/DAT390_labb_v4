@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Andre
-Date                   :=26/02/2020
+Date                   :=28/02/2020
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -66,7 +66,7 @@ ARM_V6LIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v6-m
 ARM_GCC_V6LIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m
 ARM_M4FPLIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard
 ARM_GCC_M4FPLIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m
-Objects0=$(IntermediateDirectory)/structs.c$(ObjectSuffix) $(IntermediateDirectory)/delays.c$(ObjectSuffix) $(IntermediateDirectory)/graphics.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/graphics.c$(ObjectSuffix) $(IntermediateDirectory)/structs.c$(ObjectSuffix) $(IntermediateDirectory)/delays.c$(ObjectSuffix) 
 
 
 
@@ -103,6 +103,22 @@ PreBuild:
 ##
 ## Objects
 ##
+$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/autopong/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/main.c$(DependSuffix): main.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
+
+$(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
+
+$(IntermediateDirectory)/graphics.c$(ObjectSuffix): graphics.c $(IntermediateDirectory)/graphics.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/autopong/graphics.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/graphics.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/graphics.c$(DependSuffix): graphics.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/graphics.c$(ObjectSuffix) -MF$(IntermediateDirectory)/graphics.c$(DependSuffix) -MM graphics.c
+
+$(IntermediateDirectory)/graphics.c$(PreprocessSuffix): graphics.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/graphics.c$(PreprocessSuffix) graphics.c
+
 $(IntermediateDirectory)/structs.c$(ObjectSuffix): structs.c $(IntermediateDirectory)/structs.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/autopong/structs.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/structs.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/structs.c$(DependSuffix): structs.c
@@ -118,22 +134,6 @@ $(IntermediateDirectory)/delays.c$(DependSuffix): delays.c
 
 $(IntermediateDirectory)/delays.c$(PreprocessSuffix): delays.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/delays.c$(PreprocessSuffix) delays.c
-
-$(IntermediateDirectory)/graphics.c$(ObjectSuffix): graphics.c $(IntermediateDirectory)/graphics.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/autopong/graphics.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/graphics.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/graphics.c$(DependSuffix): graphics.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/graphics.c$(ObjectSuffix) -MF$(IntermediateDirectory)/graphics.c$(DependSuffix) -MM graphics.c
-
-$(IntermediateDirectory)/graphics.c$(PreprocessSuffix): graphics.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/graphics.c$(PreprocessSuffix) graphics.c
-
-$(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/autopong/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main.c$(DependSuffix): main.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM main.c
-
-$(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) main.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

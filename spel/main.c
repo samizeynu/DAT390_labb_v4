@@ -3,7 +3,9 @@
  *
  */
  
-#include "startup.h"
+#include "game_startup.h"
+#include "plant.xbm"
+#include "backGround.xbm"
 
 
 void startup ( void )
@@ -16,14 +18,53 @@ __asm volatile(
 	) ;
 }
 
-GEOMETRY ball_geometry = {12,
- 4, 4, 
- { {0,1}, {0,2}, {1,0}, {1,1}, {1,2}, {1,3}, {2,0}, {2,1}, {2,2}, {2,3}, {3,1}, {3,2} } };
- 
- static OBJECT ball =
+typedef struct
+{
+unsigned char width;
+unsigned char height;
+unsigned char* data;
+} sprite;
+
+static void load_sprite(sprite* s, unsigned char* data, int width, int height)
+{
+s->width = width;
+s->height = height;
+s->data = data;
+}
+
+void draw_sprite(sprite* s, int x, int y, int set) {
+int i,j,k, width_in_bytes;
+if (s->width % 8 == 0)
+width_in_bytes = s->width / 8;
+else
+width_in_bytes = s->width / 8 + 1;
+for (i = 0; i < s->height; i++)
+for (j = 0; j < width_in_bytes; j++) {
+unsigned char byte = s->data[i * width_in_bytes + j];
+for (k =0; k < 8; k++) {
+if (byte & (1 << k))
+pixel(8 * j + k + x + 1, i + y + 1);
+}
+}
+}
+
+GEOMETRY ball_geometry=
+{
+	12, //tot pix
+	4,	//bredd
+	4,	//längd
+	{
+		{0,1},{0,2},
+		{1,0},{1,1},{1,2},{1,3},
+		{2,0},{2,1},{2,2},{2,3},
+		{3,1},{3,2},
+	}
+};
+
+static OBJECT ball=
 {
 	&ball_geometry,
-	0,0,
+	-3,3,
 	1,1,
 	draw_object,
 	clear_object,
@@ -31,18 +72,64 @@ GEOMETRY ball_geometry = {12,
 	set_object_speed
 };
 
+static sprite plant =
+{
+	plant_width, 
+	plant_height, 
+	plant_bits
+};
+
+static sprite backGround =
+{
+	backGround_width, 
+	backGround_height, 
+	backGround_bits
+};
+
+void ascii_message(){
+	char *s;
+	char test1[] = "Welcome ";
+	char test2[] = "to the game!";
+	ascii_gotoxy(1,1);
+	s = test1;
+	while (*s){
+		ascii_write_char(*s++); // ascii_write_char
+	}
+	ascii_gotoxy(1,2);
+	s = test2;
+	while (*s){
+		ascii_write_char(*s++); // ascii_write_char
+	}
+}
+
+void init_spel(){
+	GPIO_MODER_E = 0x55555555;
+	ascii_init();
+	//ascii_message();
+}
+
+
 int main(int argc, char **argv)
 {
+	init_spel();
 	POBJECT p = &ball;
 	graphic_init();
+#ifndef	SIMULATOR
+	graphic_clear_screen();
+#endif
 	
-	#ifndef SIMULATOR
-		graphic_clear_screen();
-	#endif
+//	load_sprite(&plant, plant_bits, plant_width, plant_height);
+	load_sprite(&backGround, backGround_bits, backGround_width, backGround_height);
 	
-	p->set_speed(p, 4, 1);
+	
+	p->set_speed(p, 12, 20);
 	while(1){
+		clear_backBuffer();
 		p->move(p);
+		draw_sprite(&plant, 50, 50, 1);
+		draw_sprite(&backGround, 1, 1, 1);
+		graphic_draw_screen();
 		//delay_milli(40); //25 fps
+		graphic_clear_screen();
 	}
 }

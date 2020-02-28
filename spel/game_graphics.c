@@ -3,7 +3,7 @@
  *
  */
 
-#include "startup.h"
+#include "game_startup.h"
 
 void graphic_ctrl_bit_set(uint8_t x){
 	GPIO_ODR_E_LOW |= (~B_SELECT & x); 			//Dubbelkolla sedan
@@ -27,12 +27,12 @@ static void graphic_wait_ready(void){
 	GPIO_MODER_E = 0x00005555;
 	graphic_ctrl_bit_clear(B_RS);
 	graphic_ctrl_bit_set(B_RW);
-	delay_500ns();
+//	delay_500ns();
 	while(GPIO_IDR_E_HIGH & LCD_BUSY){
 		graphic_ctrl_bit_set(B_E);
-		delay_500ns();
+//		delay_500ns();
 		graphic_ctrl_bit_clear(B_E);
-		delay_500ns();
+//		delay_500ns();
 	}
 	graphic_ctrl_bit_set(B_E);
 	GPIO_MODER_E = 0x55555555;
@@ -44,7 +44,7 @@ unsigned char graphic_read(unsigned char controller){
 	GPIO_MODER_E = 0x00005555;
 	graphic_ctrl_bit_set(B_RS | B_RW);
 	select_controller(controller);
-	delay_500ns();
+//	delay_500ns();
 	graphic_ctrl_bit_set(B_E);
 	read_data = GPIO_IDR_E_HIGH;
 	graphic_ctrl_bit_clear(B_E);
@@ -63,9 +63,9 @@ unsigned char graphic_read(unsigned char controller){
 void graphic_write(unsigned char value, unsigned char controller){
 	GPIO_ODR_E_HIGH = value;
 	select_controller(controller);
-	delay_500ns();
+//	delay_500ns();
 	graphic_ctrl_bit_set(B_E);
-	delay_500ns();
+//	delay_500ns();
 	graphic_ctrl_bit_clear(B_E);
 	if(controller & B_CS1){
 		select_controller(B_CS1);
@@ -105,9 +105,9 @@ void graphic_init(){
 	GPIO_MODER_E = 0x55555555;
 	
 	graphic_ctrl_bit_set(B_E);
-	delay_micro(10);
+//	delay_micro(10);
 	graphic_ctrl_bit_clear(B_CS1 | B_CS2 | B_RESET | B_E);
-	delay_milli(30);
+//	delay_milli(30);
 	graphic_ctrl_bit_set(B_RESET);
 	graphic_write_command(LCD_OFF, B_CS1 | B_CS2);
 	graphic_write_command(LCD_ON, B_CS1 | B_CS2);
@@ -166,7 +166,7 @@ void clear_backBuffer() {
 }
 
 /*
-void pixel_old_version(unsigned int x, unsigned int y, unsigned int set){
+void pixel (unsigned int x, unsigned int y, unsigned int set){
 	uint8_t mask, c, controller;
 	int index = 0;
 	if (y < 1 || y > 64 || x < 1 || x > 128) 
@@ -198,7 +198,7 @@ void pixel_old_version(unsigned int x, unsigned int y, unsigned int set){
 	graphic_write_command(LCD_SET_ADD | x, controller);
 	graphic_write_command(LCD_SET_PAGE | index, controller);
 	c = graphic_read_data(controller);
-	graphic_write_data(LCD_SET_ADD | x, controller);
+	graphic_write_command(LCD_SET_ADD | x, controller);
 	
 	if(set)
 		mask = mask | c;

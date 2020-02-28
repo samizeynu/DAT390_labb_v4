@@ -3,7 +3,7 @@
  *
  */
  
-#include "startup.h"
+#include "game_startup.h"
 #include "delays.c"
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );

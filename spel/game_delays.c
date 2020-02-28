@@ -3,7 +3,7 @@
  *
  */
 
-#include "startup.h"
+#include "game_startup.h"
 
 void delay_250ns(void){
 	STK_CTRL = 0;

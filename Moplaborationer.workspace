@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="Moplaborationer" Database="" Version="10.0.0">
-  <Project Name="labb2_1" Path="basic_io/basic_io.project" Active="No"/>
-  <Project Name="labb2_2" Path="delay/delay.project" Active="No"/>
-  <Project Name="labb2_3" Path="asciidisplay/asciidisplay.project" Active="No"/>
+  <Project Name="2_1_basic_io" Path="basic_io/basic_io.project" Active="No"/>
+  <Project Name="2_2_delay" Path="delay/delay.project" Active="No"/>
+  <Project Name="2_3_ascii_display" Path="asciidisplay/asciidisplay.project" Active="No"/>
   <Project Name="graphicdisplay" Path="graphicdisplay/graphicdisplay.project" Active="No"/>
   <Project Name="autopong" Path="autopong/autopong.project" Active="No"/>
   <Project Name="getsetpsr" Path="getsetpsr/getsetpsr.project" Active="No"/>
@@ -11,14 +11,14 @@
   <Project Name="flipflop_irq_ack" Path="flipflop_irq_ack/flipflop_irq_ack.project" Active="No"/>
   <Project Name="flipflop_irq_vectors" Path="flipflop_irq_vectors/flipflop_irq_vectors.project" Active="No"/>
   <Project Name="usart_polling" Path="usart_polling/usart_polling.project" Active="No"/>
-  <Project Name="1_GAME" Path="spel/spel.project" Active="No"/>
-  <Project Name="SDLproject" Path="SDLproject/SDLproject.project" Active="Yes"/>
+  <Project Name="1_GAME" Path="spel/spel.project" Active="Yes"/>
+  <Project Name="SDLproject" Path="SDLproject/SDLproject.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
-      <Project Name="labb2_1" ConfigName="Debug"/>
-      <Project Name="labb2_2" ConfigName="Debug"/>
-      <Project Name="labb2_3" ConfigName="Debug"/>
+      <Project Name="2_1_basic_io" ConfigName="Debug"/>
+      <Project Name="2_2_delay" ConfigName="Debug"/>
+      <Project Name="2_3_ascii_display" ConfigName="Debug"/>
       <Project Name="graphicdisplay" ConfigName="Debug"/>
       <Project Name="autopong" ConfigName="Debug"/>
       <Project Name="getsetpsr" ConfigName="Debug"/>
@@ -32,9 +32,9 @@
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
-      <Project Name="labb2_1" ConfigName="Release"/>
-      <Project Name="labb2_2" ConfigName="Release"/>
-      <Project Name="labb2_3" ConfigName="Release"/>
+      <Project Name="2_1_basic_io" ConfigName="Release"/>
+      <Project Name="2_2_delay" ConfigName="Release"/>
+      <Project Name="2_3_ascii_display" ConfigName="Release"/>
       <Project Name="graphicdisplay" ConfigName="Release"/>
       <Project Name="autopong" ConfigName="Release"/>
       <Project Name="getsetpsr" ConfigName="Release"/>

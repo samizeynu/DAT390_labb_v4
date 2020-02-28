@@ -1,3 +1,7 @@
-Debug/main.c.o: main.c startup.h
+Debug/main.c.o: main.c game_startup.h plant.xbm backGround.xbm
 
-startup.h:
+game_startup.h:
+
+plant.xbm:
+
+backGround.xbm:

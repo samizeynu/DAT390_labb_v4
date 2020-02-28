@@ -145,8 +145,9 @@ void pixel (unsigned int x, unsigned int y, unsigned int set){
 		case 7: mask = 0x80; break;
 	}
 	
-	if (!set)
+	if (set == 0)
 		mask = ~mask;
+		
 	if(x > 64){
 		controller = B_CS2;
 		x = x-65;
@@ -158,7 +159,7 @@ void pixel (unsigned int x, unsigned int y, unsigned int set){
 	graphic_write_command(LCD_SET_ADD | x, controller);
 	graphic_write_command(LCD_SET_PAGE | index, controller);
 	c = graphic_read_data(controller);
-	graphic_write_data(LCD_SET_ADD | x, controller);
+	graphic_write_command(LCD_SET_ADD | x, controller);
 	
 	if(set)
 		mask = mask | c;
@@ -197,23 +198,23 @@ GEOMETRY ball_geometry = {12,
 	 void(*set_speed)(struct tObj *, int, int);
  } OBJECT,*POBJECT;
  
- void set_object_speed(POBJECT o, int speedx, int speedy){
+ void set_object_speed_old(POBJECT o, int speedx, int speedy){
 	 o->dirx = speedx;
 	 o->diry = speedy;
  }	
  
- void draw_object(POBJECT o){
+ void draw_object_old(POBJECT o){
 	 for(int i= 0; i<= o->geo->numpoints; i++){
 		 pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 1);
 	}
  }
- void clear_object(POBJECT o){
+ void clear_object_old(POBJECT o){
 	 for(int i= 0; i<= o->geo->numpoints; i++){
 		 pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y, 0);
 	}
  }
  
- void move_object(POBJECT o){
+ void move_object_old(POBJECT o){
 	o->clear(o);
 	if(o->posx < 1)
 		o->set_speed(o, -o->dirx, o->diry);
@@ -235,10 +236,10 @@ GEOMETRY ball_geometry = {12,
 	&ball_geometry,
 	0,0,
 	1,1,
-	draw_object,
-	clear_object,
-	move_object,
-	set_object_speed
+	draw_object_old,
+	clear_object_old,
+	move_object_old,
+	set_object_speed_old
 };
  
  

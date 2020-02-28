@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=labb2_2
 ConfigurationName      :=Debug
-WorkspacePath          :=Z:/DATlaborationer
-ProjectPath            :=Z:/DATlaborationer/delay
+WorkspacePath          :=C:/Users/Andre/Desktop/DAT390_labb_v4
+ProjectPath            :=C:/Users/Andre/Desktop/DAT390_labb_v4/delay
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=zeynu
-Date                   :=11/02/2020
+User                   :=Andre
+Date                   :=28/02/2020
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -104,7 +104,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/startup.c$(ObjectSuffix): startup.c $(IntermediateDirectory)/startup.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "Z:/DATlaborationer/delay/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/delay/startup.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/startup.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/startup.c$(DependSuffix): startup.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/startup.c$(ObjectSuffix) -MF$(IntermediateDirectory)/startup.c$(DependSuffix) -MM startup.c
 

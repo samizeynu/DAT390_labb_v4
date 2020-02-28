@@ -130,11 +130,15 @@ monitor restart</PostConnectCommands>
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="structs.c"/>
-    <File Name="startup.h"/>
+    <File Name="backGround.xbm"/>
+    <File Name="plant.xbm"/>
+    <File Name="game_startup.h"/>
+    <File Name="game_structs.c"/>
+    <File Name="game_keyboard.c"/>
+    <File Name="game_graphics.c"/>
+    <File Name="game_delays.c"/>
+    <File Name="game_ascii.c"/>
     <File Name="main.c"/>
-    <File Name="graphics.c"/>
-    <File Name="delays.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>

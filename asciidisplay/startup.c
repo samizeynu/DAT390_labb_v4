@@ -149,7 +149,7 @@ void delay_milli(unsigned int ms){
 
 
 void ascii_command (unsigned char command){
-	while ((ascii_read_status() & (1<<7))){}
+	while ((ascii_read_status() & (1<<7))){};
 	delay_micro(8);
 	ascii_write_command(command);
 }
@@ -172,7 +172,7 @@ void ascii_init(){
 void ascii_write_char (unsigned char character){
 	//while ((ascii_read_status() & (1<<7))){}
 	
-while ((ascii_read_status() & 0x80) == 0x80) {}
+while ((ascii_read_status() & 0x80) == 0x80) {};
 	delay_micro(8);
 	ascii_write_data(character);
 	delay_micro(40);
@@ -189,10 +189,10 @@ void ascii_gotoxy(int x,int y){ //x = rad, y = column
 }
 
 void init_app(){
-#ifdef USBDM
-	*((unsigned long *) 0x40023830) = 0x18; //starta clockor port E, D
-	__asm volatile ( " LDR R0,=0x8000209\n BLX R0 \n //initiera PLL");
-#endif
+//#ifdef USBDM
+//	*((unsigned long *) 0x40023830) = 0x18; //starta clockor port E, D
+//	__asm volatile ( " LDR R0,=0x8000209\n BLX R0 \n //initiera PLL");
+//#endif
 
 	GPIO_MODER_E = 0x55555555;
 	
@@ -206,7 +206,7 @@ void main(void)
 	init_app();
 	char *s;
 	char test1[] = "Alfanumerisk ";
-	char test2[] = " Display - test ";
+	char test2[] = " Display - test2 ";
 	
 	
 	ascii_init();

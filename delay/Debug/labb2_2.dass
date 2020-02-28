@@ -5,50 +5,30 @@
 Disassembly of section .text:
 
 20000000 <startup>:
-#define STK_VAL (*((volatile unsigned int*)(STK_BASE + 0x08)))
-#define STK_CALIB (*((volatile unsigned int*)(STK_BASE + 0x0C)))
-
-void startup ( void )
-{
-__asm volatile(
 20000000:	4802      	ldr	r0, [pc, #8]	; (2000000c <_exit+0x4>)
 20000002:	4685      	mov	sp, r0
 20000004:	f000 f872 	bl	200000ec <main>
 
 20000008 <_exit>:
 20000008:	e7fe      	b.n	20000008 <_exit>
-	" LDR R0,=0x2001C000\n"		/* set stack */
-	" MOV SP,R0\n"
-	" BL main\n"				/* call main */
-	"_exit: B .\n"				/* never return */
-	) ;
-}
 2000000a:	46c0      	nop			; (mov r8, r8)
 2000000c:	2001c000 	andcs	ip, r1, r0
 
 20000010 <delay_250ns>:
-
-void delay_250ns(void){
 20000010:	b580      	push	{r7, lr}
 20000012:	af00      	add	r7, sp, #0
-	STK_CTRL = 0;
 20000014:	4b0c      	ldr	r3, [pc, #48]	; (20000048 <delay_250ns+0x38>)
 20000016:	2200      	movs	r2, #0
 20000018:	601a      	str	r2, [r3, #0]
-	STK_LOAD = ((168/4) - 1);
 2000001a:	4b0c      	ldr	r3, [pc, #48]	; (2000004c <delay_250ns+0x3c>)
 2000001c:	2229      	movs	r2, #41	; 0x29
 2000001e:	601a      	str	r2, [r3, #0]
-	STK_VAL = 0;
 20000020:	4b0b      	ldr	r3, [pc, #44]	; (20000050 <delay_250ns+0x40>)
 20000022:	2200      	movs	r2, #0
 20000024:	601a      	str	r2, [r3, #0]
-	STK_CTRL = 5;
 20000026:	4b08      	ldr	r3, [pc, #32]	; (20000048 <delay_250ns+0x38>)
 20000028:	2205      	movs	r2, #5
 2000002a:	601a      	str	r2, [r3, #0]
-	
-	while((STK_CTRL & 0x10000) == 0){};
 2000002c:	46c0      	nop			; (mov r8, r8)
 2000002e:	4b06      	ldr	r3, [pc, #24]	; (20000048 <delay_250ns+0x38>)
 20000030:	681a      	ldr	r2, [r3, #0]
@@ -56,11 +36,9 @@ void delay_250ns(void){
 20000034:	025b      	lsls	r3, r3, #9
 20000036:	4013      	ands	r3, r2
 20000038:	d0f9      	beq.n	2000002e <delay_250ns+0x1e>
-	STK_CTRL = 0;
 2000003a:	4b03      	ldr	r3, [pc, #12]	; (20000048 <delay_250ns+0x38>)
 2000003c:	2200      	movs	r2, #0
 2000003e:	601a      	str	r2, [r3, #0]
-}
 20000040:	46c0      	nop			; (mov r8, r8)
 20000042:	46bd      	mov	sp, r7
 20000044:	bd80      	pop	{r7, pc}
@@ -70,30 +48,20 @@ void delay_250ns(void){
 20000050:	e000e018 	and	lr, r0, r8, lsl r0
 
 20000054 <delay_micro>:
-
-void delay_micro(unsigned int us){
 20000054:	b580      	push	{r7, lr}
 20000056:	b082      	sub	sp, #8
 20000058:	af00      	add	r7, sp, #0
 2000005a:	6078      	str	r0, [r7, #4]
-	while(us--){
 2000005c:	e007      	b.n	2000006e <delay_micro+0x1a>
-		delay_250ns();
 2000005e:	f7ff ffd7 	bl	20000010 <delay_250ns>
-		delay_250ns();
 20000062:	f7ff ffd5 	bl	20000010 <delay_250ns>
-		delay_250ns(); 
 20000066:	f7ff ffd3 	bl	20000010 <delay_250ns>
-		delay_250ns();
 2000006a:	f7ff ffd1 	bl	20000010 <delay_250ns>
-	while(us--){
 2000006e:	687b      	ldr	r3, [r7, #4]
 20000070:	1e5a      	subs	r2, r3, #1
 20000072:	607a      	str	r2, [r7, #4]
 20000074:	2b00      	cmp	r3, #0
 20000076:	d1f2      	bne.n	2000005e <delay_micro+0xa>
-	}
-}
 20000078:	46c0      	nop			; (mov r8, r8)
 2000007a:	46c0      	nop			; (mov r8, r8)
 2000007c:	46bd      	mov	sp, r7
@@ -101,31 +69,20 @@ void delay_micro(unsigned int us){
 20000080:	bd80      	pop	{r7, pc}
 
 20000082 <delay_milli>:
-
-void delay_milli(unsigned int ms){
 20000082:	b580      	push	{r7, lr}
 20000084:	b082      	sub	sp, #8
 20000086:	af00      	add	r7, sp, #0
 20000088:	6078      	str	r0, [r7, #4]
-#ifdef SIMULATOR
-	ms = ms / 100;
-	ms++;
-#endif
-	
-	while( ms-- )
 2000008a:	e004      	b.n	20000096 <delay_milli+0x14>
-		delay_micro(1000);
 2000008c:	23fa      	movs	r3, #250	; 0xfa
 2000008e:	009b      	lsls	r3, r3, #2
 20000090:	0018      	movs	r0, r3
 20000092:	f7ff ffdf 	bl	20000054 <delay_micro>
-	while( ms-- )
 20000096:	687b      	ldr	r3, [r7, #4]
 20000098:	1e5a      	subs	r2, r3, #1
 2000009a:	607a      	str	r2, [r7, #4]
 2000009c:	2b00      	cmp	r3, #0
 2000009e:	d1f5      	bne.n	2000008c <delay_milli+0xa>
-}
 200000a0:	46c0      	nop			; (mov r8, r8)
 200000a2:	46c0      	nop			; (mov r8, r8)
 200000a4:	46bd      	mov	sp, r7
@@ -133,43 +90,28 @@ void delay_milli(unsigned int ms){
 200000a8:	bd80      	pop	{r7, pc}
 
 200000aa <app_init>:
-
-void app_init(void)
-{
 200000aa:	b580      	push	{r7, lr}
 200000ac:	af00      	add	r7, sp, #0
-#ifdef USBDM
-	*((unsigned long *) 0x40023830) = 0x18; //starta clockor port E, D
 200000ae:	4b0b      	ldr	r3, [pc, #44]	; (200000dc <app_init+0x32>)
 200000b0:	2218      	movs	r2, #24
 200000b2:	601a      	str	r2, [r3, #0]
-	__asm volatile ( " LDR R0,=0x8000209\n BLX R0 \n //initiera PLL");
 200000b4:	4819      	ldr	r0, [pc, #100]	; (2000011c <main+0x30>)
 200000b6:	4780      	blx	r0
-#endif
-
-	GPIO_MODER_E &= 0;
 200000b8:	4b09      	ldr	r3, [pc, #36]	; (200000e0 <app_init+0x36>)
 200000ba:	681b      	ldr	r3, [r3, #0]
 200000bc:	4b08      	ldr	r3, [pc, #32]	; (200000e0 <app_init+0x36>)
 200000be:	2200      	movs	r2, #0
 200000c0:	601a      	str	r2, [r3, #0]
-	GPIO_MODER_E |= 0x00005555; //pin 1 - 8 bargraph
 200000c2:	4b07      	ldr	r3, [pc, #28]	; (200000e0 <app_init+0x36>)
 200000c4:	681a      	ldr	r2, [r3, #0]
 200000c6:	4b06      	ldr	r3, [pc, #24]	; (200000e0 <app_init+0x36>)
 200000c8:	4906      	ldr	r1, [pc, #24]	; (200000e4 <app_init+0x3a>)
 200000ca:	430a      	orrs	r2, r1
 200000cc:	601a      	str	r2, [r3, #0]
-	GPIO_OSPEEDR_E = 0xFFFFFFFF;
 200000ce:	4b06      	ldr	r3, [pc, #24]	; (200000e8 <app_init+0x3e>)
 200000d0:	2201      	movs	r2, #1
 200000d2:	4252      	negs	r2, r2
 200000d4:	601a      	str	r2, [r3, #0]
-	
-	//GPIO_OTYPER_E |= 0x0000; //push-pull output type
-	
-}
 200000d6:	46c0      	nop			; (mov r8, r8)
 200000d8:	46bd      	mov	sp, r7
 200000da:	bd80      	pop	{r7, pc}
@@ -179,35 +121,23 @@ void app_init(void)
 200000e8:	40021008 	andmi	r1, r2, r8
 
 200000ec <main>:
-
-
-void main(void)
-{
 200000ec:	b580      	push	{r7, lr}
 200000ee:	af00      	add	r7, sp, #0
-	app_init();
 200000f0:	f7ff ffdb 	bl	200000aa <app_init>
-	
-	while(1){
-		GPIO_ODR_E_LOW = 0;
 200000f4:	4b08      	ldr	r3, [pc, #32]	; (20000118 <main+0x2c>)
 200000f6:	2200      	movs	r2, #0
 200000f8:	701a      	strb	r2, [r3, #0]
-		delay_milli(500);
 200000fa:	23fa      	movs	r3, #250	; 0xfa
 200000fc:	005b      	lsls	r3, r3, #1
 200000fe:	0018      	movs	r0, r3
 20000100:	f7ff ffbf 	bl	20000082 <delay_milli>
-		GPIO_ODR_E_LOW = 0xFF;
 20000104:	4b04      	ldr	r3, [pc, #16]	; (20000118 <main+0x2c>)
 20000106:	22ff      	movs	r2, #255	; 0xff
 20000108:	701a      	strb	r2, [r3, #0]
-		delay_milli(500);
 2000010a:	23fa      	movs	r3, #250	; 0xfa
 2000010c:	005b      	lsls	r3, r3, #1
 2000010e:	0018      	movs	r0, r3
 20000110:	f7ff ffb7 	bl	20000082 <delay_milli>
-		GPIO_ODR_E_LOW = 0;
 20000114:	e7ee      	b.n	200000f4 <main+0x8>
 20000116:	46c0      	nop			; (mov r8, r8)
 20000118:	40021014 	andmi	r1, r2, r4, lsl r0

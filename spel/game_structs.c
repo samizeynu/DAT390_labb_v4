@@ -1,5 +1,4 @@
-#include "startup.h"
-
+#include "game_startup.h"
 
 void set_object_speed(POBJECT o, int speedx, int speedy){
 	o->dirx = speedx;
@@ -12,14 +11,15 @@ void draw_object(POBJECT o){
 	}
 }
 
+
 void clear_object(POBJECT o){
 	for(int i= 0; i<= o->geo->numpoints; i++){
-		pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y);
+		 pixel(o->posx + o->geo->px[i].x, o->posy + o->geo->px[i].y);
 	}
 }
- 
+
 void move_object(POBJECT o){
-	o->clear(o);
+//	o->clear(o);
 	
 	if(o->posx < 1)
 		o->set_speed(o, o->dirx*(-1), o->diry);

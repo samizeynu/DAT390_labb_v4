@@ -1,1 +1,1 @@
-./Debug/structs.c.o ./Debug/delays.c.o ./Debug/graphics.c.o ./Debug/main.c.o   
+./Debug/main.c.o ./Debug/graphics.c.o ./Debug/structs.c.o ./Debug/delays.c.o   

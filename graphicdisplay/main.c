@@ -44,9 +44,8 @@ void main (void){
 	
 	unsigned int i;
 	
-	#ifndef SIMULATOR
-		graphic_clear_screen();
-	#endif
+	graphic_clear_screen();
+
 	
 	for(i = 1; i < 128; i++){
 		pixel(i, 10, 1);
