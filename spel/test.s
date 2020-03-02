@@ -30,32 +30,33 @@
    6:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "game_startup.h"
    7:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "plant.xbm"
    8:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "backGround.xbm"
-   9:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+   9:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "ship.xbm"
   10:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  11:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void startup ( void )
-  12:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  26              		.loc 1 12 0
+  11:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  12:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void startup ( void )
+  13:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  26              		.loc 1 13 0
   27              		.cfi_startproc
   28              		@ Naked Function: prologue and epilogue provided by programmer.
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 1, uses_anonymous_args = 0
-  13:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** __asm volatile(
-  31              		.loc 1 13 0
+  14:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** __asm volatile(
+  31              		.loc 1 14 0
   32              		.syntax divided
-  33              	@ 13 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/main.c" 1
+  33              	@ 14 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/main.c" 1
   34 0000 0248     		 LDR R0,=0x2001C000
   35 0002 8546     	 MOV SP,R0
   36 0004 FFF7FEFF 	 BL main
   37 0008 FEE7     	_exit: B .
   38              	
   39              	@ 0 "" 2
-  14:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  15:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" MOV SP,R0\n"
-  16:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" BL main\n"				/* call main */
-  17:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	"_exit: B .\n"				/* never return */
-  18:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	) ;
-  19:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  40              		.loc 1 19 0
+  15:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  16:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" MOV SP,R0\n"
+  17:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" BL main\n"				/* call main */
+  18:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	"_exit: B .\n"				/* never return */
+  19:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	) ;
+  20:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+  40              		.loc 1 20 0
   41              		.thumb
   42              		.syntax unified
   43 000a C046     		nop
@@ -1100,602 +1101,650 @@
  1087 0409 00       		.byte	0
  1088 040a 00       		.byte	0
  1089 040b 00       		.byte	0
- 1090              		.text
- 1091              		.align	1
- 1092              		.syntax unified
- 1093              		.code	16
- 1094              		.thumb_func
- 1095              		.fpu softvfp
- 1097              	load_sprite:
- 1098              	.LFB1:
-  20:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  21:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** typedef struct
-  22:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  23:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char width;
-  24:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char height;
-  25:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char* data;
-  26:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** } sprite;
-  27:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  28:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static void load_sprite(sprite* s, unsigned char* data, int width, int height)
-  29:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
- 1099              		.loc 1 29 0
- 1100              		.cfi_startproc
- 1101              		@ args = 0, pretend = 0, frame = 16
- 1102              		@ frame_needed = 1, uses_anonymous_args = 0
- 1103 0000 80B5     		push	{r7, lr}
- 1104              		.cfi_def_cfa_offset 8
- 1105              		.cfi_offset 7, -8
- 1106              		.cfi_offset 14, -4
- 1107 0002 84B0     		sub	sp, sp, #16
- 1108              		.cfi_def_cfa_offset 24
- 1109 0004 00AF     		add	r7, sp, #0
- 1110              		.cfi_def_cfa_register 7
- 1111 0006 F860     		str	r0, [r7, #12]
- 1112 0008 B960     		str	r1, [r7, #8]
- 1113 000a 7A60     		str	r2, [r7, #4]
- 1114 000c 3B60     		str	r3, [r7]
-  30:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->width = width;
- 1115              		.loc 1 30 0
- 1116 000e 7B68     		ldr	r3, [r7, #4]
- 1117 0010 DAB2     		uxtb	r2, r3
- 1118 0012 FB68     		ldr	r3, [r7, #12]
- 1119 0014 1A70     		strb	r2, [r3]
-  31:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->height = height;
- 1120              		.loc 1 31 0
- 1121 0016 3B68     		ldr	r3, [r7]
- 1122 0018 DAB2     		uxtb	r2, r3
- 1123 001a FB68     		ldr	r3, [r7, #12]
- 1124 001c 5A70     		strb	r2, [r3, #1]
-  32:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->data = data;
- 1125              		.loc 1 32 0
- 1126 001e FB68     		ldr	r3, [r7, #12]
- 1127 0020 BA68     		ldr	r2, [r7, #8]
- 1128 0022 5A60     		str	r2, [r3, #4]
-  33:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1129              		.loc 1 33 0
- 1130 0024 C046     		nop
- 1131 0026 BD46     		mov	sp, r7
- 1132 0028 04B0     		add	sp, sp, #16
- 1133              		@ sp needed
- 1134 002a 80BD     		pop	{r7, pc}
- 1135              		.cfi_endproc
- 1136              	.LFE1:
- 1138              		.align	1
- 1139              		.global	draw_sprite
- 1140              		.syntax unified
- 1141              		.code	16
- 1142              		.thumb_func
- 1143              		.fpu softvfp
- 1145              	draw_sprite:
- 1146              	.LFB2:
-  34:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  35:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void draw_sprite(sprite* s, int x, int y, int set) {
- 1147              		.loc 1 35 0
- 1148              		.cfi_startproc
- 1149              		@ args = 0, pretend = 0, frame = 40
- 1150              		@ frame_needed = 1, uses_anonymous_args = 0
- 1151 002c 80B5     		push	{r7, lr}
- 1152              		.cfi_def_cfa_offset 8
- 1153              		.cfi_offset 7, -8
- 1154              		.cfi_offset 14, -4
- 1155 002e 8AB0     		sub	sp, sp, #40
- 1156              		.cfi_def_cfa_offset 48
- 1157 0030 00AF     		add	r7, sp, #0
- 1158              		.cfi_def_cfa_register 7
- 1159 0032 F860     		str	r0, [r7, #12]
- 1160 0034 B960     		str	r1, [r7, #8]
- 1161 0036 7A60     		str	r2, [r7, #4]
- 1162 0038 3B60     		str	r3, [r7]
-  36:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int i,j,k, width_in_bytes;
-  37:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (s->width % 8 == 0)
- 1163              		.loc 1 37 0
- 1164 003a FB68     		ldr	r3, [r7, #12]
- 1165 003c 1B78     		ldrb	r3, [r3]
- 1166 003e 0722     		movs	r2, #7
- 1167 0040 1340     		ands	r3, r2
- 1168 0042 DBB2     		uxtb	r3, r3
- 1169 0044 002B     		cmp	r3, #0
- 1170 0046 05D1     		bne	.L4
-  38:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8;
- 1171              		.loc 1 38 0
- 1172 0048 FB68     		ldr	r3, [r7, #12]
- 1173 004a 1B78     		ldrb	r3, [r3]
- 1174 004c DB08     		lsrs	r3, r3, #3
- 1175 004e DBB2     		uxtb	r3, r3
- 1176 0050 BB61     		str	r3, [r7, #24]
- 1177 0052 05E0     		b	.L5
- 1178              	.L4:
-  39:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** else
-  40:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8 + 1;
- 1179              		.loc 1 40 0
- 1180 0054 FB68     		ldr	r3, [r7, #12]
- 1181 0056 1B78     		ldrb	r3, [r3]
- 1182 0058 DB08     		lsrs	r3, r3, #3
- 1183 005a DBB2     		uxtb	r3, r3
- 1184 005c 0133     		adds	r3, r3, #1
- 1185 005e BB61     		str	r3, [r7, #24]
- 1186              	.L5:
-  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (i = 0; i < s->height; i++)
- 1187              		.loc 1 41 0
- 1188 0060 0023     		movs	r3, #0
- 1189 0062 7B62     		str	r3, [r7, #36]
- 1190 0064 39E0     		b	.L6
- 1191              	.L12:
-  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1192              		.loc 1 42 0
- 1193 0066 0023     		movs	r3, #0
- 1194 0068 3B62     		str	r3, [r7, #32]
- 1195 006a 2FE0     		b	.L7
- 1196              	.L11:
- 1197              	.LBB2:
-  43:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1198              		.loc 1 43 0
- 1199 006c FB68     		ldr	r3, [r7, #12]
- 1200 006e 5B68     		ldr	r3, [r3, #4]
- 1201 0070 7A6A     		ldr	r2, [r7, #36]
- 1202 0072 B969     		ldr	r1, [r7, #24]
- 1203 0074 5143     		muls	r1, r2
- 1204 0076 3A6A     		ldr	r2, [r7, #32]
- 1205 0078 8A18     		adds	r2, r1, r2
- 1206 007a 9A18     		adds	r2, r3, r2
- 1207 007c 1723     		movs	r3, #23
- 1208 007e FB18     		adds	r3, r7, r3
- 1209 0080 1278     		ldrb	r2, [r2]
- 1210 0082 1A70     		strb	r2, [r3]
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1211              		.loc 1 44 0
- 1212 0084 0023     		movs	r3, #0
- 1213 0086 FB61     		str	r3, [r7, #28]
- 1214 0088 1AE0     		b	.L8
- 1215              	.L10:
-  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (byte & (1 << k))
- 1216              		.loc 1 45 0
- 1217 008a 1723     		movs	r3, #23
- 1218 008c FB18     		adds	r3, r7, r3
- 1219 008e 1A78     		ldrb	r2, [r3]
- 1220 0090 FB69     		ldr	r3, [r7, #28]
- 1221 0092 1A41     		asrs	r2, r2, r3
- 1222 0094 1300     		movs	r3, r2
- 1223 0096 0122     		movs	r2, #1
- 1224 0098 1340     		ands	r3, r2
- 1225 009a 0ED0     		beq	.L9
-  46:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** pixel(8 * j + k + x + 1, i + y + 1);
- 1226              		.loc 1 46 0
- 1227 009c 3B6A     		ldr	r3, [r7, #32]
- 1228 009e DA00     		lsls	r2, r3, #3
- 1229 00a0 FB69     		ldr	r3, [r7, #28]
- 1230 00a2 D218     		adds	r2, r2, r3
- 1231 00a4 BB68     		ldr	r3, [r7, #8]
- 1232 00a6 D318     		adds	r3, r2, r3
- 1233 00a8 0133     		adds	r3, r3, #1
- 1234 00aa 1800     		movs	r0, r3
- 1235 00ac 7A6A     		ldr	r2, [r7, #36]
- 1236 00ae 7B68     		ldr	r3, [r7, #4]
- 1237 00b0 D318     		adds	r3, r2, r3
- 1238 00b2 0133     		adds	r3, r3, #1
- 1239 00b4 1900     		movs	r1, r3
- 1240 00b6 FFF7FEFF 		bl	pixel
- 1241              	.L9:
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1242              		.loc 1 44 0 discriminator 2
- 1243 00ba FB69     		ldr	r3, [r7, #28]
- 1244 00bc 0133     		adds	r3, r3, #1
- 1245 00be FB61     		str	r3, [r7, #28]
- 1246              	.L8:
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1247              		.loc 1 44 0 is_stmt 0 discriminator 1
- 1248 00c0 FB69     		ldr	r3, [r7, #28]
- 1249 00c2 072B     		cmp	r3, #7
- 1250 00c4 E1DD     		ble	.L10
- 1251              	.LBE2:
-  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1252              		.loc 1 42 0 is_stmt 1 discriminator 2
- 1253 00c6 3B6A     		ldr	r3, [r7, #32]
- 1254 00c8 0133     		adds	r3, r3, #1
- 1255 00ca 3B62     		str	r3, [r7, #32]
- 1256              	.L7:
-  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1257              		.loc 1 42 0 is_stmt 0 discriminator 1
- 1258 00cc 3A6A     		ldr	r2, [r7, #32]
- 1259 00ce BB69     		ldr	r3, [r7, #24]
- 1260 00d0 9A42     		cmp	r2, r3
- 1261 00d2 CBDB     		blt	.L11
-  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1262              		.loc 1 41 0 is_stmt 1 discriminator 2
- 1263 00d4 7B6A     		ldr	r3, [r7, #36]
- 1264 00d6 0133     		adds	r3, r3, #1
- 1265 00d8 7B62     		str	r3, [r7, #36]
- 1266              	.L6:
-  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1267              		.loc 1 41 0 is_stmt 0 discriminator 1
- 1268 00da FB68     		ldr	r3, [r7, #12]
- 1269 00dc 5B78     		ldrb	r3, [r3, #1]
- 1270 00de 1A00     		movs	r2, r3
- 1271 00e0 7B6A     		ldr	r3, [r7, #36]
- 1272 00e2 9342     		cmp	r3, r2
- 1273 00e4 BFDB     		blt	.L12
-  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  48:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  49:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1274              		.loc 1 49 0 is_stmt 1
- 1275 00e6 C046     		nop
- 1276 00e8 BD46     		mov	sp, r7
- 1277 00ea 0AB0     		add	sp, sp, #40
- 1278              		@ sp needed
- 1279 00ec 80BD     		pop	{r7, pc}
- 1280              		.cfi_endproc
- 1281              	.LFE2:
- 1283              		.global	ball_geometry
- 1284              		.data
- 1285              		.align	2
- 1288              	ball_geometry:
- 1289 040c 0C000000 		.word	12
- 1290 0410 04000000 		.word	4
- 1291 0414 04000000 		.word	4
- 1292 0418 00       		.byte	0
- 1293 0419 01       		.byte	1
- 1294 041a 00       		.byte	0
- 1295 041b 02       		.byte	2
- 1296 041c 01       		.byte	1
- 1297 041d 00       		.byte	0
- 1298 041e 01       		.byte	1
- 1299 041f 01       		.byte	1
- 1300 0420 01       		.byte	1
- 1301 0421 02       		.byte	2
- 1302 0422 01       		.byte	1
- 1303 0423 03       		.byte	3
- 1304 0424 02       		.byte	2
- 1305 0425 00       		.byte	0
- 1306 0426 02       		.byte	2
- 1307 0427 01       		.byte	1
- 1308 0428 02       		.byte	2
- 1309 0429 02       		.byte	2
- 1310 042a 02       		.byte	2
- 1311 042b 03       		.byte	3
- 1312 042c 03       		.byte	3
- 1313 042d 01       		.byte	1
- 1314 042e 03       		.byte	3
- 1315 042f 02       		.byte	2
- 1316 0430 00000000 		.space	16
- 1316      00000000 
- 1316      00000000 
- 1316      00000000 
- 1317              		.align	2
- 1320              	ball:
- 1321 0440 00000000 		.word	ball_geometry
- 1322 0444 FDFFFFFF 		.word	-3
- 1323 0448 03000000 		.word	3
- 1324 044c 01000000 		.word	1
- 1325 0450 01000000 		.word	1
- 1326 0454 00000000 		.word	draw_object
- 1327 0458 00000000 		.word	clear_object
- 1328 045c 00000000 		.word	move_object
- 1329 0460 00000000 		.word	set_object_speed
- 1330              		.align	2
- 1333              	plant:
- 1334 0464 07       		.byte	7
- 1335 0465 0A       		.byte	10
- 1336 0466 0000     		.space	2
- 1337 0468 00000000 		.word	plant_bits
- 1338              		.align	2
- 1341              	backGround:
- 1342 046c 80       		.byte	-128
- 1343 046d 40       		.byte	64
- 1344 046e 0000     		.space	2
- 1345 0470 0C000000 		.word	backGround_bits
- 1346              		.section	.rodata
- 1347              		.align	2
- 1348              	.LC0:
- 1349 0000 57656C63 		.ascii	"Welcome \000"
- 1349      6F6D6520 
- 1349      00
- 1350 0009 000000   		.align	2
- 1351              	.LC2:
- 1352 000c 746F2074 		.ascii	"to the game!\000"
- 1352      68652067 
- 1352      616D6521 
- 1352      00
- 1353              		.text
- 1354              		.align	1
- 1355              		.global	ascii_message
- 1356              		.syntax unified
- 1357              		.code	16
- 1358              		.thumb_func
- 1359              		.fpu softvfp
- 1361              	ascii_message:
- 1362              	.LFB3:
-  50:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  51:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY ball_geometry=
-  52:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  53:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	12, //tot pix
-  54:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//bredd
-  55:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//längd
-  56:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
-  57:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,1},{0,2},
-  58:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{1,0},{1,1},{1,2},{1,3},
-  59:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{2,0},{2,1},{2,2},{2,3},
-  60:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{3,1},{3,2},
-  61:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
-  62:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  63:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  64:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT ball=
-  65:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  66:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&ball_geometry,
-  67:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	-3,3,
-  68:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
-  69:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
-  70:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
-  71:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
-  72:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
-  73:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  74:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  75:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static sprite plant =
-  76:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  77:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_width, 
-  78:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_height, 
-  79:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_bits
-  80:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  81:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  82:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static sprite backGround =
-  83:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	backGround_width, 
-  85:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	backGround_height, 
-  86:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	backGround_bits
-  87:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  88:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void ascii_message(){
- 1363              		.loc 1 89 0
- 1364              		.cfi_startproc
- 1365              		@ args = 0, pretend = 0, frame = 32
- 1366              		@ frame_needed = 1, uses_anonymous_args = 0
- 1367 00ee B0B5     		push	{r4, r5, r7, lr}
- 1368              		.cfi_def_cfa_offset 16
- 1369              		.cfi_offset 4, -16
- 1370              		.cfi_offset 5, -12
- 1371              		.cfi_offset 7, -8
- 1372              		.cfi_offset 14, -4
- 1373 00f0 88B0     		sub	sp, sp, #32
- 1374              		.cfi_def_cfa_offset 48
- 1375 00f2 00AF     		add	r7, sp, #0
- 1376              		.cfi_def_cfa_register 7
-  90:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char *s;
-  91:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test1[] = "Welcome ";
- 1377              		.loc 1 91 0
- 1378 00f4 1024     		movs	r4, #16
- 1379 00f6 3B19     		adds	r3, r7, r4
- 1380 00f8 194A     		ldr	r2, .L18
- 1381 00fa 03CA     		ldmia	r2!, {r0, r1}
- 1382 00fc 03C3     		stmia	r3!, {r0, r1}
- 1383 00fe 1278     		ldrb	r2, [r2]
- 1384 0100 1A70     		strb	r2, [r3]
-  92:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test2[] = "to the game!";
- 1385              		.loc 1 92 0
- 1386 0102 3B00     		movs	r3, r7
- 1387 0104 174A     		ldr	r2, .L18+4
- 1388 0106 23CA     		ldmia	r2!, {r0, r1, r5}
- 1389 0108 23C3     		stmia	r3!, {r0, r1, r5}
- 1390 010a 1278     		ldrb	r2, [r2]
- 1391 010c 1A70     		strb	r2, [r3]
-  93:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,1);
- 1392              		.loc 1 93 0
- 1393 010e 0121     		movs	r1, #1
- 1394 0110 0120     		movs	r0, #1
- 1395 0112 FFF7FEFF 		bl	ascii_gotoxy
-  94:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test1;
- 1396              		.loc 1 94 0
- 1397 0116 3B19     		adds	r3, r7, r4
- 1398 0118 FB61     		str	r3, [r7, #28]
-  95:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1399              		.loc 1 95 0
- 1400 011a 06E0     		b	.L14
- 1401              	.L15:
-  96:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
- 1402              		.loc 1 96 0
- 1403 011c FB69     		ldr	r3, [r7, #28]
- 1404 011e 5A1C     		adds	r2, r3, #1
- 1405 0120 FA61     		str	r2, [r7, #28]
- 1406 0122 1B78     		ldrb	r3, [r3]
- 1407 0124 1800     		movs	r0, r3
- 1408 0126 FFF7FEFF 		bl	ascii_write_char
- 1409              	.L14:
-  95:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1410              		.loc 1 95 0
- 1411 012a FB69     		ldr	r3, [r7, #28]
- 1412 012c 1B78     		ldrb	r3, [r3]
- 1413 012e 002B     		cmp	r3, #0
- 1414 0130 F4D1     		bne	.L15
-  97:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
-  98:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,2);
- 1415              		.loc 1 98 0
- 1416 0132 0221     		movs	r1, #2
- 1417 0134 0120     		movs	r0, #1
- 1418 0136 FFF7FEFF 		bl	ascii_gotoxy
-  99:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test2;
- 1419              		.loc 1 99 0
- 1420 013a 3B00     		movs	r3, r7
- 1421 013c FB61     		str	r3, [r7, #28]
- 100:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1422              		.loc 1 100 0
- 1423 013e 06E0     		b	.L16
- 1424              	.L17:
- 101:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
- 1425              		.loc 1 101 0
- 1426 0140 FB69     		ldr	r3, [r7, #28]
- 1427 0142 5A1C     		adds	r2, r3, #1
- 1428 0144 FA61     		str	r2, [r7, #28]
- 1429 0146 1B78     		ldrb	r3, [r3]
- 1430 0148 1800     		movs	r0, r3
- 1431 014a FFF7FEFF 		bl	ascii_write_char
- 1432              	.L16:
- 100:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1433              		.loc 1 100 0
- 1434 014e FB69     		ldr	r3, [r7, #28]
- 1435 0150 1B78     		ldrb	r3, [r3]
- 1436 0152 002B     		cmp	r3, #0
- 1437 0154 F4D1     		bne	.L17
- 102:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
- 103:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1438              		.loc 1 103 0
- 1439 0156 C046     		nop
- 1440 0158 BD46     		mov	sp, r7
- 1441 015a 08B0     		add	sp, sp, #32
- 1442              		@ sp needed
- 1443 015c B0BD     		pop	{r4, r5, r7, pc}
- 1444              	.L19:
- 1445 015e C046     		.align	2
- 1446              	.L18:
- 1447 0160 00000000 		.word	.LC0
- 1448 0164 0C000000 		.word	.LC2
- 1449              		.cfi_endproc
- 1450              	.LFE3:
- 1452              		.align	1
- 1453              		.global	init_spel
- 1454              		.syntax unified
- 1455              		.code	16
- 1456              		.thumb_func
- 1457              		.fpu softvfp
- 1459              	init_spel:
- 1460              	.LFB4:
- 104:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
- 105:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void init_spel(){
- 1461              		.loc 1 105 0
- 1462              		.cfi_startproc
- 1463              		@ args = 0, pretend = 0, frame = 0
- 1464              		@ frame_needed = 1, uses_anonymous_args = 0
- 1465 0168 80B5     		push	{r7, lr}
- 1466              		.cfi_def_cfa_offset 8
- 1467              		.cfi_offset 7, -8
- 1468              		.cfi_offset 14, -4
- 1469 016a 00AF     		add	r7, sp, #0
- 1470              		.cfi_def_cfa_register 7
- 106:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	GPIO_MODER_E = 0x55555555;
- 1471              		.loc 1 106 0
- 1472 016c 034B     		ldr	r3, .L21
- 1473 016e 044A     		ldr	r2, .L21+4
- 1474 0170 1A60     		str	r2, [r3]
- 107:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_init();
- 1475              		.loc 1 107 0
- 1476 0172 FFF7FEFF 		bl	ascii_init
- 108:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	//ascii_message();
- 109:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1477              		.loc 1 109 0
- 1478 0176 C046     		nop
- 1479 0178 BD46     		mov	sp, r7
- 1480              		@ sp needed
- 1481 017a 80BD     		pop	{r7, pc}
- 1482              	.L22:
- 1483              		.align	2
- 1484              	.L21:
- 1485 017c 00100240 		.word	1073876992
- 1486 0180 55555555 		.word	1431655765
- 1487              		.cfi_endproc
- 1488              	.LFE4:
- 1490              		.align	1
- 1491              		.global	main
- 1492              		.syntax unified
- 1493              		.code	16
- 1494              		.thumb_func
- 1495              		.fpu softvfp
- 1497              	main:
- 1498              	.LFB5:
- 110:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
- 111:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
- 112:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int main(int argc, char **argv)
- 113:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
- 1499              		.loc 1 113 0
- 1500              		.cfi_startproc
- 1501              		@ args = 0, pretend = 0, frame = 16
- 1502              		@ frame_needed = 1, uses_anonymous_args = 0
- 1503 0184 80B5     		push	{r7, lr}
- 1504              		.cfi_def_cfa_offset 8
- 1505              		.cfi_offset 7, -8
- 1506              		.cfi_offset 14, -4
- 1507 0186 84B0     		sub	sp, sp, #16
- 1508              		.cfi_def_cfa_offset 24
- 1509 0188 00AF     		add	r7, sp, #0
- 1510              		.cfi_def_cfa_register 7
- 1511 018a 7860     		str	r0, [r7, #4]
- 1512 018c 3960     		str	r1, [r7]
- 114:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	init_spel();
- 1513              		.loc 1 114 0
- 1514 018e FFF7FEFF 		bl	init_spel
- 115:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT p = &ball;
- 1515              		.loc 1 115 0
- 1516 0192 144B     		ldr	r3, .L25
- 1517 0194 FB60     		str	r3, [r7, #12]
- 116:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_init();
- 1518              		.loc 1 116 0
- 1519 0196 FFF7FEFF 		bl	graphic_init
- 117:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #ifndef	SIMULATOR
- 118:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_clear_screen();
- 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #endif
- 120:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
- 121:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //	load_sprite(&plant, plant_bits, plant_width, plant_height);
- 122:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	load_sprite(&backGround, backGround_bits, backGround_width, backGround_height);
- 1520              		.loc 1 122 0
- 1521 019a 1349     		ldr	r1, .L25+4
- 1522 019c 1348     		ldr	r0, .L25+8
- 1523 019e 4023     		movs	r3, #64
- 1524 01a0 8022     		movs	r2, #128
- 1525 01a2 FFF72DFF 		bl	load_sprite
- 123:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
- 124:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
- 125:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	p->set_speed(p, 12, 20);
- 1526              		.loc 1 125 0
- 1527 01a6 FB68     		ldr	r3, [r7, #12]
- 1528 01a8 1B6A     		ldr	r3, [r3, #32]
- 1529 01aa F868     		ldr	r0, [r7, #12]
- 1530 01ac 1422     		movs	r2, #20
- 1531 01ae 0C21     		movs	r1, #12
- 1532 01b0 9847     		blx	r3
- 1533              	.LVL0:
- 1534              	.L24:
- 126:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while(1){
- 127:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		clear_backBuffer();
- 1535              		.loc 1 127 0 discriminator 1
- 1536 01b2 FFF7FEFF 		bl	clear_backBuffer
- 128:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
- 1537              		.loc 1 128 0 discriminator 1
- 1538 01b6 FB68     		ldr	r3, [r7, #12]
- 1539 01b8 DB69     		ldr	r3, [r3, #28]
- 1540 01ba FA68     		ldr	r2, [r7, #12]
- 1541 01bc 1000     		movs	r0, r2
- 1542 01be 9847     		blx	r3
- 1543              	.LVL1:
- 129:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(&plant, 50, 50, 1);
- 1544              		.loc 1 129 0 discriminator 1
- 1545 01c0 0B48     		ldr	r0, .L25+12
- 1546 01c2 0123     		movs	r3, #1
- 1547 01c4 3222     		movs	r2, #50
- 1548 01c6 3221     		movs	r1, #50
- 1549 01c8 FFF7FEFF 		bl	draw_sprite
- 130:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(&backGround, 1, 1, 1);
- 1550              		.loc 1 130 0 discriminator 1
- 1551 01cc 0748     		ldr	r0, .L25+8
- 1552 01ce 0123     		movs	r3, #1
- 1553 01d0 0122     		movs	r2, #1
- 1554 01d2 0121     		movs	r1, #1
- 1555 01d4 FFF7FEFF 		bl	draw_sprite
- 131:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_draw_screen();
- 1556              		.loc 1 131 0 discriminator 1
- 1557 01d8 FFF7FEFF 		bl	graphic_draw_screen
- 132:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		//delay_milli(40); //25 fps
- 133:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_clear_screen();
- 1558              		.loc 1 133 0 discriminator 1
- 1559 01dc FFF7FEFF 		bl	graphic_clear_screen
- 127:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
- 1560              		.loc 1 127 0 discriminator 1
- 1561 01e0 E7E7     		b	.L24
- 1562              	.L26:
- 1563 01e2 C046     		.align	2
- 1564              	.L25:
- 1565 01e4 40040000 		.word	ball
- 1566 01e8 0C000000 		.word	backGround_bits
- 1567 01ec 6C040000 		.word	backGround
- 1568 01f0 64040000 		.word	plant
- 1569              		.cfi_endproc
- 1570              	.LFE5:
- 1572              	.Letext0:
- 1573              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_startup.h"
- 1574              		.file 3 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/plant.xbm"
- 1575              		.file 4 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/backGround.xbm"
+ 1090              		.align	2
+ 1093              	ship_bits:
+ 1094 040c 00       		.byte	0
+ 1095 040d 01       		.byte	1
+ 1096 040e 00       		.byte	0
+ 1097 040f 00       		.byte	0
+ 1098 0410 01       		.byte	1
+ 1099 0411 00       		.byte	0
+ 1100 0412 C0       		.byte	-64
+ 1101 0413 07       		.byte	7
+ 1102 0414 00       		.byte	0
+ 1103 0415 60       		.byte	96
+ 1104 0416 0C       		.byte	12
+ 1105 0417 00       		.byte	0
+ 1106 0418 20       		.byte	32
+ 1107 0419 08       		.byte	8
+ 1108 041a 00       		.byte	0
+ 1109 041b 20       		.byte	32
+ 1110 041c 08       		.byte	8
+ 1111 041d 00       		.byte	0
+ 1112 041e 30       		.byte	48
+ 1113 041f 18       		.byte	24
+ 1114 0420 00       		.byte	0
+ 1115 0421 18       		.byte	24
+ 1116 0422 30       		.byte	48
+ 1117 0423 00       		.byte	0
+ 1118 0424 08       		.byte	8
+ 1119 0425 20       		.byte	32
+ 1120 0426 00       		.byte	0
+ 1121 0427 08       		.byte	8
+ 1122 0428 20       		.byte	32
+ 1123 0429 00       		.byte	0
+ 1124 042a 0C       		.byte	12
+ 1125 042b 60       		.byte	96
+ 1126 042c 00       		.byte	0
+ 1127 042d 44       		.byte	68
+ 1128 042e 44       		.byte	68
+ 1129 042f 00       		.byte	0
+ 1130 0430 F4       		.byte	-12
+ 1131 0431 5F       		.byte	95
+ 1132 0432 00       		.byte	0
+ 1133 0433 1C       		.byte	28
+ 1134 0434 70       		.byte	112
+ 1135 0435 00       		.byte	0
+ 1136 0436 08       		.byte	8
+ 1137 0437 20       		.byte	32
+ 1138 0438 00       		.byte	0
+ 1139 0439 00       		.byte	0
+ 1140 043a 00       		.byte	0
+ 1141 043b 00       		.byte	0
+ 1142 043c 00       		.byte	0
+ 1143 043d 00       		.byte	0
+ 1144 043e 00       		.byte	0
+ 1145 043f 00       		.byte	0
+ 1146 0440 00       		.byte	0
+ 1147 0441 00       		.byte	0
+ 1148 0442 00       		.byte	0
+ 1149 0443 00       		.byte	0
+ 1150 0444 00       		.byte	0
+ 1151 0445 00       		.byte	0
+ 1152 0446 00       		.byte	0
+ 1153 0447 00       		.byte	0
+ 1154              		.text
+ 1155              		.align	1
+ 1156              		.syntax unified
+ 1157              		.code	16
+ 1158              		.thumb_func
+ 1159              		.fpu softvfp
+ 1161              	load_sprite:
+ 1162              	.LFB1:
+  21:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  22:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** typedef struct
+  23:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  24:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char width;
+  25:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char height;
+  26:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char* data;
+  27:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //void(*move)(struct sprite *);
+  28:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //void(*set_speed)(struct tObj *, int, int);
+  29:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** } sprite;
+  30:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  31:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static void load_sprite(sprite* s, unsigned char* data, int width, int height)
+  32:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 1163              		.loc 1 32 0
+ 1164              		.cfi_startproc
+ 1165              		@ args = 0, pretend = 0, frame = 16
+ 1166              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1167 0000 80B5     		push	{r7, lr}
+ 1168              		.cfi_def_cfa_offset 8
+ 1169              		.cfi_offset 7, -8
+ 1170              		.cfi_offset 14, -4
+ 1171 0002 84B0     		sub	sp, sp, #16
+ 1172              		.cfi_def_cfa_offset 24
+ 1173 0004 00AF     		add	r7, sp, #0
+ 1174              		.cfi_def_cfa_register 7
+ 1175 0006 F860     		str	r0, [r7, #12]
+ 1176 0008 B960     		str	r1, [r7, #8]
+ 1177 000a 7A60     		str	r2, [r7, #4]
+ 1178 000c 3B60     		str	r3, [r7]
+  33:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->width = width;
+ 1179              		.loc 1 33 0
+ 1180 000e 7B68     		ldr	r3, [r7, #4]
+ 1181 0010 DAB2     		uxtb	r2, r3
+ 1182 0012 FB68     		ldr	r3, [r7, #12]
+ 1183 0014 1A70     		strb	r2, [r3]
+  34:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->height = height;
+ 1184              		.loc 1 34 0
+ 1185 0016 3B68     		ldr	r3, [r7]
+ 1186 0018 DAB2     		uxtb	r2, r3
+ 1187 001a FB68     		ldr	r3, [r7, #12]
+ 1188 001c 5A70     		strb	r2, [r3, #1]
+  35:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->data = data;
+ 1189              		.loc 1 35 0
+ 1190 001e FB68     		ldr	r3, [r7, #12]
+ 1191 0020 BA68     		ldr	r2, [r7, #8]
+ 1192 0022 5A60     		str	r2, [r3, #4]
+  36:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 1193              		.loc 1 36 0
+ 1194 0024 C046     		nop
+ 1195 0026 BD46     		mov	sp, r7
+ 1196 0028 04B0     		add	sp, sp, #16
+ 1197              		@ sp needed
+ 1198 002a 80BD     		pop	{r7, pc}
+ 1199              		.cfi_endproc
+ 1200              	.LFE1:
+ 1202              		.align	1
+ 1203              		.global	draw_sprite
+ 1204              		.syntax unified
+ 1205              		.code	16
+ 1206              		.thumb_func
+ 1207              		.fpu softvfp
+ 1209              	draw_sprite:
+ 1210              	.LFB2:
+  37:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  38:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void draw_sprite(sprite* s, int x, int y, int set) {
+ 1211              		.loc 1 38 0
+ 1212              		.cfi_startproc
+ 1213              		@ args = 0, pretend = 0, frame = 40
+ 1214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1215 002c 80B5     		push	{r7, lr}
+ 1216              		.cfi_def_cfa_offset 8
+ 1217              		.cfi_offset 7, -8
+ 1218              		.cfi_offset 14, -4
+ 1219 002e 8AB0     		sub	sp, sp, #40
+ 1220              		.cfi_def_cfa_offset 48
+ 1221 0030 00AF     		add	r7, sp, #0
+ 1222              		.cfi_def_cfa_register 7
+ 1223 0032 F860     		str	r0, [r7, #12]
+ 1224 0034 B960     		str	r1, [r7, #8]
+ 1225 0036 7A60     		str	r2, [r7, #4]
+ 1226 0038 3B60     		str	r3, [r7]
+  39:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int i,j,k, width_in_bytes;
+  40:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (s->width % 8 == 0)
+ 1227              		.loc 1 40 0
+ 1228 003a FB68     		ldr	r3, [r7, #12]
+ 1229 003c 1B78     		ldrb	r3, [r3]
+ 1230 003e 0722     		movs	r2, #7
+ 1231 0040 1340     		ands	r3, r2
+ 1232 0042 DBB2     		uxtb	r3, r3
+ 1233 0044 002B     		cmp	r3, #0
+ 1234 0046 05D1     		bne	.L4
+  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8;
+ 1235              		.loc 1 41 0
+ 1236 0048 FB68     		ldr	r3, [r7, #12]
+ 1237 004a 1B78     		ldrb	r3, [r3]
+ 1238 004c DB08     		lsrs	r3, r3, #3
+ 1239 004e DBB2     		uxtb	r3, r3
+ 1240 0050 BB61     		str	r3, [r7, #24]
+ 1241 0052 05E0     		b	.L5
+ 1242              	.L4:
+  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** else
+  43:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8 + 1;
+ 1243              		.loc 1 43 0
+ 1244 0054 FB68     		ldr	r3, [r7, #12]
+ 1245 0056 1B78     		ldrb	r3, [r3]
+ 1246 0058 DB08     		lsrs	r3, r3, #3
+ 1247 005a DBB2     		uxtb	r3, r3
+ 1248 005c 0133     		adds	r3, r3, #1
+ 1249 005e BB61     		str	r3, [r7, #24]
+ 1250              	.L5:
+  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (i = 0; i < s->height; i++)
+ 1251              		.loc 1 44 0
+ 1252 0060 0023     		movs	r3, #0
+ 1253 0062 7B62     		str	r3, [r7, #36]
+ 1254 0064 39E0     		b	.L6
+ 1255              	.L12:
+  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
+ 1256              		.loc 1 45 0
+ 1257 0066 0023     		movs	r3, #0
+ 1258 0068 3B62     		str	r3, [r7, #32]
+ 1259 006a 2FE0     		b	.L7
+ 1260              	.L11:
+ 1261              	.LBB2:
+  46:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
+ 1262              		.loc 1 46 0
+ 1263 006c FB68     		ldr	r3, [r7, #12]
+ 1264 006e 5B68     		ldr	r3, [r3, #4]
+ 1265 0070 7A6A     		ldr	r2, [r7, #36]
+ 1266 0072 B969     		ldr	r1, [r7, #24]
+ 1267 0074 5143     		muls	r1, r2
+ 1268 0076 3A6A     		ldr	r2, [r7, #32]
+ 1269 0078 8A18     		adds	r2, r1, r2
+ 1270 007a 9A18     		adds	r2, r3, r2
+ 1271 007c 1723     		movs	r3, #23
+ 1272 007e FB18     		adds	r3, r7, r3
+ 1273 0080 1278     		ldrb	r2, [r2]
+ 1274 0082 1A70     		strb	r2, [r3]
+  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
+ 1275              		.loc 1 47 0
+ 1276 0084 0023     		movs	r3, #0
+ 1277 0086 FB61     		str	r3, [r7, #28]
+ 1278 0088 1AE0     		b	.L8
+ 1279              	.L10:
+  48:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (byte & (1 << k))
+ 1280              		.loc 1 48 0
+ 1281 008a 1723     		movs	r3, #23
+ 1282 008c FB18     		adds	r3, r7, r3
+ 1283 008e 1A78     		ldrb	r2, [r3]
+ 1284 0090 FB69     		ldr	r3, [r7, #28]
+ 1285 0092 1A41     		asrs	r2, r2, r3
+ 1286 0094 1300     		movs	r3, r2
+ 1287 0096 0122     		movs	r2, #1
+ 1288 0098 1340     		ands	r3, r2
+ 1289 009a 0ED0     		beq	.L9
+  49:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** pixel(8 * j + k + x + 1, i + y + 1);
+ 1290              		.loc 1 49 0
+ 1291 009c 3B6A     		ldr	r3, [r7, #32]
+ 1292 009e DA00     		lsls	r2, r3, #3
+ 1293 00a0 FB69     		ldr	r3, [r7, #28]
+ 1294 00a2 D218     		adds	r2, r2, r3
+ 1295 00a4 BB68     		ldr	r3, [r7, #8]
+ 1296 00a6 D318     		adds	r3, r2, r3
+ 1297 00a8 0133     		adds	r3, r3, #1
+ 1298 00aa 1800     		movs	r0, r3
+ 1299 00ac 7A6A     		ldr	r2, [r7, #36]
+ 1300 00ae 7B68     		ldr	r3, [r7, #4]
+ 1301 00b0 D318     		adds	r3, r2, r3
+ 1302 00b2 0133     		adds	r3, r3, #1
+ 1303 00b4 1900     		movs	r1, r3
+ 1304 00b6 FFF7FEFF 		bl	pixel
+ 1305              	.L9:
+  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
+ 1306              		.loc 1 47 0 discriminator 2
+ 1307 00ba FB69     		ldr	r3, [r7, #28]
+ 1308 00bc 0133     		adds	r3, r3, #1
+ 1309 00be FB61     		str	r3, [r7, #28]
+ 1310              	.L8:
+  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
+ 1311              		.loc 1 47 0 is_stmt 0 discriminator 1
+ 1312 00c0 FB69     		ldr	r3, [r7, #28]
+ 1313 00c2 072B     		cmp	r3, #7
+ 1314 00c4 E1DD     		ble	.L10
+ 1315              	.LBE2:
+  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
+ 1316              		.loc 1 45 0 is_stmt 1 discriminator 2
+ 1317 00c6 3B6A     		ldr	r3, [r7, #32]
+ 1318 00c8 0133     		adds	r3, r3, #1
+ 1319 00ca 3B62     		str	r3, [r7, #32]
+ 1320              	.L7:
+  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
+ 1321              		.loc 1 45 0 is_stmt 0 discriminator 1
+ 1322 00cc 3A6A     		ldr	r2, [r7, #32]
+ 1323 00ce BB69     		ldr	r3, [r7, #24]
+ 1324 00d0 9A42     		cmp	r2, r3
+ 1325 00d2 CBDB     		blt	.L11
+  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
+ 1326              		.loc 1 44 0 is_stmt 1 discriminator 2
+ 1327 00d4 7B6A     		ldr	r3, [r7, #36]
+ 1328 00d6 0133     		adds	r3, r3, #1
+ 1329 00d8 7B62     		str	r3, [r7, #36]
+ 1330              	.L6:
+  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
+ 1331              		.loc 1 44 0 is_stmt 0 discriminator 1
+ 1332 00da FB68     		ldr	r3, [r7, #12]
+ 1333 00dc 5B78     		ldrb	r3, [r3, #1]
+ 1334 00de 1A00     		movs	r2, r3
+ 1335 00e0 7B6A     		ldr	r3, [r7, #36]
+ 1336 00e2 9342     		cmp	r3, r2
+ 1337 00e4 BFDB     		blt	.L12
+  50:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+  51:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+  52:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 1338              		.loc 1 52 0 is_stmt 1
+ 1339 00e6 C046     		nop
+ 1340 00e8 BD46     		mov	sp, r7
+ 1341 00ea 0AB0     		add	sp, sp, #40
+ 1342              		@ sp needed
+ 1343 00ec 80BD     		pop	{r7, pc}
+ 1344              		.cfi_endproc
+ 1345              	.LFE2:
+ 1347              		.global	ball_geometry
+ 1348              		.data
+ 1349              		.align	2
+ 1352              	ball_geometry:
+ 1353 0448 0C000000 		.word	12
+ 1354 044c 04000000 		.word	4
+ 1355 0450 04000000 		.word	4
+ 1356 0454 00       		.byte	0
+ 1357 0455 01       		.byte	1
+ 1358 0456 00       		.byte	0
+ 1359 0457 02       		.byte	2
+ 1360 0458 01       		.byte	1
+ 1361 0459 00       		.byte	0
+ 1362 045a 01       		.byte	1
+ 1363 045b 01       		.byte	1
+ 1364 045c 01       		.byte	1
+ 1365 045d 02       		.byte	2
+ 1366 045e 01       		.byte	1
+ 1367 045f 03       		.byte	3
+ 1368 0460 02       		.byte	2
+ 1369 0461 00       		.byte	0
+ 1370 0462 02       		.byte	2
+ 1371 0463 01       		.byte	1
+ 1372 0464 02       		.byte	2
+ 1373 0465 02       		.byte	2
+ 1374 0466 02       		.byte	2
+ 1375 0467 03       		.byte	3
+ 1376 0468 03       		.byte	3
+ 1377 0469 01       		.byte	1
+ 1378 046a 03       		.byte	3
+ 1379 046b 02       		.byte	2
+ 1380 046c 00000000 		.space	16
+ 1380      00000000 
+ 1380      00000000 
+ 1380      00000000 
+ 1381              		.align	2
+ 1384              	ball:
+ 1385 047c 00000000 		.word	ball_geometry
+ 1386 0480 FDFFFFFF 		.word	-3
+ 1387 0484 03000000 		.word	3
+ 1388 0488 01000000 		.word	1
+ 1389 048c 01000000 		.word	1
+ 1390 0490 00000000 		.word	draw_object
+ 1391 0494 00000000 		.word	clear_object
+ 1392 0498 00000000 		.word	move_object
+ 1393 049c 00000000 		.word	set_object_speed
+ 1394              		.section	.rodata
+ 1395              		.align	2
+ 1396              	.LC0:
+ 1397 0000 57656C63 		.ascii	"Welcome \000"
+ 1397      6F6D6520 
+ 1397      00
+ 1398 0009 000000   		.align	2
+ 1399              	.LC2:
+ 1400 000c 746F2074 		.ascii	"to the game!\000"
+ 1400      68652067 
+ 1400      616D6521 
+ 1400      00
+ 1401              		.text
+ 1402              		.align	1
+ 1403              		.global	ascii_message
+ 1404              		.syntax unified
+ 1405              		.code	16
+ 1406              		.thumb_func
+ 1407              		.fpu softvfp
+ 1409              	ascii_message:
+ 1410              	.LFB3:
+  53:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  54:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY ball_geometry=
+  55:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  56:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	12, //tot pix
+  57:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//bredd
+  58:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//längd
+  59:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
+  60:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,1},{0,2},
+  61:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{1,0},{1,1},{1,2},{1,3},
+  62:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{2,0},{2,1},{2,2},{2,3},
+  63:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{3,1},{3,2},
+  64:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  65:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  66:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  67:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT ball=
+  68:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  69:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&ball_geometry,
+  70:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	-3,3,
+  71:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+  72:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+  73:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+  74:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+  75:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+  76:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  77:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  78:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void ascii_message(){
+ 1411              		.loc 1 78 0
+ 1412              		.cfi_startproc
+ 1413              		@ args = 0, pretend = 0, frame = 32
+ 1414              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1415 00ee B0B5     		push	{r4, r5, r7, lr}
+ 1416              		.cfi_def_cfa_offset 16
+ 1417              		.cfi_offset 4, -16
+ 1418              		.cfi_offset 5, -12
+ 1419              		.cfi_offset 7, -8
+ 1420              		.cfi_offset 14, -4
+ 1421 00f0 88B0     		sub	sp, sp, #32
+ 1422              		.cfi_def_cfa_offset 48
+ 1423 00f2 00AF     		add	r7, sp, #0
+ 1424              		.cfi_def_cfa_register 7
+  79:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char *s;
+  80:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test1[] = "Welcome ";
+ 1425              		.loc 1 80 0
+ 1426 00f4 1024     		movs	r4, #16
+ 1427 00f6 3B19     		adds	r3, r7, r4
+ 1428 00f8 194A     		ldr	r2, .L18
+ 1429 00fa 03CA     		ldmia	r2!, {r0, r1}
+ 1430 00fc 03C3     		stmia	r3!, {r0, r1}
+ 1431 00fe 1278     		ldrb	r2, [r2]
+ 1432 0100 1A70     		strb	r2, [r3]
+  81:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test2[] = "to the game!";
+ 1433              		.loc 1 81 0
+ 1434 0102 3B00     		movs	r3, r7
+ 1435 0104 174A     		ldr	r2, .L18+4
+ 1436 0106 23CA     		ldmia	r2!, {r0, r1, r5}
+ 1437 0108 23C3     		stmia	r3!, {r0, r1, r5}
+ 1438 010a 1278     		ldrb	r2, [r2]
+ 1439 010c 1A70     		strb	r2, [r3]
+  82:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,1);
+ 1440              		.loc 1 82 0
+ 1441 010e 0121     		movs	r1, #1
+ 1442 0110 0120     		movs	r0, #1
+ 1443 0112 FFF7FEFF 		bl	ascii_gotoxy
+  83:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test1;
+ 1444              		.loc 1 83 0
+ 1445 0116 3B19     		adds	r3, r7, r4
+ 1446 0118 FB61     		str	r3, [r7, #28]
+  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 1447              		.loc 1 84 0
+ 1448 011a 06E0     		b	.L14
+ 1449              	.L15:
+  85:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
+ 1450              		.loc 1 85 0
+ 1451 011c FB69     		ldr	r3, [r7, #28]
+ 1452 011e 5A1C     		adds	r2, r3, #1
+ 1453 0120 FA61     		str	r2, [r7, #28]
+ 1454 0122 1B78     		ldrb	r3, [r3]
+ 1455 0124 1800     		movs	r0, r3
+ 1456 0126 FFF7FEFF 		bl	ascii_write_char
+ 1457              	.L14:
+  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 1458              		.loc 1 84 0
+ 1459 012a FB69     		ldr	r3, [r7, #28]
+ 1460 012c 1B78     		ldrb	r3, [r3]
+ 1461 012e 002B     		cmp	r3, #0
+ 1462 0130 F4D1     		bne	.L15
+  86:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  87:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,2);
+ 1463              		.loc 1 87 0
+ 1464 0132 0221     		movs	r1, #2
+ 1465 0134 0120     		movs	r0, #1
+ 1466 0136 FFF7FEFF 		bl	ascii_gotoxy
+  88:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test2;
+ 1467              		.loc 1 88 0
+ 1468 013a 3B00     		movs	r3, r7
+ 1469 013c FB61     		str	r3, [r7, #28]
+  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 1470              		.loc 1 89 0
+ 1471 013e 06E0     		b	.L16
+ 1472              	.L17:
+  90:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
+ 1473              		.loc 1 90 0
+ 1474 0140 FB69     		ldr	r3, [r7, #28]
+ 1475 0142 5A1C     		adds	r2, r3, #1
+ 1476 0144 FA61     		str	r2, [r7, #28]
+ 1477 0146 1B78     		ldrb	r3, [r3]
+ 1478 0148 1800     		movs	r0, r3
+ 1479 014a FFF7FEFF 		bl	ascii_write_char
+ 1480              	.L16:
+  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 1481              		.loc 1 89 0
+ 1482 014e FB69     		ldr	r3, [r7, #28]
+ 1483 0150 1B78     		ldrb	r3, [r3]
+ 1484 0152 002B     		cmp	r3, #0
+ 1485 0154 F4D1     		bne	.L17
+  91:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  92:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 1486              		.loc 1 92 0
+ 1487 0156 C046     		nop
+ 1488 0158 BD46     		mov	sp, r7
+ 1489 015a 08B0     		add	sp, sp, #32
+ 1490              		@ sp needed
+ 1491 015c B0BD     		pop	{r4, r5, r7, pc}
+ 1492              	.L19:
+ 1493 015e C046     		.align	2
+ 1494              	.L18:
+ 1495 0160 00000000 		.word	.LC0
+ 1496 0164 0C000000 		.word	.LC2
+ 1497              		.cfi_endproc
+ 1498              	.LFE3:
+ 1500              		.align	1
+ 1501              		.global	init_spel
+ 1502              		.syntax unified
+ 1503              		.code	16
+ 1504              		.thumb_func
+ 1505              		.fpu softvfp
+ 1507              	init_spel:
+ 1508              	.LFB4:
+  93:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  94:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void init_spel(){
+ 1509              		.loc 1 94 0
+ 1510              		.cfi_startproc
+ 1511              		@ args = 0, pretend = 0, frame = 0
+ 1512              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1513 0168 80B5     		push	{r7, lr}
+ 1514              		.cfi_def_cfa_offset 8
+ 1515              		.cfi_offset 7, -8
+ 1516              		.cfi_offset 14, -4
+ 1517 016a 00AF     		add	r7, sp, #0
+ 1518              		.cfi_def_cfa_register 7
+  95:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	GPIO_MODER_E = 0x55555555;
+ 1519              		.loc 1 95 0
+ 1520 016c 034B     		ldr	r3, .L21
+ 1521 016e 044A     		ldr	r2, .L21+4
+ 1522 0170 1A60     		str	r2, [r3]
+  96:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_init();
+ 1523              		.loc 1 96 0
+ 1524 0172 FFF7FEFF 		bl	ascii_init
+  97:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	//ascii_message();
+  98:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 1525              		.loc 1 98 0
+ 1526 0176 C046     		nop
+ 1527 0178 BD46     		mov	sp, r7
+ 1528              		@ sp needed
+ 1529 017a 80BD     		pop	{r7, pc}
+ 1530              	.L22:
+ 1531              		.align	2
+ 1532              	.L21:
+ 1533 017c 00100240 		.word	1073876992
+ 1534 0180 55555555 		.word	1431655765
+ 1535              		.cfi_endproc
+ 1536              	.LFE4:
+ 1538              		.align	1
+ 1539              		.global	main
+ 1540              		.syntax unified
+ 1541              		.code	16
+ 1542              		.thumb_func
+ 1543              		.fpu softvfp
+ 1545              	main:
+ 1546              	.LFB5:
+  99:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 100:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 101:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int main(int argc, char **argv)
+ 102:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 1547              		.loc 1 102 0
+ 1548              		.cfi_startproc
+ 1549              		@ args = 0, pretend = 0, frame = 24
+ 1550              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1551 0184 80B5     		push	{r7, lr}
+ 1552              		.cfi_def_cfa_offset 8
+ 1553              		.cfi_offset 7, -8
+ 1554              		.cfi_offset 14, -4
+ 1555 0186 86B0     		sub	sp, sp, #24
+ 1556              		.cfi_def_cfa_offset 32
+ 1557 0188 00AF     		add	r7, sp, #0
+ 1558              		.cfi_def_cfa_register 7
+ 1559 018a 7860     		str	r0, [r7, #4]
+ 1560 018c 3960     		str	r1, [r7]
+ 103:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	init_spel();
+ 1561              		.loc 1 103 0
+ 1562 018e FFF7FEFF 		bl	init_spel
+ 104:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT p = &ball;
+ 1563              		.loc 1 104 0
+ 1564 0192 174B     		ldr	r3, .L25
+ 1565 0194 7B61     		str	r3, [r7, #20]
+ 105:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* plant;
+ 106:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* backGround;
+ 107:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* ship;
+ 108:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_init();
+ 1566              		.loc 1 108 0
+ 1567 0196 FFF7FEFF 		bl	graphic_init
+ 109:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #ifndef	SIMULATOR
+ 110:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_clear_screen();
+ 111:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #endif
+ 112:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
+ 113:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	load_sprite(plant, plant_bits, plant_width, plant_height);
+ 1568              		.loc 1 113 0
+ 1569 019a 1649     		ldr	r1, .L25+4
+ 1570 019c 3869     		ldr	r0, [r7, #16]
+ 1571 019e 0A23     		movs	r3, #10
+ 1572 01a0 0722     		movs	r2, #7
+ 1573 01a2 FFF72DFF 		bl	load_sprite
+ 114:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	load_sprite(ship, ship_bits, ship_width, ship_height);
+ 1574              		.loc 1 114 0
+ 1575 01a6 1449     		ldr	r1, .L25+8
+ 1576 01a8 F868     		ldr	r0, [r7, #12]
+ 1577 01aa 1423     		movs	r3, #20
+ 1578 01ac 1422     		movs	r2, #20
+ 1579 01ae FFF727FF 		bl	load_sprite
+ 115:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
+ 116:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //	plant->set_speed(plant, 5, 10); //assa
+ 117:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	p->set_speed(p, 12, 20);
+ 1580              		.loc 1 117 0
+ 1581 01b2 7B69     		ldr	r3, [r7, #20]
+ 1582 01b4 1B6A     		ldr	r3, [r3, #32]
+ 1583 01b6 7869     		ldr	r0, [r7, #20]
+ 1584 01b8 1422     		movs	r2, #20
+ 1585 01ba 0C21     		movs	r1, #12
+ 1586 01bc 9847     		blx	r3
+ 1587              	.LVL0:
+ 1588              	.L24:
+ 118:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while(1){
+ 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		clear_backBuffer();
+ 1589              		.loc 1 119 0 discriminator 1
+ 1590 01be FFF7FEFF 		bl	clear_backBuffer
+ 120:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
+ 1591              		.loc 1 120 0 discriminator 1
+ 1592 01c2 7B69     		ldr	r3, [r7, #20]
+ 1593 01c4 DB69     		ldr	r3, [r3, #28]
+ 1594 01c6 7A69     		ldr	r2, [r7, #20]
+ 1595 01c8 1000     		movs	r0, r2
+ 1596 01ca 9847     		blx	r3
+ 1597              	.LVL1:
+ 121:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(plant, 50, 50, 1);
+ 1598              		.loc 1 121 0 discriminator 1
+ 1599 01cc 3869     		ldr	r0, [r7, #16]
+ 1600 01ce 0123     		movs	r3, #1
+ 1601 01d0 3222     		movs	r2, #50
+ 1602 01d2 3221     		movs	r1, #50
+ 1603 01d4 FFF7FEFF 		bl	draw_sprite
+ 122:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(ship, 40, 20, 1);
+ 1604              		.loc 1 122 0 discriminator 1
+ 1605 01d8 F868     		ldr	r0, [r7, #12]
+ 1606 01da 0123     		movs	r3, #1
+ 1607 01dc 1422     		movs	r2, #20
+ 1608 01de 2821     		movs	r1, #40
+ 1609 01e0 FFF7FEFF 		bl	draw_sprite
+ 123:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		plant->move(plant);
+ 124:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_draw_screen();
+ 1610              		.loc 1 124 0 discriminator 1
+ 1611 01e4 FFF7FEFF 		bl	graphic_draw_screen
+ 125:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		//delay_milli(40); //25 fps
+ 126:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_clear_screen();
+ 1612              		.loc 1 126 0 discriminator 1
+ 1613 01e8 FFF7FEFF 		bl	graphic_clear_screen
+ 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
+ 1614              		.loc 1 119 0 discriminator 1
+ 1615 01ec E7E7     		b	.L24
+ 1616              	.L26:
+ 1617 01ee C046     		.align	2
+ 1618              	.L25:
+ 1619 01f0 7C040000 		.word	ball
+ 1620 01f4 00000000 		.word	plant_bits
+ 1621 01f8 0C040000 		.word	ship_bits
+ 1622              		.cfi_endproc
+ 1623              	.LFE5:
+ 1625              	.Letext0:
+ 1626              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_startup.h"
+ 1627              		.file 3 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/plant.xbm"
+ 1628              		.file 4 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/backGround.xbm"
+ 1629              		.file 5 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/ship.xbm"

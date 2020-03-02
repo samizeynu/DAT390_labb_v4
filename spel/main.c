@@ -6,6 +6,7 @@
 #include "game_startup.h"
 #include "plant.xbm"
 #include "backGround.xbm"
+#include "ship.xbm"
 
 
 void startup ( void )
@@ -23,6 +24,8 @@ typedef struct
 unsigned char width;
 unsigned char height;
 unsigned char* data;
+//void(*move)(struct sprite *);
+//void(*set_speed)(struct tObj *, int, int);
 } sprite;
 
 static void load_sprite(sprite* s, unsigned char* data, int width, int height)
@@ -72,20 +75,6 @@ static OBJECT ball=
 	set_object_speed
 };
 
-static sprite plant =
-{
-	plant_width, 
-	plant_height, 
-	plant_bits
-};
-
-static sprite backGround =
-{
-	backGround_width, 
-	backGround_height, 
-	backGround_bits
-};
-
 void ascii_message(){
 	char *s;
 	char test1[] = "Welcome ";
@@ -113,21 +102,25 @@ int main(int argc, char **argv)
 {
 	init_spel();
 	POBJECT p = &ball;
+	sprite* plant;
+	sprite* backGround;
+	sprite* ship;
 	graphic_init();
 #ifndef	SIMULATOR
 	graphic_clear_screen();
 #endif
 	
-//	load_sprite(&plant, plant_bits, plant_width, plant_height);
-	load_sprite(&backGround, backGround_bits, backGround_width, backGround_height);
+	load_sprite(plant, plant_bits, plant_width, plant_height);
+	load_sprite(ship, ship_bits, ship_width, ship_height);
 	
-	
+//	plant->set_speed(plant, 5, 10); //assa
 	p->set_speed(p, 12, 20);
 	while(1){
 		clear_backBuffer();
 		p->move(p);
-		draw_sprite(&plant, 50, 50, 1);
-		draw_sprite(&backGround, 1, 1, 1);
+		draw_sprite(plant, 50, 50, 1);
+		draw_sprite(ship, 40, 20, 1);
+//		plant->move(plant);
 		graphic_draw_screen();
 		//delay_milli(40); //25 fps
 		graphic_clear_screen();

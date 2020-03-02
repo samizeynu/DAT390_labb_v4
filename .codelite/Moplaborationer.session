@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\Andre\Desktop\DAT390_labb_v4\Moplaborationer.workspace">
-  <int Value="2" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\Moplaborationer.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\spel\main.c" Name="FileName"/>
-      <int Value="41" Name="FirstVisibleLine"/>
-      <int Value="129" Name="CurrentLine"/>
+      <int Value="101" Name="FirstVisibleLine"/>
+      <int Value="102" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="64"/>
-      </IntVector>
+      <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\spel\game_graphics.c" Name="FileName"/>
-      <int Value="119" Name="FirstVisibleLine"/>
-      <int Value="146" Name="CurrentLine"/>
+      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\spel\backGround.xbm" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="14" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\spel\game_startup.h" Name="FileName"/>
       <int Value="181" Name="FirstVisibleLine"/>
-      <int Value="2" Name="CurrentLine"/>
+      <int Value="200" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\Andre\Desktop\DAT390_labb_v4\spel\game_structs.c" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="20" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
