@@ -1,2 +1,2 @@
--IZ:\DATlaborationer\delay
+-IC:\Users\samze\OneDrive\Dokument\GitHub\DAT390_labb_v4\delay
 -DUSBDM

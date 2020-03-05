@@ -1,1 +1,1 @@
-./Debug/game_ascii.c.o ./Debug/game_graphics.c.o ./Debug/main.c.o ./Debug/game_structs.c.o ./Debug/game_delays.c.o ./Debug/game_keyboard.c.o   
+./Debug/main.c.o ./Debug/game_delays.c.o ./Debug/game_ascii.c.o ./Debug/game_structs.c.o ./Debug/game_graphics.c.o ./Debug/game_keyboard.c.o   

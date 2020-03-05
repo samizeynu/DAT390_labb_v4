@@ -1,21 +1,149 @@
 [{
-  "file": "Z:\\DATlaborationer\\asciidisplay\\startup.c",
-  "directory": "Z:\\DATlaborationer\\asciidisplay",
-  "command": "clang  -c Z:\\DATlaborationer\\asciidisplay\\startup.c -o Z:\\DATlaborationer\\asciidisplay\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.h.o  -I. -I. -ISDL2\\include\\SDL2  -g  -O0  -Wall"
  }, {
-  "file": "Z:\\DATlaborationer\\basic_io\\startup.c",
-  "directory": "Z:\\DATlaborationer\\basic_io",
-  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\startup.c -o Z:\\DATlaborationer\\basic_io\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\main.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\main.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\main.c.o  -I. -I. -ISDL2\\include\\SDL2  -g  -O0  -std=c99  -Wall"
  }, {
-  "file": "Z:\\DATlaborationer\\basic_io\\main.c",
-  "directory": "Z:\\DATlaborationer\\basic_io",
-  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\main.c -o Z:\\DATlaborationer\\basic_io\\main.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\SDLproject\\renderer.c.o  -I. -I. -ISDL2\\include\\SDL2  -g  -O0  -std=c99  -Wall"
  }, {
-  "file": "Z:\\DATlaborationer\\basic_io\\startup.h",
-  "directory": "Z:\\DATlaborationer\\basic_io",
-  "command": "clang  -c Z:\\DATlaborationer\\basic_io\\startup.h -o Z:\\DATlaborationer\\basic_io\\startup.h.o  -DUSBDM -I. -I.  -g  -O0  -W"
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.h.o  -I. -I.  -g  -O0  -W"
  }, {
-  "file": "Z:\\DATlaborationer\\delay\\startup.c",
-  "directory": "Z:\\DATlaborationer\\delay",
-  "command": "clang  -c Z:\\DATlaborationer\\delay\\startup.c -o Z:\\DATlaborationer\\delay\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_vectors\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq_ack\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\usart_polling\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\flipflop_irq\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\asciidisplay\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\asciidisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\asciidisplay\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\asciidisplay\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\main.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\main.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\main.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_delays.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_delays.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_delays.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_ascii.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_ascii.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_ascii.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_structs.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_structs.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_structs.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_graphics.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_graphics.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_graphics.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_keyboard.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_keyboard.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\spel\\game_keyboard.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\delay\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\delay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\delay\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\delay\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\main.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\main.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\main.c.o  -DUSBDM -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\basic_io\\startup.h.o  -DUSBDM -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\ascii.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\ascii.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\ascii.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\graphic.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\graphic.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\graphic.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\delay.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\delay.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\delay.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\main.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\main.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\main.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\keyboard.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\keyboard.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\keyboard.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\graphicdisplay\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\sys_tick\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\startup.h",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\startup.h -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\startup.h.o  -I. -I.  -g  -O0  -W"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\main.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\main.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\main.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\graphics.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\graphics.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\graphics.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\structs.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\structs.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\structs.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\delays.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\delays.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\autopong\\delays.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
+ }, {
+  "file": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\getsetpsr\\startup.c",
+  "directory": "C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\getsetpsr",
+  "command": "clang  -c C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\getsetpsr\\startup.c -o C:\\Users\\samze\\OneDrive\\Dokument\\GitHub\\DAT390_labb_v4\\getsetpsr\\startup.c.o  -I. -I.  -Wa,-adhln=test.s  -g  -O0  -w  -mthumb -march=armv6-m  -mfloat-abi=soft  -std=c99  -mthumb  -march=armv6-m"
  }]
