@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Andre
-Date                   :=02/03/2020
+Date                   :=05/03/2020
 CodeLitePath           :=C:/cseapp/CodeLite
 LinkerName             :=$(CodeLiteDir)/tools/gcc-arm/bin/arm-none-eabi-g++.exe
 SharedObjectLinkerName :=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi-g++.exe -shared -fPIC
@@ -66,7 +66,7 @@ ARM_V6LIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v6-m
 ARM_GCC_V6LIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m
 ARM_M4FPLIB:=$(CodeLiteDir)/tools/gcc-arm/arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard
 ARM_GCC_M4FPLIB:=$(CodeLiteDir)/tools/gcc-arm/lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m
-Objects0=$(IntermediateDirectory)/game_ascii.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/game_structs.c$(ObjectSuffix) $(IntermediateDirectory)/game_delays.c$(ObjectSuffix) $(IntermediateDirectory)/game_keyboard.c$(ObjectSuffix) $(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/game_ascii.c$(ObjectSuffix) $(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) $(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/game_structs.c$(ObjectSuffix) $(IntermediateDirectory)/game_delays.c$(ObjectSuffix) $(IntermediateDirectory)/game_keyboard.c$(ObjectSuffix) 
 
 
 
@@ -111,6 +111,14 @@ $(IntermediateDirectory)/game_ascii.c$(DependSuffix): game_ascii.c
 $(IntermediateDirectory)/game_ascii.c$(PreprocessSuffix): game_ascii.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/game_ascii.c$(PreprocessSuffix) game_ascii.c
 
+$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix): game_graphics.c $(IntermediateDirectory)/game_graphics.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_graphics.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/game_graphics.c$(DependSuffix): game_graphics.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) -MF$(IntermediateDirectory)/game_graphics.c$(DependSuffix) -MM game_graphics.c
+
+$(IntermediateDirectory)/game_graphics.c$(PreprocessSuffix): game_graphics.c
+	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/game_graphics.c$(PreprocessSuffix) game_graphics.c
+
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
 	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
@@ -142,14 +150,6 @@ $(IntermediateDirectory)/game_keyboard.c$(DependSuffix): game_keyboard.c
 
 $(IntermediateDirectory)/game_keyboard.c$(PreprocessSuffix): game_keyboard.c
 	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/game_keyboard.c$(PreprocessSuffix) game_keyboard.c
-
-$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix): game_graphics.c $(IntermediateDirectory)/game_graphics.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_graphics.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/game_graphics.c$(DependSuffix): game_graphics.c
-	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/game_graphics.c$(ObjectSuffix) -MF$(IntermediateDirectory)/game_graphics.c$(DependSuffix) -MM game_graphics.c
-
-$(IntermediateDirectory)/game_graphics.c$(PreprocessSuffix): game_graphics.c
-	$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/game_graphics.c$(PreprocessSuffix) game_graphics.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

@@ -194,7 +194,7 @@ typedef struct tGeometry{
 } GEOMETRY, *PGEOMETRY;
 
  
- typedef struct tObj{
+typedef struct tObj{
 	 PGEOMETRY geo;
 	 int dirx,diry;
 	 int posx,posy;
@@ -202,10 +202,31 @@ typedef struct tGeometry{
 	 void(*clear)(struct tObj *);
 	 void(*move)(struct tObj *);
 	 void(*set_speed)(struct tObj *, int, int);
- } OBJECT,*POBJECT;
- 
+} OBJECT,*POBJECT;
+
+void padd_studs(POBJECT o, POBJECT ppadd); 
 void set_object_speed(POBJECT o, int speedx, int speedy);
 void draw_object(POBJECT o);
 void clear_object(POBJECT o);
 void move_object(POBJECT o);
+void move_padd(POBJECT o);
+
+typedef struct sSprite
+{
+	PGEOMETRY geo;
+	int dirx_sp, diry_sp;
+	int posx_sp, posy_sp;
+	unsigned char width;
+	unsigned char height;
+	unsigned char* data;
+	void(*draw_sp)(struct sSprite *, int, int);
+	void(*clear_sp)(struct sSprite *);
+	void(*move_sp)(struct sSprite *);
+	void(*set_speed_sp)(struct sSprite *, int, int);
+} sprite, *PSPRITE;
+
+void set_sprite_speed(PSPRITE s, int sp_speedx, int sp_speedy);
+void draw_sprite(PSPRITE s, int x, int y);
+void clear_sprite(PSPRITE s);
+void move_sprite(PSPRITE s);
 

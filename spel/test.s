@@ -28,35 +28,36 @@
    4:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c ****  */
    5:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c ****  
    6:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "game_startup.h"
-   7:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "plant.xbm"
-   8:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "backGround.xbm"
+   7:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //#include "plant.xbm"
+   8:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //#include "backGround.xbm"
    9:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #include "ship.xbm"
   10:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
   11:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  12:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void startup ( void )
-  13:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  26              		.loc 1 13 0
+  12:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  13:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void startup ( void )
+  14:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  26              		.loc 1 14 0
   27              		.cfi_startproc
   28              		@ Naked Function: prologue and epilogue provided by programmer.
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 1, uses_anonymous_args = 0
-  14:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** __asm volatile(
-  31              		.loc 1 14 0
+  15:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** __asm volatile(
+  31              		.loc 1 15 0
   32              		.syntax divided
-  33              	@ 14 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/main.c" 1
+  33              	@ 15 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/main.c" 1
   34 0000 0248     		 LDR R0,=0x2001C000
   35 0002 8546     	 MOV SP,R0
   36 0004 FFF7FEFF 	 BL main
   37 0008 FEE7     	_exit: B .
   38              	
   39              	@ 0 "" 2
-  15:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
-  16:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" MOV SP,R0\n"
-  17:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" BL main\n"				/* call main */
-  18:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	"_exit: B .\n"				/* never return */
-  19:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	) ;
-  20:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  40              		.loc 1 20 0
+  16:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" LDR R0,=0x2001C000\n"		/* set stack */
+  17:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" MOV SP,R0\n"
+  18:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	" BL main\n"				/* call main */
+  19:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	"_exit: B .\n"				/* never return */
+  20:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	) ;
+  21:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+  40              		.loc 1 21 0
   41              		.thumb
   42              		.syntax unified
   43 000a C046     		nop
@@ -64,1687 +65,958 @@
   45              	.LFE0:
   47              		.data
   48              		.align	2
-  51              	plant_bits:
+  51              	ship_bits:
   52 0000 00       		.byte	0
-  53 0001 08       		.byte	8
-  54 0002 1C       		.byte	28
-  55 0003 3E       		.byte	62
-  56 0004 7F       		.byte	127
-  57 0005 7F       		.byte	127
-  58 0006 08       		.byte	8
-  59 0007 1C       		.byte	28
-  60 0008 1C       		.byte	28
-  61 0009 00       		.byte	0
-  62 000a 0000     		.align	2
-  65              	backGround_bits:
-  66 000c 00       		.byte	0
-  67 000d 00       		.byte	0
-  68 000e 00       		.byte	0
-  69 000f 00       		.byte	0
-  70 0010 00       		.byte	0
-  71 0011 00       		.byte	0
-  72 0012 00       		.byte	0
-  73 0013 00       		.byte	0
-  74 0014 00       		.byte	0
-  75 0015 00       		.byte	0
-  76 0016 00       		.byte	0
-  77 0017 00       		.byte	0
-  78 0018 00       		.byte	0
-  79 0019 00       		.byte	0
-  80 001a 00       		.byte	0
-  81 001b 00       		.byte	0
-  82 001c 00       		.byte	0
-  83 001d 00       		.byte	0
-  84 001e 00       		.byte	0
-  85 001f 00       		.byte	0
-  86 0020 00       		.byte	0
-  87 0021 00       		.byte	0
-  88 0022 00       		.byte	0
-  89 0023 00       		.byte	0
-  90 0024 00       		.byte	0
-  91 0025 00       		.byte	0
-  92 0026 00       		.byte	0
-  93 0027 00       		.byte	0
-  94 0028 00       		.byte	0
-  95 0029 00       		.byte	0
-  96 002a 00       		.byte	0
-  97 002b 00       		.byte	0
-  98 002c 00       		.byte	0
-  99 002d 00       		.byte	0
- 100 002e 00       		.byte	0
- 101 002f 00       		.byte	0
- 102 0030 00       		.byte	0
- 103 0031 00       		.byte	0
- 104 0032 00       		.byte	0
- 105 0033 00       		.byte	0
- 106 0034 00       		.byte	0
- 107 0035 00       		.byte	0
- 108 0036 00       		.byte	0
- 109 0037 00       		.byte	0
- 110 0038 00       		.byte	0
- 111 0039 00       		.byte	0
- 112 003a 00       		.byte	0
- 113 003b 00       		.byte	0
- 114 003c 00       		.byte	0
- 115 003d 00       		.byte	0
- 116 003e 00       		.byte	0
- 117 003f 00       		.byte	0
- 118 0040 00       		.byte	0
- 119 0041 00       		.byte	0
- 120 0042 00       		.byte	0
- 121 0043 00       		.byte	0
- 122 0044 00       		.byte	0
- 123 0045 00       		.byte	0
- 124 0046 00       		.byte	0
- 125 0047 00       		.byte	0
- 126 0048 00       		.byte	0
- 127 0049 00       		.byte	0
- 128 004a 00       		.byte	0
- 129 004b 00       		.byte	0
- 130 004c 00       		.byte	0
- 131 004d 00       		.byte	0
- 132 004e 00       		.byte	0
- 133 004f 00       		.byte	0
- 134 0050 00       		.byte	0
- 135 0051 00       		.byte	0
- 136 0052 00       		.byte	0
- 137 0053 00       		.byte	0
- 138 0054 00       		.byte	0
- 139 0055 00       		.byte	0
- 140 0056 00       		.byte	0
- 141 0057 00       		.byte	0
- 142 0058 00       		.byte	0
- 143 0059 00       		.byte	0
- 144 005a 00       		.byte	0
- 145 005b 00       		.byte	0
- 146 005c 00       		.byte	0
- 147 005d 00       		.byte	0
- 148 005e 00       		.byte	0
- 149 005f 00       		.byte	0
- 150 0060 00       		.byte	0
- 151 0061 00       		.byte	0
- 152 0062 00       		.byte	0
- 153 0063 00       		.byte	0
- 154 0064 00       		.byte	0
- 155 0065 00       		.byte	0
- 156 0066 00       		.byte	0
- 157 0067 00       		.byte	0
- 158 0068 00       		.byte	0
- 159 0069 00       		.byte	0
- 160 006a 00       		.byte	0
- 161 006b 00       		.byte	0
- 162 006c 00       		.byte	0
- 163 006d 00       		.byte	0
- 164 006e 00       		.byte	0
- 165 006f 00       		.byte	0
- 166 0070 00       		.byte	0
- 167 0071 00       		.byte	0
- 168 0072 00       		.byte	0
- 169 0073 00       		.byte	0
- 170 0074 00       		.byte	0
- 171 0075 00       		.byte	0
- 172 0076 00       		.byte	0
- 173 0077 00       		.byte	0
- 174 0078 00       		.byte	0
- 175 0079 00       		.byte	0
- 176 007a 00       		.byte	0
- 177 007b 00       		.byte	0
- 178 007c 00       		.byte	0
- 179 007d 00       		.byte	0
- 180 007e 00       		.byte	0
- 181 007f 00       		.byte	0
- 182 0080 00       		.byte	0
- 183 0081 00       		.byte	0
- 184 0082 00       		.byte	0
- 185 0083 00       		.byte	0
- 186 0084 00       		.byte	0
- 187 0085 00       		.byte	0
- 188 0086 00       		.byte	0
- 189 0087 00       		.byte	0
- 190 0088 00       		.byte	0
- 191 0089 00       		.byte	0
- 192 008a 00       		.byte	0
- 193 008b 00       		.byte	0
- 194 008c 00       		.byte	0
- 195 008d 00       		.byte	0
- 196 008e 00       		.byte	0
- 197 008f 00       		.byte	0
- 198 0090 00       		.byte	0
- 199 0091 00       		.byte	0
- 200 0092 00       		.byte	0
- 201 0093 00       		.byte	0
- 202 0094 00       		.byte	0
- 203 0095 00       		.byte	0
- 204 0096 00       		.byte	0
- 205 0097 00       		.byte	0
- 206 0098 00       		.byte	0
- 207 0099 00       		.byte	0
- 208 009a 00       		.byte	0
- 209 009b 00       		.byte	0
- 210 009c 00       		.byte	0
- 211 009d 00       		.byte	0
- 212 009e 00       		.byte	0
- 213 009f 00       		.byte	0
- 214 00a0 00       		.byte	0
- 215 00a1 00       		.byte	0
- 216 00a2 00       		.byte	0
- 217 00a3 00       		.byte	0
- 218 00a4 00       		.byte	0
- 219 00a5 00       		.byte	0
- 220 00a6 00       		.byte	0
- 221 00a7 00       		.byte	0
- 222 00a8 00       		.byte	0
- 223 00a9 00       		.byte	0
- 224 00aa 00       		.byte	0
- 225 00ab 00       		.byte	0
- 226 00ac 00       		.byte	0
- 227 00ad 00       		.byte	0
- 228 00ae 00       		.byte	0
- 229 00af 00       		.byte	0
- 230 00b0 00       		.byte	0
- 231 00b1 00       		.byte	0
- 232 00b2 00       		.byte	0
- 233 00b3 00       		.byte	0
- 234 00b4 00       		.byte	0
- 235 00b5 00       		.byte	0
- 236 00b6 00       		.byte	0
- 237 00b7 00       		.byte	0
- 238 00b8 00       		.byte	0
- 239 00b9 00       		.byte	0
- 240 00ba 00       		.byte	0
- 241 00bb 00       		.byte	0
- 242 00bc 00       		.byte	0
- 243 00bd 00       		.byte	0
- 244 00be 00       		.byte	0
- 245 00bf 00       		.byte	0
- 246 00c0 00       		.byte	0
- 247 00c1 00       		.byte	0
- 248 00c2 00       		.byte	0
- 249 00c3 00       		.byte	0
- 250 00c4 00       		.byte	0
- 251 00c5 00       		.byte	0
- 252 00c6 00       		.byte	0
- 253 00c7 00       		.byte	0
- 254 00c8 00       		.byte	0
- 255 00c9 00       		.byte	0
- 256 00ca 00       		.byte	0
- 257 00cb 00       		.byte	0
- 258 00cc 00       		.byte	0
- 259 00cd 00       		.byte	0
- 260 00ce 00       		.byte	0
- 261 00cf 00       		.byte	0
- 262 00d0 FC       		.byte	-4
- 263 00d1 0F       		.byte	15
- 264 00d2 00       		.byte	0
- 265 00d3 00       		.byte	0
- 266 00d4 00       		.byte	0
- 267 00d5 00       		.byte	0
- 268 00d6 00       		.byte	0
- 269 00d7 00       		.byte	0
- 270 00d8 00       		.byte	0
- 271 00d9 00       		.byte	0
- 272 00da 00       		.byte	0
- 273 00db 00       		.byte	0
- 274 00dc 00       		.byte	0
- 275 00dd 00       		.byte	0
- 276 00de 00       		.byte	0
- 277 00df 00       		.byte	0
- 278 00e0 07       		.byte	7
- 279 00e1 00       		.byte	0
- 280 00e2 00       		.byte	0
- 281 00e3 00       		.byte	0
- 282 00e4 00       		.byte	0
- 283 00e5 00       		.byte	0
- 284 00e6 00       		.byte	0
- 285 00e7 00       		.byte	0
- 286 00e8 00       		.byte	0
- 287 00e9 00       		.byte	0
- 288 00ea 00       		.byte	0
- 289 00eb 00       		.byte	0
- 290 00ec 00       		.byte	0
- 291 00ed 00       		.byte	0
- 292 00ee 00       		.byte	0
- 293 00ef C0       		.byte	-64
- 294 00f0 01       		.byte	1
- 295 00f1 00       		.byte	0
- 296 00f2 00       		.byte	0
- 297 00f3 00       		.byte	0
- 298 00f4 00       		.byte	0
- 299 00f5 00       		.byte	0
- 300 00f6 00       		.byte	0
- 301 00f7 00       		.byte	0
- 302 00f8 00       		.byte	0
- 303 00f9 00       		.byte	0
- 304 00fa 00       		.byte	0
- 305 00fb 00       		.byte	0
- 306 00fc 00       		.byte	0
- 307 00fd 00       		.byte	0
- 308 00fe 00       		.byte	0
- 309 00ff 40       		.byte	64
- 310 0100 00       		.byte	0
- 311 0101 00       		.byte	0
- 312 0102 20       		.byte	32
- 313 0103 00       		.byte	0
- 314 0104 00       		.byte	0
- 315 0105 00       		.byte	0
- 316 0106 00       		.byte	0
- 317 0107 00       		.byte	0
- 318 0108 00       		.byte	0
- 319 0109 00       		.byte	0
- 320 010a 00       		.byte	0
- 321 010b 00       		.byte	0
- 322 010c 00       		.byte	0
- 323 010d 00       		.byte	0
- 324 010e 00       		.byte	0
- 325 010f 40       		.byte	64
- 326 0110 00       		.byte	0
- 327 0111 00       		.byte	0
- 328 0112 30       		.byte	48
- 329 0113 00       		.byte	0
- 330 0114 00       		.byte	0
- 331 0115 00       		.byte	0
- 332 0116 00       		.byte	0
- 333 0117 00       		.byte	0
- 334 0118 00       		.byte	0
- 335 0119 00       		.byte	0
- 336 011a 00       		.byte	0
- 337 011b 00       		.byte	0
- 338 011c 00       		.byte	0
- 339 011d 00       		.byte	0
- 340 011e 00       		.byte	0
- 341 011f 40       		.byte	64
- 342 0120 00       		.byte	0
- 343 0121 00       		.byte	0
- 344 0122 50       		.byte	80
- 345 0123 00       		.byte	0
- 346 0124 00       		.byte	0
- 347 0125 02       		.byte	2
- 348 0126 00       		.byte	0
- 349 0127 00       		.byte	0
- 350 0128 00       		.byte	0
- 351 0129 F8       		.byte	-8
- 352 012a 01       		.byte	1
- 353 012b 00       		.byte	0
- 354 012c 00       		.byte	0
- 355 012d 00       		.byte	0
- 356 012e 00       		.byte	0
- 357 012f 40       		.byte	64
- 358 0130 00       		.byte	0
- 359 0131 00       		.byte	0
- 360 0132 90       		.byte	-112
- 361 0133 00       		.byte	0
- 362 0134 00       		.byte	0
- 363 0135 02       		.byte	2
- 364 0136 00       		.byte	0
- 365 0137 00       		.byte	0
- 366 0138 FC       		.byte	-4
- 367 0139 0F       		.byte	15
- 368 013a 00       		.byte	0
- 369 013b 00       		.byte	0
- 370 013c 00       		.byte	0
- 371 013d 00       		.byte	0
- 372 013e 00       		.byte	0
- 373 013f 40       		.byte	64
- 374 0140 00       		.byte	0
- 375 0141 00       		.byte	0
- 376 0142 98       		.byte	-104
- 377 0143 00       		.byte	0
- 378 0144 00       		.byte	0
- 379 0145 02       		.byte	2
- 380 0146 C0       		.byte	-64
- 381 0147 00       		.byte	0
- 382 0148 01       		.byte	1
- 383 0149 00       		.byte	0
- 384 014a 00       		.byte	0
- 385 014b 00       		.byte	0
- 386 014c 00       		.byte	0
- 387 014d 00       		.byte	0
- 388 014e 00       		.byte	0
- 389 014f 40       		.byte	64
- 390 0150 00       		.byte	0
- 391 0151 00       		.byte	0
- 392 0152 08       		.byte	8
- 393 0153 01       		.byte	1
- 394 0154 00       		.byte	0
- 395 0155 06       		.byte	6
- 396 0156 C0       		.byte	-64
- 397 0157 00       		.byte	0
- 398 0158 01       		.byte	1
- 399 0159 00       		.byte	0
- 400 015a 00       		.byte	0
- 401 015b 00       		.byte	0
- 402 015c 00       		.byte	0
- 403 015d 00       		.byte	0
- 404 015e 00       		.byte	0
- 405 015f 40       		.byte	64
- 406 0160 00       		.byte	0
- 407 0161 00       		.byte	0
- 408 0162 08       		.byte	8
- 409 0163 01       		.byte	1
- 410 0164 00       		.byte	0
- 411 0165 1C       		.byte	28
- 412 0166 A0       		.byte	-96
- 413 0167 00       		.byte	0
- 414 0168 01       		.byte	1
- 415 0169 00       		.byte	0
- 416 016a 00       		.byte	0
- 417 016b 00       		.byte	0
- 418 016c 00       		.byte	0
- 419 016d 00       		.byte	0
- 420 016e 00       		.byte	0
- 421 016f 40       		.byte	64
- 422 0170 00       		.byte	0
- 423 0171 00       		.byte	0
- 424 0172 0C       		.byte	12
- 425 0173 02       		.byte	2
- 426 0174 00       		.byte	0
- 427 0175 24       		.byte	36
- 428 0176 B0       		.byte	-80
- 429 0177 00       		.byte	0
- 430 0178 01       		.byte	1
- 431 0179 00       		.byte	0
- 432 017a 00       		.byte	0
- 433 017b 00       		.byte	0
- 434 017c 00       		.byte	0
- 435 017d 00       		.byte	0
- 436 017e 00       		.byte	0
- 437 017f 40       		.byte	64
- 438 0180 00       		.byte	0
- 439 0181 00       		.byte	0
- 440 0182 04       		.byte	4
- 441 0183 06       		.byte	6
- 442 0184 00       		.byte	0
- 443 0185 44       		.byte	68
- 444 0186 90       		.byte	-112
- 445 0187 00       		.byte	0
- 446 0188 01       		.byte	1
- 447 0189 00       		.byte	0
- 448 018a 00       		.byte	0
- 449 018b 00       		.byte	0
- 450 018c 00       		.byte	0
- 451 018d 00       		.byte	0
- 452 018e 00       		.byte	0
- 453 018f 40       		.byte	64
- 454 0190 C0       		.byte	-64
- 455 0191 01       		.byte	1
- 456 0192 04       		.byte	4
- 457 0193 08       		.byte	8
- 458 0194 00       		.byte	0
- 459 0195 84       		.byte	-124
- 460 0196 89       		.byte	-119
- 461 0197 00       		.byte	0
- 462 0198 03       		.byte	3
- 463 0199 00       		.byte	0
- 464 019a 00       		.byte	0
- 465 019b 00       		.byte	0
- 466 019c 00       		.byte	0
- 467 019d 00       		.byte	0
- 468 019e 00       		.byte	0
- 469 019f 40       		.byte	64
- 470 01a0 30       		.byte	48
- 471 01a1 00       		.byte	0
- 472 01a2 02       		.byte	2
- 473 01a3 08       		.byte	8
- 474 01a4 00       		.byte	0
- 475 01a5 04       		.byte	4
- 476 01a6 8A       		.byte	-118
- 477 01a7 00       		.byte	0
- 478 01a8 F6       		.byte	-10
- 479 01a9 07       		.byte	7
- 480 01aa 00       		.byte	0
- 481 01ab 00       		.byte	0
- 482 01ac 00       		.byte	0
- 483 01ad 00       		.byte	0
- 484 01ae 00       		.byte	0
- 485 01af 80       		.byte	-128
- 486 01b0 E0       		.byte	-32
- 487 01b1 00       		.byte	0
- 488 01b2 FE       		.byte	-2
- 489 01b3 1F       		.byte	31
- 490 01b4 00       		.byte	0
- 491 01b5 04       		.byte	4
- 492 01b6 8C       		.byte	-116
- 493 01b7 00       		.byte	0
- 494 01b8 04       		.byte	4
- 495 01b9 00       		.byte	0
- 496 01ba 00       		.byte	0
- 497 01bb 00       		.byte	0
- 498 01bc 00       		.byte	0
- 499 01bd 00       		.byte	0
- 500 01be 00       		.byte	0
- 501 01bf 80       		.byte	-128
- 502 01c0 40       		.byte	64
- 503 01c1 00       		.byte	0
- 504 01c2 02       		.byte	2
- 505 01c3 28       		.byte	40
- 506 01c4 00       		.byte	0
- 507 01c5 04       		.byte	4
- 508 01c6 80       		.byte	-128
- 509 01c7 00       		.byte	0
- 510 01c8 04       		.byte	4
- 511 01c9 00       		.byte	0
- 512 01ca 00       		.byte	0
- 513 01cb 00       		.byte	0
- 514 01cc 00       		.byte	0
- 515 01cd 00       		.byte	0
- 516 01ce 00       		.byte	0
- 517 01cf 80       		.byte	-128
- 518 01d0 40       		.byte	64
- 519 01d1 00       		.byte	0
- 520 01d2 01       		.byte	1
- 521 01d3 40       		.byte	64
- 522 01d4 00       		.byte	0
- 523 01d5 04       		.byte	4
- 524 01d6 80       		.byte	-128
- 525 01d7 00       		.byte	0
- 526 01d8 04       		.byte	4
- 527 01d9 00       		.byte	0
- 528 01da 00       		.byte	0
- 529 01db 00       		.byte	0
- 530 01dc 00       		.byte	0
- 531 01dd 00       		.byte	0
- 532 01de 00       		.byte	0
- 533 01df 00       		.byte	0
- 534 01e0 41       		.byte	65
- 535 01e1 00       		.byte	0
- 536 01e2 01       		.byte	1
- 537 01e3 80       		.byte	-128
- 538 01e4 00       		.byte	0
- 539 01e5 04       		.byte	4
- 540 01e6 80       		.byte	-128
- 541 01e7 00       		.byte	0
- 542 01e8 04       		.byte	4
- 543 01e9 00       		.byte	0
- 544 01ea 00       		.byte	0
- 545 01eb 00       		.byte	0
- 546 01ec 00       		.byte	0
- 547 01ed 00       		.byte	0
- 548 01ee 00       		.byte	0
- 549 01ef 00       		.byte	0
- 550 01f0 41       		.byte	65
- 551 01f1 80       		.byte	-128
- 552 01f2 01       		.byte	1
- 553 01f3 80       		.byte	-128
- 554 01f4 00       		.byte	0
- 555 01f5 04       		.byte	4
- 556 01f6 80       		.byte	-128
- 557 01f7 00       		.byte	0
- 558 01f8 C4       		.byte	-60
- 559 01f9 03       		.byte	3
- 560 01fa 00       		.byte	0
- 561 01fb 00       		.byte	0
- 562 01fc 00       		.byte	0
- 563 01fd 00       		.byte	0
- 564 01fe 00       		.byte	0
- 565 01ff 00       		.byte	0
- 566 0200 42       		.byte	66
- 567 0201 80       		.byte	-128
- 568 0202 00       		.byte	0
- 569 0203 00       		.byte	0
- 570 0204 01       		.byte	1
- 571 0205 00       		.byte	0
- 572 0206 00       		.byte	0
- 573 0207 00       		.byte	0
- 574 0208 74       		.byte	116
- 575 0209 00       		.byte	0
- 576 020a 00       		.byte	0
- 577 020b 00       		.byte	0
- 578 020c 00       		.byte	0
- 579 020d 00       		.byte	0
- 580 020e 00       		.byte	0
- 581 020f 00       		.byte	0
- 582 0210 44       		.byte	68
- 583 0211 80       		.byte	-128
- 584 0212 00       		.byte	0
- 585 0213 00       		.byte	0
- 586 0214 06       		.byte	6
- 587 0215 00       		.byte	0
- 588 0216 00       		.byte	0
- 589 0217 00       		.byte	0
- 590 0218 0C       		.byte	12
- 591 0219 00       		.byte	0
- 592 021a 00       		.byte	0
- 593 021b 00       		.byte	0
- 594 021c 00       		.byte	0
- 595 021d 00       		.byte	0
- 596 021e 00       		.byte	0
- 597 021f 00       		.byte	0
- 598 0220 24       		.byte	36
- 599 0221 C0       		.byte	-64
- 600 0222 00       		.byte	0
- 601 0223 00       		.byte	0
- 602 0224 04       		.byte	4
- 603 0225 00       		.byte	0
- 604 0226 00       		.byte	0
- 605 0227 00       		.byte	0
- 606 0228 00       		.byte	0
- 607 0229 00       		.byte	0
- 608 022a 00       		.byte	0
- 609 022b 00       		.byte	0
- 610 022c 00       		.byte	0
- 611 022d 00       		.byte	0
- 612 022e 00       		.byte	0
- 613 022f 00       		.byte	0
- 614 0230 38       		.byte	56
- 615 0231 40       		.byte	64
- 616 0232 00       		.byte	0
- 617 0233 00       		.byte	0
- 618 0234 18       		.byte	24
- 619 0235 00       		.byte	0
- 620 0236 00       		.byte	0
- 621 0237 00       		.byte	0
- 622 0238 00       		.byte	0
- 623 0239 00       		.byte	0
- 624 023a 00       		.byte	0
- 625 023b 00       		.byte	0
- 626 023c 00       		.byte	0
- 627 023d 00       		.byte	0
- 628 023e 00       		.byte	0
- 629 023f 00       		.byte	0
- 630 0240 00       		.byte	0
- 631 0241 40       		.byte	64
- 632 0242 00       		.byte	0
- 633 0243 00       		.byte	0
- 634 0244 10       		.byte	16
- 635 0245 00       		.byte	0
- 636 0246 00       		.byte	0
- 637 0247 00       		.byte	0
- 638 0248 00       		.byte	0
- 639 0249 00       		.byte	0
- 640 024a 00       		.byte	0
- 641 024b 00       		.byte	0
- 642 024c 00       		.byte	0
- 643 024d 00       		.byte	0
- 644 024e 00       		.byte	0
- 645 024f 00       		.byte	0
- 646 0250 00       		.byte	0
- 647 0251 40       		.byte	64
- 648 0252 00       		.byte	0
- 649 0253 00       		.byte	0
- 650 0254 00       		.byte	0
- 651 0255 00       		.byte	0
- 652 0256 00       		.byte	0
- 653 0257 00       		.byte	0
- 654 0258 00       		.byte	0
- 655 0259 00       		.byte	0
- 656 025a 00       		.byte	0
- 657 025b 00       		.byte	0
- 658 025c 00       		.byte	0
- 659 025d 00       		.byte	0
- 660 025e 00       		.byte	0
- 661 025f 00       		.byte	0
- 662 0260 00       		.byte	0
- 663 0261 40       		.byte	64
- 664 0262 00       		.byte	0
- 665 0263 00       		.byte	0
- 666 0264 00       		.byte	0
- 667 0265 00       		.byte	0
- 668 0266 00       		.byte	0
- 669 0267 00       		.byte	0
- 670 0268 00       		.byte	0
- 671 0269 00       		.byte	0
- 672 026a 00       		.byte	0
- 673 026b 00       		.byte	0
- 674 026c 00       		.byte	0
- 675 026d 00       		.byte	0
- 676 026e 00       		.byte	0
- 677 026f 00       		.byte	0
- 678 0270 00       		.byte	0
- 679 0271 00       		.byte	0
- 680 0272 00       		.byte	0
- 681 0273 00       		.byte	0
- 682 0274 00       		.byte	0
- 683 0275 00       		.byte	0
- 684 0276 00       		.byte	0
- 685 0277 00       		.byte	0
- 686 0278 00       		.byte	0
- 687 0279 00       		.byte	0
- 688 027a 00       		.byte	0
- 689 027b 00       		.byte	0
- 690 027c 00       		.byte	0
- 691 027d 00       		.byte	0
- 692 027e 00       		.byte	0
- 693 027f 00       		.byte	0
- 694 0280 00       		.byte	0
- 695 0281 00       		.byte	0
- 696 0282 00       		.byte	0
- 697 0283 00       		.byte	0
- 698 0284 00       		.byte	0
- 699 0285 00       		.byte	0
- 700 0286 00       		.byte	0
- 701 0287 00       		.byte	0
- 702 0288 00       		.byte	0
- 703 0289 00       		.byte	0
- 704 028a 00       		.byte	0
- 705 028b 00       		.byte	0
- 706 028c 00       		.byte	0
- 707 028d 00       		.byte	0
- 708 028e 00       		.byte	0
- 709 028f 00       		.byte	0
- 710 0290 00       		.byte	0
- 711 0291 00       		.byte	0
- 712 0292 00       		.byte	0
- 713 0293 00       		.byte	0
- 714 0294 00       		.byte	0
- 715 0295 00       		.byte	0
- 716 0296 00       		.byte	0
- 717 0297 00       		.byte	0
- 718 0298 00       		.byte	0
- 719 0299 00       		.byte	0
- 720 029a 00       		.byte	0
- 721 029b 00       		.byte	0
- 722 029c 00       		.byte	0
- 723 029d 00       		.byte	0
- 724 029e 00       		.byte	0
- 725 029f 00       		.byte	0
- 726 02a0 00       		.byte	0
- 727 02a1 00       		.byte	0
- 728 02a2 00       		.byte	0
- 729 02a3 00       		.byte	0
- 730 02a4 00       		.byte	0
- 731 02a5 00       		.byte	0
- 732 02a6 00       		.byte	0
- 733 02a7 00       		.byte	0
- 734 02a8 00       		.byte	0
- 735 02a9 00       		.byte	0
- 736 02aa 00       		.byte	0
- 737 02ab 00       		.byte	0
- 738 02ac 00       		.byte	0
- 739 02ad 00       		.byte	0
- 740 02ae 00       		.byte	0
- 741 02af 00       		.byte	0
- 742 02b0 00       		.byte	0
- 743 02b1 00       		.byte	0
- 744 02b2 00       		.byte	0
- 745 02b3 00       		.byte	0
- 746 02b4 00       		.byte	0
- 747 02b5 00       		.byte	0
- 748 02b6 00       		.byte	0
- 749 02b7 00       		.byte	0
- 750 02b8 00       		.byte	0
- 751 02b9 00       		.byte	0
- 752 02ba 00       		.byte	0
- 753 02bb 00       		.byte	0
- 754 02bc 00       		.byte	0
- 755 02bd 00       		.byte	0
- 756 02be 00       		.byte	0
- 757 02bf 00       		.byte	0
- 758 02c0 00       		.byte	0
- 759 02c1 00       		.byte	0
- 760 02c2 00       		.byte	0
- 761 02c3 00       		.byte	0
- 762 02c4 00       		.byte	0
- 763 02c5 00       		.byte	0
- 764 02c6 00       		.byte	0
- 765 02c7 00       		.byte	0
- 766 02c8 00       		.byte	0
- 767 02c9 00       		.byte	0
- 768 02ca 00       		.byte	0
- 769 02cb 00       		.byte	0
- 770 02cc 00       		.byte	0
- 771 02cd 00       		.byte	0
- 772 02ce 00       		.byte	0
- 773 02cf 00       		.byte	0
- 774 02d0 00       		.byte	0
- 775 02d1 00       		.byte	0
- 776 02d2 00       		.byte	0
- 777 02d3 00       		.byte	0
- 778 02d4 00       		.byte	0
- 779 02d5 00       		.byte	0
- 780 02d6 00       		.byte	0
- 781 02d7 00       		.byte	0
- 782 02d8 00       		.byte	0
- 783 02d9 00       		.byte	0
- 784 02da 00       		.byte	0
- 785 02db 00       		.byte	0
- 786 02dc 00       		.byte	0
- 787 02dd 00       		.byte	0
- 788 02de 00       		.byte	0
- 789 02df 00       		.byte	0
- 790 02e0 00       		.byte	0
- 791 02e1 00       		.byte	0
- 792 02e2 00       		.byte	0
- 793 02e3 00       		.byte	0
- 794 02e4 00       		.byte	0
- 795 02e5 00       		.byte	0
- 796 02e6 00       		.byte	0
- 797 02e7 00       		.byte	0
- 798 02e8 00       		.byte	0
- 799 02e9 00       		.byte	0
- 800 02ea 00       		.byte	0
- 801 02eb 00       		.byte	0
- 802 02ec 00       		.byte	0
- 803 02ed 00       		.byte	0
- 804 02ee 00       		.byte	0
- 805 02ef 00       		.byte	0
- 806 02f0 00       		.byte	0
- 807 02f1 00       		.byte	0
- 808 02f2 00       		.byte	0
- 809 02f3 00       		.byte	0
- 810 02f4 00       		.byte	0
- 811 02f5 00       		.byte	0
- 812 02f6 00       		.byte	0
- 813 02f7 00       		.byte	0
- 814 02f8 00       		.byte	0
- 815 02f9 00       		.byte	0
- 816 02fa 00       		.byte	0
- 817 02fb 00       		.byte	0
- 818 02fc 00       		.byte	0
- 819 02fd 00       		.byte	0
- 820 02fe 00       		.byte	0
- 821 02ff 00       		.byte	0
- 822 0300 00       		.byte	0
- 823 0301 00       		.byte	0
- 824 0302 00       		.byte	0
- 825 0303 00       		.byte	0
- 826 0304 00       		.byte	0
- 827 0305 00       		.byte	0
- 828 0306 00       		.byte	0
- 829 0307 00       		.byte	0
- 830 0308 00       		.byte	0
- 831 0309 00       		.byte	0
- 832 030a 00       		.byte	0
- 833 030b 00       		.byte	0
- 834 030c 00       		.byte	0
- 835 030d 00       		.byte	0
- 836 030e 00       		.byte	0
- 837 030f 00       		.byte	0
- 838 0310 00       		.byte	0
- 839 0311 00       		.byte	0
- 840 0312 00       		.byte	0
- 841 0313 00       		.byte	0
- 842 0314 00       		.byte	0
- 843 0315 00       		.byte	0
- 844 0316 00       		.byte	0
- 845 0317 00       		.byte	0
- 846 0318 00       		.byte	0
- 847 0319 00       		.byte	0
- 848 031a 00       		.byte	0
- 849 031b 00       		.byte	0
- 850 031c 00       		.byte	0
- 851 031d 00       		.byte	0
- 852 031e 00       		.byte	0
- 853 031f 00       		.byte	0
- 854 0320 00       		.byte	0
- 855 0321 00       		.byte	0
- 856 0322 00       		.byte	0
- 857 0323 00       		.byte	0
- 858 0324 00       		.byte	0
- 859 0325 00       		.byte	0
- 860 0326 00       		.byte	0
- 861 0327 00       		.byte	0
- 862 0328 00       		.byte	0
- 863 0329 00       		.byte	0
- 864 032a 00       		.byte	0
- 865 032b 00       		.byte	0
- 866 032c 00       		.byte	0
- 867 032d 00       		.byte	0
- 868 032e 00       		.byte	0
- 869 032f 00       		.byte	0
- 870 0330 00       		.byte	0
- 871 0331 00       		.byte	0
- 872 0332 00       		.byte	0
- 873 0333 00       		.byte	0
- 874 0334 00       		.byte	0
- 875 0335 00       		.byte	0
- 876 0336 00       		.byte	0
- 877 0337 00       		.byte	0
- 878 0338 00       		.byte	0
- 879 0339 00       		.byte	0
- 880 033a 00       		.byte	0
- 881 033b 00       		.byte	0
- 882 033c 00       		.byte	0
- 883 033d 00       		.byte	0
- 884 033e 00       		.byte	0
- 885 033f 00       		.byte	0
- 886 0340 00       		.byte	0
- 887 0341 00       		.byte	0
- 888 0342 00       		.byte	0
- 889 0343 00       		.byte	0
- 890 0344 00       		.byte	0
- 891 0345 00       		.byte	0
- 892 0346 00       		.byte	0
- 893 0347 00       		.byte	0
- 894 0348 00       		.byte	0
- 895 0349 00       		.byte	0
- 896 034a 00       		.byte	0
- 897 034b 00       		.byte	0
- 898 034c 00       		.byte	0
- 899 034d 00       		.byte	0
- 900 034e 00       		.byte	0
- 901 034f 00       		.byte	0
- 902 0350 00       		.byte	0
- 903 0351 00       		.byte	0
- 904 0352 00       		.byte	0
- 905 0353 00       		.byte	0
- 906 0354 00       		.byte	0
- 907 0355 00       		.byte	0
- 908 0356 00       		.byte	0
- 909 0357 00       		.byte	0
- 910 0358 00       		.byte	0
- 911 0359 00       		.byte	0
- 912 035a 00       		.byte	0
- 913 035b 00       		.byte	0
- 914 035c 00       		.byte	0
- 915 035d 00       		.byte	0
- 916 035e 00       		.byte	0
- 917 035f 00       		.byte	0
- 918 0360 00       		.byte	0
- 919 0361 00       		.byte	0
- 920 0362 00       		.byte	0
- 921 0363 00       		.byte	0
- 922 0364 00       		.byte	0
- 923 0365 00       		.byte	0
- 924 0366 00       		.byte	0
- 925 0367 00       		.byte	0
- 926 0368 00       		.byte	0
- 927 0369 00       		.byte	0
- 928 036a 00       		.byte	0
- 929 036b 00       		.byte	0
- 930 036c 00       		.byte	0
- 931 036d 00       		.byte	0
- 932 036e 00       		.byte	0
- 933 036f 00       		.byte	0
- 934 0370 00       		.byte	0
- 935 0371 00       		.byte	0
- 936 0372 00       		.byte	0
- 937 0373 00       		.byte	0
- 938 0374 00       		.byte	0
- 939 0375 00       		.byte	0
- 940 0376 00       		.byte	0
- 941 0377 00       		.byte	0
- 942 0378 00       		.byte	0
- 943 0379 00       		.byte	0
- 944 037a 00       		.byte	0
- 945 037b 00       		.byte	0
- 946 037c 00       		.byte	0
- 947 037d 00       		.byte	0
- 948 037e 00       		.byte	0
- 949 037f 00       		.byte	0
- 950 0380 00       		.byte	0
- 951 0381 00       		.byte	0
- 952 0382 00       		.byte	0
- 953 0383 00       		.byte	0
- 954 0384 00       		.byte	0
- 955 0385 00       		.byte	0
- 956 0386 00       		.byte	0
- 957 0387 00       		.byte	0
- 958 0388 00       		.byte	0
- 959 0389 00       		.byte	0
- 960 038a 00       		.byte	0
- 961 038b 00       		.byte	0
- 962 038c 00       		.byte	0
- 963 038d 00       		.byte	0
- 964 038e 00       		.byte	0
- 965 038f 00       		.byte	0
- 966 0390 00       		.byte	0
- 967 0391 00       		.byte	0
- 968 0392 00       		.byte	0
- 969 0393 00       		.byte	0
- 970 0394 00       		.byte	0
- 971 0395 00       		.byte	0
- 972 0396 00       		.byte	0
- 973 0397 00       		.byte	0
- 974 0398 00       		.byte	0
- 975 0399 00       		.byte	0
- 976 039a 00       		.byte	0
- 977 039b 00       		.byte	0
- 978 039c 00       		.byte	0
- 979 039d 00       		.byte	0
- 980 039e 00       		.byte	0
- 981 039f 00       		.byte	0
- 982 03a0 00       		.byte	0
- 983 03a1 00       		.byte	0
- 984 03a2 00       		.byte	0
- 985 03a3 00       		.byte	0
- 986 03a4 00       		.byte	0
- 987 03a5 00       		.byte	0
- 988 03a6 00       		.byte	0
- 989 03a7 00       		.byte	0
- 990 03a8 00       		.byte	0
- 991 03a9 00       		.byte	0
- 992 03aa 00       		.byte	0
- 993 03ab 00       		.byte	0
- 994 03ac 00       		.byte	0
- 995 03ad 00       		.byte	0
- 996 03ae 00       		.byte	0
- 997 03af 00       		.byte	0
- 998 03b0 00       		.byte	0
- 999 03b1 00       		.byte	0
- 1000 03b2 00       		.byte	0
- 1001 03b3 00       		.byte	0
- 1002 03b4 00       		.byte	0
- 1003 03b5 00       		.byte	0
- 1004 03b6 00       		.byte	0
- 1005 03b7 00       		.byte	0
- 1006 03b8 00       		.byte	0
- 1007 03b9 00       		.byte	0
- 1008 03ba 00       		.byte	0
- 1009 03bb 00       		.byte	0
- 1010 03bc 00       		.byte	0
- 1011 03bd 00       		.byte	0
- 1012 03be 00       		.byte	0
- 1013 03bf 00       		.byte	0
- 1014 03c0 00       		.byte	0
- 1015 03c1 00       		.byte	0
- 1016 03c2 00       		.byte	0
- 1017 03c3 00       		.byte	0
- 1018 03c4 00       		.byte	0
- 1019 03c5 00       		.byte	0
- 1020 03c6 00       		.byte	0
- 1021 03c7 00       		.byte	0
- 1022 03c8 00       		.byte	0
- 1023 03c9 00       		.byte	0
- 1024 03ca 00       		.byte	0
- 1025 03cb 00       		.byte	0
- 1026 03cc 00       		.byte	0
- 1027 03cd 00       		.byte	0
- 1028 03ce 00       		.byte	0
- 1029 03cf 00       		.byte	0
- 1030 03d0 00       		.byte	0
- 1031 03d1 00       		.byte	0
- 1032 03d2 00       		.byte	0
- 1033 03d3 00       		.byte	0
- 1034 03d4 00       		.byte	0
- 1035 03d5 00       		.byte	0
- 1036 03d6 00       		.byte	0
- 1037 03d7 00       		.byte	0
- 1038 03d8 00       		.byte	0
- 1039 03d9 00       		.byte	0
- 1040 03da 00       		.byte	0
- 1041 03db 00       		.byte	0
- 1042 03dc 00       		.byte	0
- 1043 03dd 00       		.byte	0
- 1044 03de 00       		.byte	0
- 1045 03df 00       		.byte	0
- 1046 03e0 00       		.byte	0
- 1047 03e1 00       		.byte	0
- 1048 03e2 00       		.byte	0
- 1049 03e3 00       		.byte	0
- 1050 03e4 00       		.byte	0
- 1051 03e5 00       		.byte	0
- 1052 03e6 00       		.byte	0
- 1053 03e7 00       		.byte	0
- 1054 03e8 00       		.byte	0
- 1055 03e9 00       		.byte	0
- 1056 03ea 00       		.byte	0
- 1057 03eb 00       		.byte	0
- 1058 03ec 00       		.byte	0
- 1059 03ed 00       		.byte	0
- 1060 03ee 00       		.byte	0
- 1061 03ef 00       		.byte	0
- 1062 03f0 00       		.byte	0
- 1063 03f1 00       		.byte	0
- 1064 03f2 00       		.byte	0
- 1065 03f3 00       		.byte	0
- 1066 03f4 00       		.byte	0
- 1067 03f5 00       		.byte	0
- 1068 03f6 00       		.byte	0
- 1069 03f7 00       		.byte	0
- 1070 03f8 00       		.byte	0
- 1071 03f9 00       		.byte	0
- 1072 03fa 00       		.byte	0
- 1073 03fb 00       		.byte	0
- 1074 03fc 00       		.byte	0
- 1075 03fd 00       		.byte	0
- 1076 03fe 00       		.byte	0
- 1077 03ff 00       		.byte	0
- 1078 0400 00       		.byte	0
- 1079 0401 00       		.byte	0
- 1080 0402 00       		.byte	0
- 1081 0403 00       		.byte	0
- 1082 0404 00       		.byte	0
- 1083 0405 00       		.byte	0
- 1084 0406 00       		.byte	0
- 1085 0407 00       		.byte	0
- 1086 0408 00       		.byte	0
- 1087 0409 00       		.byte	0
- 1088 040a 00       		.byte	0
- 1089 040b 00       		.byte	0
- 1090              		.align	2
- 1093              	ship_bits:
- 1094 040c 00       		.byte	0
- 1095 040d 01       		.byte	1
- 1096 040e 00       		.byte	0
- 1097 040f 00       		.byte	0
- 1098 0410 01       		.byte	1
- 1099 0411 00       		.byte	0
- 1100 0412 C0       		.byte	-64
- 1101 0413 07       		.byte	7
- 1102 0414 00       		.byte	0
- 1103 0415 60       		.byte	96
- 1104 0416 0C       		.byte	12
- 1105 0417 00       		.byte	0
- 1106 0418 20       		.byte	32
- 1107 0419 08       		.byte	8
- 1108 041a 00       		.byte	0
- 1109 041b 20       		.byte	32
- 1110 041c 08       		.byte	8
- 1111 041d 00       		.byte	0
- 1112 041e 30       		.byte	48
- 1113 041f 18       		.byte	24
- 1114 0420 00       		.byte	0
- 1115 0421 18       		.byte	24
- 1116 0422 30       		.byte	48
- 1117 0423 00       		.byte	0
- 1118 0424 08       		.byte	8
- 1119 0425 20       		.byte	32
- 1120 0426 00       		.byte	0
- 1121 0427 08       		.byte	8
- 1122 0428 20       		.byte	32
- 1123 0429 00       		.byte	0
- 1124 042a 0C       		.byte	12
- 1125 042b 60       		.byte	96
- 1126 042c 00       		.byte	0
- 1127 042d 44       		.byte	68
- 1128 042e 44       		.byte	68
- 1129 042f 00       		.byte	0
- 1130 0430 F4       		.byte	-12
- 1131 0431 5F       		.byte	95
- 1132 0432 00       		.byte	0
- 1133 0433 1C       		.byte	28
- 1134 0434 70       		.byte	112
- 1135 0435 00       		.byte	0
- 1136 0436 08       		.byte	8
- 1137 0437 20       		.byte	32
- 1138 0438 00       		.byte	0
- 1139 0439 00       		.byte	0
- 1140 043a 00       		.byte	0
- 1141 043b 00       		.byte	0
- 1142 043c 00       		.byte	0
- 1143 043d 00       		.byte	0
- 1144 043e 00       		.byte	0
- 1145 043f 00       		.byte	0
- 1146 0440 00       		.byte	0
- 1147 0441 00       		.byte	0
- 1148 0442 00       		.byte	0
- 1149 0443 00       		.byte	0
- 1150 0444 00       		.byte	0
- 1151 0445 00       		.byte	0
- 1152 0446 00       		.byte	0
- 1153 0447 00       		.byte	0
- 1154              		.text
- 1155              		.align	1
- 1156              		.syntax unified
- 1157              		.code	16
- 1158              		.thumb_func
- 1159              		.fpu softvfp
- 1161              	load_sprite:
- 1162              	.LFB1:
-  21:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  22:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** typedef struct
-  23:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  24:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char width;
-  25:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char height;
-  26:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char* data;
-  27:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //void(*move)(struct sprite *);
-  28:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //void(*set_speed)(struct tObj *, int, int);
-  29:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** } sprite;
-  30:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  31:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static void load_sprite(sprite* s, unsigned char* data, int width, int height)
-  32:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
- 1163              		.loc 1 32 0
- 1164              		.cfi_startproc
- 1165              		@ args = 0, pretend = 0, frame = 16
- 1166              		@ frame_needed = 1, uses_anonymous_args = 0
- 1167 0000 80B5     		push	{r7, lr}
- 1168              		.cfi_def_cfa_offset 8
- 1169              		.cfi_offset 7, -8
- 1170              		.cfi_offset 14, -4
- 1171 0002 84B0     		sub	sp, sp, #16
- 1172              		.cfi_def_cfa_offset 24
- 1173 0004 00AF     		add	r7, sp, #0
- 1174              		.cfi_def_cfa_register 7
- 1175 0006 F860     		str	r0, [r7, #12]
- 1176 0008 B960     		str	r1, [r7, #8]
- 1177 000a 7A60     		str	r2, [r7, #4]
- 1178 000c 3B60     		str	r3, [r7]
-  33:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->width = width;
- 1179              		.loc 1 33 0
- 1180 000e 7B68     		ldr	r3, [r7, #4]
- 1181 0010 DAB2     		uxtb	r2, r3
- 1182 0012 FB68     		ldr	r3, [r7, #12]
- 1183 0014 1A70     		strb	r2, [r3]
-  34:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->height = height;
- 1184              		.loc 1 34 0
- 1185 0016 3B68     		ldr	r3, [r7]
- 1186 0018 DAB2     		uxtb	r2, r3
- 1187 001a FB68     		ldr	r3, [r7, #12]
- 1188 001c 5A70     		strb	r2, [r3, #1]
-  35:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** s->data = data;
- 1189              		.loc 1 35 0
- 1190 001e FB68     		ldr	r3, [r7, #12]
- 1191 0020 BA68     		ldr	r2, [r7, #8]
- 1192 0022 5A60     		str	r2, [r3, #4]
-  36:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1193              		.loc 1 36 0
- 1194 0024 C046     		nop
- 1195 0026 BD46     		mov	sp, r7
- 1196 0028 04B0     		add	sp, sp, #16
- 1197              		@ sp needed
- 1198 002a 80BD     		pop	{r7, pc}
- 1199              		.cfi_endproc
- 1200              	.LFE1:
- 1202              		.align	1
- 1203              		.global	draw_sprite
- 1204              		.syntax unified
- 1205              		.code	16
- 1206              		.thumb_func
- 1207              		.fpu softvfp
- 1209              	draw_sprite:
- 1210              	.LFB2:
-  37:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  38:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void draw_sprite(sprite* s, int x, int y, int set) {
- 1211              		.loc 1 38 0
- 1212              		.cfi_startproc
- 1213              		@ args = 0, pretend = 0, frame = 40
- 1214              		@ frame_needed = 1, uses_anonymous_args = 0
- 1215 002c 80B5     		push	{r7, lr}
- 1216              		.cfi_def_cfa_offset 8
- 1217              		.cfi_offset 7, -8
- 1218              		.cfi_offset 14, -4
- 1219 002e 8AB0     		sub	sp, sp, #40
- 1220              		.cfi_def_cfa_offset 48
- 1221 0030 00AF     		add	r7, sp, #0
- 1222              		.cfi_def_cfa_register 7
- 1223 0032 F860     		str	r0, [r7, #12]
- 1224 0034 B960     		str	r1, [r7, #8]
- 1225 0036 7A60     		str	r2, [r7, #4]
- 1226 0038 3B60     		str	r3, [r7]
-  39:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int i,j,k, width_in_bytes;
-  40:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (s->width % 8 == 0)
- 1227              		.loc 1 40 0
- 1228 003a FB68     		ldr	r3, [r7, #12]
- 1229 003c 1B78     		ldrb	r3, [r3]
- 1230 003e 0722     		movs	r2, #7
- 1231 0040 1340     		ands	r3, r2
- 1232 0042 DBB2     		uxtb	r3, r3
- 1233 0044 002B     		cmp	r3, #0
- 1234 0046 05D1     		bne	.L4
-  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8;
- 1235              		.loc 1 41 0
- 1236 0048 FB68     		ldr	r3, [r7, #12]
- 1237 004a 1B78     		ldrb	r3, [r3]
- 1238 004c DB08     		lsrs	r3, r3, #3
- 1239 004e DBB2     		uxtb	r3, r3
- 1240 0050 BB61     		str	r3, [r7, #24]
- 1241 0052 05E0     		b	.L5
- 1242              	.L4:
-  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** else
-  43:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** width_in_bytes = s->width / 8 + 1;
- 1243              		.loc 1 43 0
- 1244 0054 FB68     		ldr	r3, [r7, #12]
- 1245 0056 1B78     		ldrb	r3, [r3]
- 1246 0058 DB08     		lsrs	r3, r3, #3
- 1247 005a DBB2     		uxtb	r3, r3
- 1248 005c 0133     		adds	r3, r3, #1
- 1249 005e BB61     		str	r3, [r7, #24]
- 1250              	.L5:
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (i = 0; i < s->height; i++)
- 1251              		.loc 1 44 0
- 1252 0060 0023     		movs	r3, #0
- 1253 0062 7B62     		str	r3, [r7, #36]
- 1254 0064 39E0     		b	.L6
- 1255              	.L12:
-  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1256              		.loc 1 45 0
- 1257 0066 0023     		movs	r3, #0
- 1258 0068 3B62     		str	r3, [r7, #32]
- 1259 006a 2FE0     		b	.L7
- 1260              	.L11:
- 1261              	.LBB2:
-  46:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1262              		.loc 1 46 0
- 1263 006c FB68     		ldr	r3, [r7, #12]
- 1264 006e 5B68     		ldr	r3, [r3, #4]
- 1265 0070 7A6A     		ldr	r2, [r7, #36]
- 1266 0072 B969     		ldr	r1, [r7, #24]
- 1267 0074 5143     		muls	r1, r2
- 1268 0076 3A6A     		ldr	r2, [r7, #32]
- 1269 0078 8A18     		adds	r2, r1, r2
- 1270 007a 9A18     		adds	r2, r3, r2
- 1271 007c 1723     		movs	r3, #23
- 1272 007e FB18     		adds	r3, r7, r3
- 1273 0080 1278     		ldrb	r2, [r2]
- 1274 0082 1A70     		strb	r2, [r3]
-  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1275              		.loc 1 47 0
- 1276 0084 0023     		movs	r3, #0
- 1277 0086 FB61     		str	r3, [r7, #28]
- 1278 0088 1AE0     		b	.L8
- 1279              	.L10:
-  48:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** if (byte & (1 << k))
- 1280              		.loc 1 48 0
- 1281 008a 1723     		movs	r3, #23
- 1282 008c FB18     		adds	r3, r7, r3
- 1283 008e 1A78     		ldrb	r2, [r3]
- 1284 0090 FB69     		ldr	r3, [r7, #28]
- 1285 0092 1A41     		asrs	r2, r2, r3
- 1286 0094 1300     		movs	r3, r2
- 1287 0096 0122     		movs	r2, #1
- 1288 0098 1340     		ands	r3, r2
- 1289 009a 0ED0     		beq	.L9
-  49:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** pixel(8 * j + k + x + 1, i + y + 1);
- 1290              		.loc 1 49 0
- 1291 009c 3B6A     		ldr	r3, [r7, #32]
- 1292 009e DA00     		lsls	r2, r3, #3
- 1293 00a0 FB69     		ldr	r3, [r7, #28]
- 1294 00a2 D218     		adds	r2, r2, r3
- 1295 00a4 BB68     		ldr	r3, [r7, #8]
- 1296 00a6 D318     		adds	r3, r2, r3
- 1297 00a8 0133     		adds	r3, r3, #1
- 1298 00aa 1800     		movs	r0, r3
- 1299 00ac 7A6A     		ldr	r2, [r7, #36]
- 1300 00ae 7B68     		ldr	r3, [r7, #4]
- 1301 00b0 D318     		adds	r3, r2, r3
- 1302 00b2 0133     		adds	r3, r3, #1
- 1303 00b4 1900     		movs	r1, r3
- 1304 00b6 FFF7FEFF 		bl	pixel
- 1305              	.L9:
-  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1306              		.loc 1 47 0 discriminator 2
- 1307 00ba FB69     		ldr	r3, [r7, #28]
- 1308 00bc 0133     		adds	r3, r3, #1
- 1309 00be FB61     		str	r3, [r7, #28]
- 1310              	.L8:
-  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (k =0; k < 8; k++) {
- 1311              		.loc 1 47 0 is_stmt 0 discriminator 1
- 1312 00c0 FB69     		ldr	r3, [r7, #28]
- 1313 00c2 072B     		cmp	r3, #7
- 1314 00c4 E1DD     		ble	.L10
- 1315              	.LBE2:
-  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1316              		.loc 1 45 0 is_stmt 1 discriminator 2
- 1317 00c6 3B6A     		ldr	r3, [r7, #32]
- 1318 00c8 0133     		adds	r3, r3, #1
- 1319 00ca 3B62     		str	r3, [r7, #32]
- 1320              	.L7:
-  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** unsigned char byte = s->data[i * width_in_bytes + j];
- 1321              		.loc 1 45 0 is_stmt 0 discriminator 1
- 1322 00cc 3A6A     		ldr	r2, [r7, #32]
- 1323 00ce BB69     		ldr	r3, [r7, #24]
- 1324 00d0 9A42     		cmp	r2, r3
- 1325 00d2 CBDB     		blt	.L11
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1326              		.loc 1 44 0 is_stmt 1 discriminator 2
- 1327 00d4 7B6A     		ldr	r3, [r7, #36]
- 1328 00d6 0133     		adds	r3, r3, #1
- 1329 00d8 7B62     		str	r3, [r7, #36]
- 1330              	.L6:
-  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** for (j = 0; j < width_in_bytes; j++) {
- 1331              		.loc 1 44 0 is_stmt 0 discriminator 1
- 1332 00da FB68     		ldr	r3, [r7, #12]
- 1333 00dc 5B78     		ldrb	r3, [r3, #1]
- 1334 00de 1A00     		movs	r2, r3
- 1335 00e0 7B6A     		ldr	r3, [r7, #36]
- 1336 00e2 9342     		cmp	r3, r2
- 1337 00e4 BFDB     		blt	.L12
-  50:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  51:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
-  52:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1338              		.loc 1 52 0 is_stmt 1
- 1339 00e6 C046     		nop
- 1340 00e8 BD46     		mov	sp, r7
- 1341 00ea 0AB0     		add	sp, sp, #40
- 1342              		@ sp needed
- 1343 00ec 80BD     		pop	{r7, pc}
- 1344              		.cfi_endproc
- 1345              	.LFE2:
- 1347              		.global	ball_geometry
- 1348              		.data
- 1349              		.align	2
- 1352              	ball_geometry:
- 1353 0448 0C000000 		.word	12
- 1354 044c 04000000 		.word	4
- 1355 0450 04000000 		.word	4
- 1356 0454 00       		.byte	0
- 1357 0455 01       		.byte	1
- 1358 0456 00       		.byte	0
- 1359 0457 02       		.byte	2
- 1360 0458 01       		.byte	1
- 1361 0459 00       		.byte	0
- 1362 045a 01       		.byte	1
- 1363 045b 01       		.byte	1
- 1364 045c 01       		.byte	1
- 1365 045d 02       		.byte	2
- 1366 045e 01       		.byte	1
- 1367 045f 03       		.byte	3
- 1368 0460 02       		.byte	2
- 1369 0461 00       		.byte	0
- 1370 0462 02       		.byte	2
- 1371 0463 01       		.byte	1
- 1372 0464 02       		.byte	2
- 1373 0465 02       		.byte	2
- 1374 0466 02       		.byte	2
- 1375 0467 03       		.byte	3
- 1376 0468 03       		.byte	3
- 1377 0469 01       		.byte	1
- 1378 046a 03       		.byte	3
- 1379 046b 02       		.byte	2
- 1380 046c 00000000 		.space	16
- 1380      00000000 
- 1380      00000000 
- 1380      00000000 
- 1381              		.align	2
- 1384              	ball:
- 1385 047c 00000000 		.word	ball_geometry
- 1386 0480 FDFFFFFF 		.word	-3
- 1387 0484 03000000 		.word	3
- 1388 0488 01000000 		.word	1
- 1389 048c 01000000 		.word	1
- 1390 0490 00000000 		.word	draw_object
- 1391 0494 00000000 		.word	clear_object
- 1392 0498 00000000 		.word	move_object
- 1393 049c 00000000 		.word	set_object_speed
- 1394              		.section	.rodata
- 1395              		.align	2
- 1396              	.LC0:
- 1397 0000 57656C63 		.ascii	"Welcome \000"
- 1397      6F6D6520 
- 1397      00
- 1398 0009 000000   		.align	2
- 1399              	.LC2:
- 1400 000c 746F2074 		.ascii	"to the game!\000"
- 1400      68652067 
- 1400      616D6521 
- 1400      00
- 1401              		.text
- 1402              		.align	1
- 1403              		.global	ascii_message
- 1404              		.syntax unified
- 1405              		.code	16
- 1406              		.thumb_func
- 1407              		.fpu softvfp
- 1409              	ascii_message:
- 1410              	.LFB3:
-  53:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  54:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY ball_geometry=
-  55:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  56:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	12, //tot pix
-  57:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//bredd
-  58:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//längd
-  59:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
-  60:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,1},{0,2},
-  61:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{1,0},{1,1},{1,2},{1,3},
-  62:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{2,0},{2,1},{2,2},{2,3},
-  63:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{3,1},{3,2},
-  64:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
-  65:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  66:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  67:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT ball=
-  68:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
-  69:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&ball_geometry,
-  70:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	-3,3,
-  71:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
-  72:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
-  73:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
-  74:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
-  75:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
-  76:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
-  77:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  78:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void ascii_message(){
- 1411              		.loc 1 78 0
- 1412              		.cfi_startproc
- 1413              		@ args = 0, pretend = 0, frame = 32
- 1414              		@ frame_needed = 1, uses_anonymous_args = 0
- 1415 00ee B0B5     		push	{r4, r5, r7, lr}
- 1416              		.cfi_def_cfa_offset 16
- 1417              		.cfi_offset 4, -16
- 1418              		.cfi_offset 5, -12
- 1419              		.cfi_offset 7, -8
- 1420              		.cfi_offset 14, -4
- 1421 00f0 88B0     		sub	sp, sp, #32
- 1422              		.cfi_def_cfa_offset 48
- 1423 00f2 00AF     		add	r7, sp, #0
- 1424              		.cfi_def_cfa_register 7
-  79:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char *s;
-  80:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test1[] = "Welcome ";
- 1425              		.loc 1 80 0
- 1426 00f4 1024     		movs	r4, #16
- 1427 00f6 3B19     		adds	r3, r7, r4
- 1428 00f8 194A     		ldr	r2, .L18
- 1429 00fa 03CA     		ldmia	r2!, {r0, r1}
- 1430 00fc 03C3     		stmia	r3!, {r0, r1}
- 1431 00fe 1278     		ldrb	r2, [r2]
- 1432 0100 1A70     		strb	r2, [r3]
-  81:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test2[] = "to the game!";
- 1433              		.loc 1 81 0
- 1434 0102 3B00     		movs	r3, r7
- 1435 0104 174A     		ldr	r2, .L18+4
- 1436 0106 23CA     		ldmia	r2!, {r0, r1, r5}
- 1437 0108 23C3     		stmia	r3!, {r0, r1, r5}
- 1438 010a 1278     		ldrb	r2, [r2]
- 1439 010c 1A70     		strb	r2, [r3]
-  82:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,1);
- 1440              		.loc 1 82 0
- 1441 010e 0121     		movs	r1, #1
- 1442 0110 0120     		movs	r0, #1
- 1443 0112 FFF7FEFF 		bl	ascii_gotoxy
-  83:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test1;
- 1444              		.loc 1 83 0
- 1445 0116 3B19     		adds	r3, r7, r4
- 1446 0118 FB61     		str	r3, [r7, #28]
-  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1447              		.loc 1 84 0
- 1448 011a 06E0     		b	.L14
- 1449              	.L15:
-  85:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
- 1450              		.loc 1 85 0
- 1451 011c FB69     		ldr	r3, [r7, #28]
- 1452 011e 5A1C     		adds	r2, r3, #1
- 1453 0120 FA61     		str	r2, [r7, #28]
- 1454 0122 1B78     		ldrb	r3, [r3]
- 1455 0124 1800     		movs	r0, r3
- 1456 0126 FFF7FEFF 		bl	ascii_write_char
- 1457              	.L14:
-  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1458              		.loc 1 84 0
- 1459 012a FB69     		ldr	r3, [r7, #28]
- 1460 012c 1B78     		ldrb	r3, [r3]
- 1461 012e 002B     		cmp	r3, #0
- 1462 0130 F4D1     		bne	.L15
-  86:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
-  87:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,2);
- 1463              		.loc 1 87 0
- 1464 0132 0221     		movs	r1, #2
- 1465 0134 0120     		movs	r0, #1
- 1466 0136 FFF7FEFF 		bl	ascii_gotoxy
-  88:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test2;
- 1467              		.loc 1 88 0
- 1468 013a 3B00     		movs	r3, r7
- 1469 013c FB61     		str	r3, [r7, #28]
-  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1470              		.loc 1 89 0
- 1471 013e 06E0     		b	.L16
- 1472              	.L17:
-  90:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
- 1473              		.loc 1 90 0
- 1474 0140 FB69     		ldr	r3, [r7, #28]
- 1475 0142 5A1C     		adds	r2, r3, #1
- 1476 0144 FA61     		str	r2, [r7, #28]
- 1477 0146 1B78     		ldrb	r3, [r3]
- 1478 0148 1800     		movs	r0, r3
- 1479 014a FFF7FEFF 		bl	ascii_write_char
- 1480              	.L16:
-  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
- 1481              		.loc 1 89 0
- 1482 014e FB69     		ldr	r3, [r7, #28]
- 1483 0150 1B78     		ldrb	r3, [r3]
- 1484 0152 002B     		cmp	r3, #0
- 1485 0154 F4D1     		bne	.L17
-  91:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
-  92:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1486              		.loc 1 92 0
- 1487 0156 C046     		nop
- 1488 0158 BD46     		mov	sp, r7
- 1489 015a 08B0     		add	sp, sp, #32
- 1490              		@ sp needed
- 1491 015c B0BD     		pop	{r4, r5, r7, pc}
- 1492              	.L19:
- 1493 015e C046     		.align	2
- 1494              	.L18:
- 1495 0160 00000000 		.word	.LC0
- 1496 0164 0C000000 		.word	.LC2
- 1497              		.cfi_endproc
- 1498              	.LFE3:
- 1500              		.align	1
- 1501              		.global	init_spel
- 1502              		.syntax unified
- 1503              		.code	16
- 1504              		.thumb_func
- 1505              		.fpu softvfp
- 1507              	init_spel:
- 1508              	.LFB4:
-  93:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
-  94:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void init_spel(){
- 1509              		.loc 1 94 0
- 1510              		.cfi_startproc
- 1511              		@ args = 0, pretend = 0, frame = 0
- 1512              		@ frame_needed = 1, uses_anonymous_args = 0
- 1513 0168 80B5     		push	{r7, lr}
- 1514              		.cfi_def_cfa_offset 8
- 1515              		.cfi_offset 7, -8
- 1516              		.cfi_offset 14, -4
- 1517 016a 00AF     		add	r7, sp, #0
- 1518              		.cfi_def_cfa_register 7
-  95:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	GPIO_MODER_E = 0x55555555;
- 1519              		.loc 1 95 0
- 1520 016c 034B     		ldr	r3, .L21
- 1521 016e 044A     		ldr	r2, .L21+4
- 1522 0170 1A60     		str	r2, [r3]
-  96:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_init();
- 1523              		.loc 1 96 0
- 1524 0172 FFF7FEFF 		bl	ascii_init
-  97:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	//ascii_message();
-  98:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
- 1525              		.loc 1 98 0
- 1526 0176 C046     		nop
- 1527 0178 BD46     		mov	sp, r7
- 1528              		@ sp needed
- 1529 017a 80BD     		pop	{r7, pc}
- 1530              	.L22:
- 1531              		.align	2
- 1532              	.L21:
- 1533 017c 00100240 		.word	1073876992
- 1534 0180 55555555 		.word	1431655765
- 1535              		.cfi_endproc
- 1536              	.LFE4:
- 1538              		.align	1
- 1539              		.global	main
- 1540              		.syntax unified
- 1541              		.code	16
- 1542              		.thumb_func
- 1543              		.fpu softvfp
- 1545              	main:
- 1546              	.LFB5:
-  99:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
- 100:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
- 101:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int main(int argc, char **argv)
- 102:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
- 1547              		.loc 1 102 0
- 1548              		.cfi_startproc
- 1549              		@ args = 0, pretend = 0, frame = 24
- 1550              		@ frame_needed = 1, uses_anonymous_args = 0
- 1551 0184 80B5     		push	{r7, lr}
- 1552              		.cfi_def_cfa_offset 8
- 1553              		.cfi_offset 7, -8
- 1554              		.cfi_offset 14, -4
- 1555 0186 86B0     		sub	sp, sp, #24
- 1556              		.cfi_def_cfa_offset 32
- 1557 0188 00AF     		add	r7, sp, #0
- 1558              		.cfi_def_cfa_register 7
- 1559 018a 7860     		str	r0, [r7, #4]
- 1560 018c 3960     		str	r1, [r7]
- 103:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	init_spel();
- 1561              		.loc 1 103 0
- 1562 018e FFF7FEFF 		bl	init_spel
- 104:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT p = &ball;
- 1563              		.loc 1 104 0
- 1564 0192 174B     		ldr	r3, .L25
- 1565 0194 7B61     		str	r3, [r7, #20]
- 105:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* plant;
- 106:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* backGround;
- 107:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	sprite* ship;
- 108:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_init();
- 1566              		.loc 1 108 0
- 1567 0196 FFF7FEFF 		bl	graphic_init
- 109:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #ifndef	SIMULATOR
- 110:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_clear_screen();
- 111:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #endif
- 112:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
- 113:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	load_sprite(plant, plant_bits, plant_width, plant_height);
- 1568              		.loc 1 113 0
- 1569 019a 1649     		ldr	r1, .L25+4
- 1570 019c 3869     		ldr	r0, [r7, #16]
- 1571 019e 0A23     		movs	r3, #10
- 1572 01a0 0722     		movs	r2, #7
- 1573 01a2 FFF72DFF 		bl	load_sprite
- 114:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	load_sprite(ship, ship_bits, ship_width, ship_height);
- 1574              		.loc 1 114 0
- 1575 01a6 1449     		ldr	r1, .L25+8
- 1576 01a8 F868     		ldr	r0, [r7, #12]
- 1577 01aa 1423     		movs	r3, #20
- 1578 01ac 1422     		movs	r2, #20
- 1579 01ae FFF727FF 		bl	load_sprite
- 115:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
- 116:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //	plant->set_speed(plant, 5, 10); //assa
- 117:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	p->set_speed(p, 12, 20);
- 1580              		.loc 1 117 0
- 1581 01b2 7B69     		ldr	r3, [r7, #20]
- 1582 01b4 1B6A     		ldr	r3, [r3, #32]
- 1583 01b6 7869     		ldr	r0, [r7, #20]
- 1584 01b8 1422     		movs	r2, #20
- 1585 01ba 0C21     		movs	r1, #12
- 1586 01bc 9847     		blx	r3
- 1587              	.LVL0:
- 1588              	.L24:
- 118:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while(1){
- 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		clear_backBuffer();
- 1589              		.loc 1 119 0 discriminator 1
- 1590 01be FFF7FEFF 		bl	clear_backBuffer
- 120:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
- 1591              		.loc 1 120 0 discriminator 1
- 1592 01c2 7B69     		ldr	r3, [r7, #20]
- 1593 01c4 DB69     		ldr	r3, [r3, #28]
- 1594 01c6 7A69     		ldr	r2, [r7, #20]
- 1595 01c8 1000     		movs	r0, r2
- 1596 01ca 9847     		blx	r3
- 1597              	.LVL1:
- 121:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(plant, 50, 50, 1);
- 1598              		.loc 1 121 0 discriminator 1
- 1599 01cc 3869     		ldr	r0, [r7, #16]
- 1600 01ce 0123     		movs	r3, #1
- 1601 01d0 3222     		movs	r2, #50
- 1602 01d2 3221     		movs	r1, #50
- 1603 01d4 FFF7FEFF 		bl	draw_sprite
- 122:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		draw_sprite(ship, 40, 20, 1);
- 1604              		.loc 1 122 0 discriminator 1
- 1605 01d8 F868     		ldr	r0, [r7, #12]
- 1606 01da 0123     		movs	r3, #1
- 1607 01dc 1422     		movs	r2, #20
- 1608 01de 2821     		movs	r1, #40
- 1609 01e0 FFF7FEFF 		bl	draw_sprite
- 123:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		plant->move(plant);
- 124:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_draw_screen();
- 1610              		.loc 1 124 0 discriminator 1
- 1611 01e4 FFF7FEFF 		bl	graphic_draw_screen
- 125:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		//delay_milli(40); //25 fps
- 126:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_clear_screen();
- 1612              		.loc 1 126 0 discriminator 1
- 1613 01e8 FFF7FEFF 		bl	graphic_clear_screen
- 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		p->move(p);
- 1614              		.loc 1 119 0 discriminator 1
- 1615 01ec E7E7     		b	.L24
- 1616              	.L26:
- 1617 01ee C046     		.align	2
- 1618              	.L25:
- 1619 01f0 7C040000 		.word	ball
- 1620 01f4 00000000 		.word	plant_bits
- 1621 01f8 0C040000 		.word	ship_bits
- 1622              		.cfi_endproc
- 1623              	.LFE5:
- 1625              	.Letext0:
- 1626              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_startup.h"
- 1627              		.file 3 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/plant.xbm"
- 1628              		.file 4 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/backGround.xbm"
- 1629              		.file 5 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/ship.xbm"
+  53 0001 01       		.byte	1
+  54 0002 00       		.byte	0
+  55 0003 00       		.byte	0
+  56 0004 01       		.byte	1
+  57 0005 00       		.byte	0
+  58 0006 C0       		.byte	-64
+  59 0007 07       		.byte	7
+  60 0008 00       		.byte	0
+  61 0009 60       		.byte	96
+  62 000a 0C       		.byte	12
+  63 000b 00       		.byte	0
+  64 000c 20       		.byte	32
+  65 000d 08       		.byte	8
+  66 000e 00       		.byte	0
+  67 000f 20       		.byte	32
+  68 0010 08       		.byte	8
+  69 0011 00       		.byte	0
+  70 0012 30       		.byte	48
+  71 0013 18       		.byte	24
+  72 0014 00       		.byte	0
+  73 0015 18       		.byte	24
+  74 0016 30       		.byte	48
+  75 0017 00       		.byte	0
+  76 0018 08       		.byte	8
+  77 0019 20       		.byte	32
+  78 001a 00       		.byte	0
+  79 001b 08       		.byte	8
+  80 001c 20       		.byte	32
+  81 001d 00       		.byte	0
+  82 001e 0C       		.byte	12
+  83 001f 60       		.byte	96
+  84 0020 00       		.byte	0
+  85 0021 44       		.byte	68
+  86 0022 44       		.byte	68
+  87 0023 00       		.byte	0
+  88 0024 F4       		.byte	-12
+  89 0025 5F       		.byte	95
+  90 0026 00       		.byte	0
+  91 0027 1C       		.byte	28
+  92 0028 70       		.byte	112
+  93 0029 00       		.byte	0
+  94 002a 08       		.byte	8
+  95 002b 20       		.byte	32
+  96 002c 00       		.byte	0
+  97 002d 00       		.byte	0
+  98 002e 00       		.byte	0
+  99 002f 00       		.byte	0
+ 100 0030 00       		.byte	0
+ 101 0031 00       		.byte	0
+ 102 0032 00       		.byte	0
+ 103 0033 00       		.byte	0
+ 104 0034 00       		.byte	0
+ 105 0035 00       		.byte	0
+ 106 0036 00       		.byte	0
+ 107 0037 00       		.byte	0
+ 108 0038 00       		.byte	0
+ 109 0039 00       		.byte	0
+ 110 003a 00       		.byte	0
+ 111 003b 00       		.byte	0
+ 112              		.global	square_geometry
+ 113              		.align	2
+ 116              	square_geometry:
+ 117 003c 10000000 		.word	16
+ 118 0040 05000000 		.word	5
+ 119 0044 05000000 		.word	5
+ 120 0048 00       		.byte	0
+ 121 0049 00       		.byte	0
+ 122 004a 01       		.byte	1
+ 123 004b 00       		.byte	0
+ 124 004c 02       		.byte	2
+ 125 004d 00       		.byte	0
+ 126 004e 03       		.byte	3
+ 127 004f 00       		.byte	0
+ 128 0050 04       		.byte	4
+ 129 0051 00       		.byte	0
+ 130 0052 00       		.byte	0
+ 131 0053 01       		.byte	1
+ 132 0054 04       		.byte	4
+ 133 0055 01       		.byte	1
+ 134 0056 00       		.byte	0
+ 135 0057 02       		.byte	2
+ 136 0058 04       		.byte	4
+ 137 0059 02       		.byte	2
+ 138 005a 00       		.byte	0
+ 139 005b 03       		.byte	3
+ 140 005c 04       		.byte	4
+ 141 005d 03       		.byte	3
+ 142 005e 00       		.byte	0
+ 143 005f 04       		.byte	4
+ 144 0060 01       		.byte	1
+ 145 0061 04       		.byte	4
+ 146 0062 02       		.byte	2
+ 147 0063 04       		.byte	4
+ 148 0064 03       		.byte	3
+ 149 0065 04       		.byte	4
+ 150 0066 04       		.byte	4
+ 151 0067 04       		.byte	4
+ 152 0068 00000000 		.space	8
+ 152      00000000 
+ 153              		.global	ball_geometry
+ 154              		.align	2
+ 157              	ball_geometry:
+ 158 0070 0C000000 		.word	12
+ 159 0074 04000000 		.word	4
+ 160 0078 04000000 		.word	4
+ 161 007c 00       		.byte	0
+ 162 007d 01       		.byte	1
+ 163 007e 00       		.byte	0
+ 164 007f 02       		.byte	2
+ 165 0080 01       		.byte	1
+ 166 0081 00       		.byte	0
+ 167 0082 01       		.byte	1
+ 168 0083 01       		.byte	1
+ 169 0084 01       		.byte	1
+ 170 0085 02       		.byte	2
+ 171 0086 01       		.byte	1
+ 172 0087 03       		.byte	3
+ 173 0088 02       		.byte	2
+ 174 0089 00       		.byte	0
+ 175 008a 02       		.byte	2
+ 176 008b 01       		.byte	1
+ 177 008c 02       		.byte	2
+ 178 008d 02       		.byte	2
+ 179 008e 02       		.byte	2
+ 180 008f 03       		.byte	3
+ 181 0090 03       		.byte	3
+ 182 0091 01       		.byte	1
+ 183 0092 03       		.byte	3
+ 184 0093 02       		.byte	2
+ 185 0094 00000000 		.space	16
+ 185      00000000 
+ 185      00000000 
+ 185      00000000 
+ 186              		.global	padd_geometry
+ 187              		.align	2
+ 190              	padd_geometry:
+ 191 00a4 28000000 		.word	40
+ 192 00a8 14000000 		.word	20
+ 193 00ac 02000000 		.word	2
+ 194 00b0 00       		.byte	0
+ 195 00b1 00       		.byte	0
+ 196 00b2 01       		.byte	1
+ 197 00b3 00       		.byte	0
+ 198 00b4 02       		.byte	2
+ 199 00b5 00       		.byte	0
+ 200 00b6 03       		.byte	3
+ 201 00b7 00       		.byte	0
+ 202 00b8 04       		.byte	4
+ 203 00b9 00       		.byte	0
+ 204 00ba 05       		.byte	5
+ 205 00bb 00       		.byte	0
+ 206 00bc 06       		.byte	6
+ 207 00bd 00       		.byte	0
+ 208 00be 07       		.byte	7
+ 209 00bf 00       		.byte	0
+ 210 00c0 08       		.byte	8
+ 211 00c1 00       		.byte	0
+ 212 00c2 09       		.byte	9
+ 213 00c3 00       		.byte	0
+ 214 00c4 0A       		.byte	10
+ 215 00c5 00       		.byte	0
+ 216 00c6 0B       		.byte	11
+ 217 00c7 00       		.byte	0
+ 218 00c8 0C       		.byte	12
+ 219 00c9 00       		.byte	0
+ 220 00ca 0D       		.byte	13
+ 221 00cb 00       		.byte	0
+ 222 00cc 0E       		.byte	14
+ 223 00cd 00       		.byte	0
+ 224 00ce 0F       		.byte	15
+ 225 00cf 00       		.byte	0
+ 226 00d0 10       		.byte	16
+ 227 00d1 00       		.byte	0
+ 228 00d2 11       		.byte	17
+ 229 00d3 00       		.byte	0
+ 230 00d4 12       		.byte	18
+ 231 00d5 00       		.byte	0
+ 232 00d6 13       		.byte	19
+ 233 00d7 00       		.byte	0
+ 234              		.align	2
+ 237              	square_1:
+ 238 00d8 00000000 		.word	square_geometry
+ 239 00dc 00000000 		.word	0
+ 240 00e0 00000000 		.word	0
+ 241 00e4 01000000 		.word	1
+ 242 00e8 01000000 		.word	1
+ 243 00ec 00000000 		.word	draw_object
+ 244 00f0 00000000 		.word	clear_object
+ 245 00f4 00000000 		.word	move_object
+ 246 00f8 00000000 		.word	set_object_speed
+ 247              		.align	2
+ 250              	square_2:
+ 251 00fc 00000000 		.word	square_geometry
+ 252 0100 00000000 		.word	0
+ 253 0104 00000000 		.word	0
+ 254 0108 01000000 		.word	1
+ 255 010c 01000000 		.word	1
+ 256 0110 00000000 		.word	draw_object
+ 257 0114 00000000 		.word	clear_object
+ 258 0118 00000000 		.word	move_object
+ 259 011c 00000000 		.word	set_object_speed
+ 260              		.align	2
+ 263              	square_3:
+ 264 0120 00000000 		.word	square_geometry
+ 265 0124 00000000 		.word	0
+ 266 0128 00000000 		.word	0
+ 267 012c 01000000 		.word	1
+ 268 0130 01000000 		.word	1
+ 269 0134 00000000 		.word	draw_object
+ 270 0138 00000000 		.word	clear_object
+ 271 013c 00000000 		.word	move_object
+ 272 0140 00000000 		.word	set_object_speed
+ 273              		.align	2
+ 276              	square_4:
+ 277 0144 00000000 		.word	square_geometry
+ 278 0148 00000000 		.word	0
+ 279 014c 00000000 		.word	0
+ 280 0150 01000000 		.word	1
+ 281 0154 01000000 		.word	1
+ 282 0158 00000000 		.word	draw_object
+ 283 015c 00000000 		.word	clear_object
+ 284 0160 00000000 		.word	move_object
+ 285 0164 00000000 		.word	set_object_speed
+ 286              		.align	2
+ 289              	square_5:
+ 290 0168 00000000 		.word	square_geometry
+ 291 016c 00000000 		.word	0
+ 292 0170 00000000 		.word	0
+ 293 0174 01000000 		.word	1
+ 294 0178 01000000 		.word	1
+ 295 017c 00000000 		.word	draw_object
+ 296 0180 00000000 		.word	clear_object
+ 297 0184 00000000 		.word	move_object
+ 298 0188 00000000 		.word	set_object_speed
+ 299              		.align	2
+ 302              	square_6:
+ 303 018c 00000000 		.word	square_geometry
+ 304 0190 00000000 		.word	0
+ 305 0194 00000000 		.word	0
+ 306 0198 01000000 		.word	1
+ 307 019c 01000000 		.word	1
+ 308 01a0 00000000 		.word	draw_object
+ 309 01a4 00000000 		.word	clear_object
+ 310 01a8 00000000 		.word	move_object
+ 311 01ac 00000000 		.word	set_object_speed
+ 312              		.align	2
+ 315              	square_7:
+ 316 01b0 00000000 		.word	square_geometry
+ 317 01b4 00000000 		.word	0
+ 318 01b8 00000000 		.word	0
+ 319 01bc 01000000 		.word	1
+ 320 01c0 01000000 		.word	1
+ 321 01c4 00000000 		.word	draw_object
+ 322 01c8 00000000 		.word	clear_object
+ 323 01cc 00000000 		.word	move_object
+ 324 01d0 00000000 		.word	set_object_speed
+ 325              		.align	2
+ 328              	square_8:
+ 329 01d4 00000000 		.word	square_geometry
+ 330 01d8 00000000 		.word	0
+ 331 01dc 00000000 		.word	0
+ 332 01e0 01000000 		.word	1
+ 333 01e4 01000000 		.word	1
+ 334 01e8 00000000 		.word	draw_object
+ 335 01ec 00000000 		.word	clear_object
+ 336 01f0 00000000 		.word	move_object
+ 337 01f4 00000000 		.word	set_object_speed
+ 338              		.align	2
+ 341              	square_9:
+ 342 01f8 00000000 		.word	square_geometry
+ 343 01fc 00000000 		.word	0
+ 344 0200 00000000 		.word	0
+ 345 0204 01000000 		.word	1
+ 346 0208 01000000 		.word	1
+ 347 020c 00000000 		.word	draw_object
+ 348 0210 00000000 		.word	clear_object
+ 349 0214 00000000 		.word	move_object
+ 350 0218 00000000 		.word	set_object_speed
+ 351              		.align	2
+ 354              	ball:
+ 355 021c 00000000 		.word	ball_geometry
+ 356 0220 FDFFFFFF 		.word	-3
+ 357 0224 03000000 		.word	3
+ 358 0228 28000000 		.word	40
+ 359 022c 2D000000 		.word	45
+ 360 0230 00000000 		.word	draw_object
+ 361 0234 00000000 		.word	clear_object
+ 362 0238 00000000 		.word	move_object
+ 363 023c 00000000 		.word	set_object_speed
+ 364              		.align	2
+ 367              	padd:
+ 368 0240 00000000 		.word	padd_geometry
+ 369 0244 00000000 		.word	0
+ 370 0248 00000000 		.word	0
+ 371 024c 32000000 		.word	50
+ 372 0250 37000000 		.word	55
+ 373 0254 00000000 		.word	draw_object
+ 374 0258 00000000 		.word	clear_object
+ 375 025c 00000000 		.word	move_padd
+ 376 0260 00000000 		.word	set_object_speed
+ 377              		.section	.rodata
+ 378              		.align	2
+ 379              	.LC0:
+ 380 0000 57656C63 		.ascii	"Welcome \000"
+ 380      6F6D6520 
+ 380      00
+ 381 0009 000000   		.align	2
+ 382              	.LC2:
+ 383 000c 746F2074 		.ascii	"to the game!\000"
+ 383      68652067 
+ 383      616D6521 
+ 383      00
+ 384              		.text
+ 385              		.align	1
+ 386              		.global	ascii_message
+ 387              		.syntax unified
+ 388              		.code	16
+ 389              		.thumb_func
+ 390              		.fpu softvfp
+ 392              	ascii_message:
+ 393              	.LFB1:
+  22:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  23:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY square_geometry =
+  24:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  25:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	16, 
+  26:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	5, 
+  27:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	5,
+  28:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
+  29:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{0,0}, {1,0}, {2,0}, {3,0}, {4,0},
+  30:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{0,1}, 						{4,1},
+  31:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{0,2}, 						{4,2},
+  32:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{0,3}, 						{4,3},
+  33:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{0,4}, {1,4}, {2,4}, {3,4}, {4,4},
+  34:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  35:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  36:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY ball_geometry=
+  37:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  38:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	12, //tot pix
+  39:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//bredd
+  40:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	4,	//längd
+  41:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
+  42:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,1},{0,2},
+  43:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{1,0},{1,1},{1,2},{1,3},
+  44:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{2,0},{2,1},{2,2},{2,3},
+  45:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{3,1},{3,2},
+  46:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  47:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  48:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** GEOMETRY padd_geometry=
+  49:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  50:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	40, 
+  51:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	20,2,	
+  52:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	{
+  53:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,0},{1,0},{2,0},{3,0},{4,0},{5,0},{6,0},{7,0},{8,0},{9,0},{10,0},{11,0},{12,0},{13,0},{14,0},{1
+  54:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		{0,1},{1,1},{2,1},{3,1},{4,1},{5,1},{6,1},{7,1},{8,1},{9,1},{10,1},{11,1},{12,1},{13,1},{14,1},{1
+  55:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+  56:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  57:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  58:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_1 =
+  59:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  60:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+  61:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+  62:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+  63:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+  64:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+  65:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+  66:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+  67:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  68:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  69:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_2 =
+  70:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  71:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+  72:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+  73:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+  74:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+  75:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+  76:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+  77:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+  78:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  79:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  80:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_3 =
+  81:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  82:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+  83:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+  84:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+  85:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+  86:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+  87:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+  88:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+  89:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+  90:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+  91:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_4 =
+  92:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+  93:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+  94:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+  95:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+  96:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+  97:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+  98:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+  99:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 100:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 101:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 102:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_5 =
+ 103:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 104:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+ 105:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 106:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+ 107:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 108:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 109:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 110:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 111:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 112:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 113:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_6 =
+ 114:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 115:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+ 116:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 117:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+ 118:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 119:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 120:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 121:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 122:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 123:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_7 =
+ 124:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 125:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+ 126:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 127:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+ 128:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 129:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 130:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 131:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 132:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 133:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 134:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_8 =
+ 135:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 136:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+ 137:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 138:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+ 139:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 140:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 141:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 142:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 143:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 144:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 145:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT square_9 =
+ 146:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 147:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&square_geometry,
+ 148:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 149:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	1,1,
+ 150:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 151:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 152:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 153:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 154:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 155:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT ball=
+ 156:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 157:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&ball_geometry,
+ 158:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	-3,3,
+ 159:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	40,45,
+ 160:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 161:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 162:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_object,
+ 163:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 164:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 165:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 166:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static OBJECT padd=
+ 167:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 168:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&padd_geometry,
+ 169:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0,0,
+ 170:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	50,55,
+ 171:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_object,
+ 172:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_object,
+ 173:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_padd,
+ 174:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_object_speed
+ 175:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 176:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 177:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void ascii_message(){
+ 394              		.loc 1 177 0
+ 395              		.cfi_startproc
+ 396              		@ args = 0, pretend = 0, frame = 32
+ 397              		@ frame_needed = 1, uses_anonymous_args = 0
+ 398 0000 B0B5     		push	{r4, r5, r7, lr}
+ 399              		.cfi_def_cfa_offset 16
+ 400              		.cfi_offset 4, -16
+ 401              		.cfi_offset 5, -12
+ 402              		.cfi_offset 7, -8
+ 403              		.cfi_offset 14, -4
+ 404 0002 88B0     		sub	sp, sp, #32
+ 405              		.cfi_def_cfa_offset 48
+ 406 0004 00AF     		add	r7, sp, #0
+ 407              		.cfi_def_cfa_register 7
+ 178:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char *s;
+ 179:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test1[] = "Welcome ";
+ 408              		.loc 1 179 0
+ 409 0006 1024     		movs	r4, #16
+ 410 0008 3B19     		adds	r3, r7, r4
+ 411 000a 194A     		ldr	r2, .L7
+ 412 000c 03CA     		ldmia	r2!, {r0, r1}
+ 413 000e 03C3     		stmia	r3!, {r0, r1}
+ 414 0010 1278     		ldrb	r2, [r2]
+ 415 0012 1A70     		strb	r2, [r3]
+ 180:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	char test2[] = "to the game!";
+ 416              		.loc 1 180 0
+ 417 0014 3B00     		movs	r3, r7
+ 418 0016 174A     		ldr	r2, .L7+4
+ 419 0018 23CA     		ldmia	r2!, {r0, r1, r5}
+ 420 001a 23C3     		stmia	r3!, {r0, r1, r5}
+ 421 001c 1278     		ldrb	r2, [r2]
+ 422 001e 1A70     		strb	r2, [r3]
+ 181:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,1);
+ 423              		.loc 1 181 0
+ 424 0020 0121     		movs	r1, #1
+ 425 0022 0120     		movs	r0, #1
+ 426 0024 FFF7FEFF 		bl	ascii_gotoxy
+ 182:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test1;
+ 427              		.loc 1 182 0
+ 428 0028 3B19     		adds	r3, r7, r4
+ 429 002a FB61     		str	r3, [r7, #28]
+ 183:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 430              		.loc 1 183 0
+ 431 002c 06E0     		b	.L3
+ 432              	.L4:
+ 184:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
+ 433              		.loc 1 184 0
+ 434 002e FB69     		ldr	r3, [r7, #28]
+ 435 0030 5A1C     		adds	r2, r3, #1
+ 436 0032 FA61     		str	r2, [r7, #28]
+ 437 0034 1B78     		ldrb	r3, [r3]
+ 438 0036 1800     		movs	r0, r3
+ 439 0038 FFF7FEFF 		bl	ascii_write_char
+ 440              	.L3:
+ 183:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 441              		.loc 1 183 0
+ 442 003c FB69     		ldr	r3, [r7, #28]
+ 443 003e 1B78     		ldrb	r3, [r3]
+ 444 0040 002B     		cmp	r3, #0
+ 445 0042 F4D1     		bne	.L4
+ 185:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+ 186:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_gotoxy(1,2);
+ 446              		.loc 1 186 0
+ 447 0044 0221     		movs	r1, #2
+ 448 0046 0120     		movs	r0, #1
+ 449 0048 FFF7FEFF 		bl	ascii_gotoxy
+ 187:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	s = test2;
+ 450              		.loc 1 187 0
+ 451 004c 3B00     		movs	r3, r7
+ 452 004e FB61     		str	r3, [r7, #28]
+ 188:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 453              		.loc 1 188 0
+ 454 0050 06E0     		b	.L5
+ 455              	.L6:
+ 189:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ascii_write_char(*s++); // ascii_write_char
+ 456              		.loc 1 189 0
+ 457 0052 FB69     		ldr	r3, [r7, #28]
+ 458 0054 5A1C     		adds	r2, r3, #1
+ 459 0056 FA61     		str	r2, [r7, #28]
+ 460 0058 1B78     		ldrb	r3, [r3]
+ 461 005a 1800     		movs	r0, r3
+ 462 005c FFF7FEFF 		bl	ascii_write_char
+ 463              	.L5:
+ 188:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while (*s){
+ 464              		.loc 1 188 0
+ 465 0060 FB69     		ldr	r3, [r7, #28]
+ 466 0062 1B78     		ldrb	r3, [r3]
+ 467 0064 002B     		cmp	r3, #0
+ 468 0066 F4D1     		bne	.L6
+ 190:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+ 191:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 469              		.loc 1 191 0
+ 470 0068 C046     		nop
+ 471 006a BD46     		mov	sp, r7
+ 472 006c 08B0     		add	sp, sp, #32
+ 473              		@ sp needed
+ 474 006e B0BD     		pop	{r4, r5, r7, pc}
+ 475              	.L8:
+ 476              		.align	2
+ 477              	.L7:
+ 478 0070 00000000 		.word	.LC0
+ 479 0074 0C000000 		.word	.LC2
+ 480              		.cfi_endproc
+ 481              	.LFE1:
+ 483              		.align	1
+ 484              		.global	init_spel
+ 485              		.syntax unified
+ 486              		.code	16
+ 487              		.thumb_func
+ 488              		.fpu softvfp
+ 490              	init_spel:
+ 491              	.LFB2:
+ 192:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 193:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** void init_spel(){
+ 492              		.loc 1 193 0
+ 493              		.cfi_startproc
+ 494              		@ args = 0, pretend = 0, frame = 0
+ 495              		@ frame_needed = 1, uses_anonymous_args = 0
+ 496 0078 80B5     		push	{r7, lr}
+ 497              		.cfi_def_cfa_offset 8
+ 498              		.cfi_offset 7, -8
+ 499              		.cfi_offset 14, -4
+ 500 007a 00AF     		add	r7, sp, #0
+ 501              		.cfi_def_cfa_register 7
+ 194:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	GPIO_MODER_E = 0x55555555;
+ 502              		.loc 1 194 0
+ 503 007c 034B     		ldr	r3, .L10
+ 504 007e 044A     		ldr	r2, .L10+4
+ 505 0080 1A60     		str	r2, [r3]
+ 195:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ascii_init();
+ 506              		.loc 1 195 0
+ 507 0082 FFF7FEFF 		bl	ascii_init
+ 196:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	//ascii_message();
+ 197:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** }
+ 508              		.loc 1 197 0
+ 509 0086 C046     		nop
+ 510 0088 BD46     		mov	sp, r7
+ 511              		@ sp needed
+ 512 008a 80BD     		pop	{r7, pc}
+ 513              	.L11:
+ 514              		.align	2
+ 515              	.L10:
+ 516 008c 00100240 		.word	1073876992
+ 517 0090 55555555 		.word	1431655765
+ 518              		.cfi_endproc
+ 519              	.LFE2:
+ 521              		.align	1
+ 522              		.global	main
+ 523              		.syntax unified
+ 524              		.code	16
+ 525              		.thumb_func
+ 526              		.fpu softvfp
+ 528              	main:
+ 529              	.LFB3:
+ 198:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 199:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** /*
+ 200:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static sprite ship =
+ 201:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 202:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	&ship_geo,
+ 203:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0, 0,
+ 204:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0, 0,
+ 205:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ship_width,
+ 206:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ship_height,
+ 207:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	ship_bits,
+ 208:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_sprite,
+ 209:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_sprite,
+ 210:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_sprite,
+ 211:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_sprite_speed
+ 212:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 213:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 214:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 215:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 216:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** static sprite plant =
+ 217:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 218:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	0, 0,
+ 219:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	50, 50,
+ 220:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_width,
+ 221:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_height,
+ 222:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	plant_bits,
+ 223:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	draw_sprite,
+ 224:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	clear_sprite,
+ 225:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	move_sprite,
+ 226:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	set_sprite_speed
+ 227:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** };
+ 228:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** */
+ 229:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 
+ 230:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** int main(int argc, char **argv)
+ 231:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** {
+ 530              		.loc 1 231 0
+ 531              		.cfi_startproc
+ 532              		@ args = 0, pretend = 0, frame = 104
+ 533              		@ frame_needed = 1, uses_anonymous_args = 0
+ 534 0094 90B5     		push	{r4, r7, lr}
+ 535              		.cfi_def_cfa_offset 12
+ 536              		.cfi_offset 4, -12
+ 537              		.cfi_offset 7, -8
+ 538              		.cfi_offset 14, -4
+ 539 0096 9BB0     		sub	sp, sp, #108
+ 540              		.cfi_def_cfa_offset 120
+ 541 0098 00AF     		add	r7, sp, #0
+ 542              		.cfi_def_cfa_register 7
+ 543 009a 7860     		str	r0, [r7, #4]
+ 544 009c 3960     		str	r1, [r7]
+ 232:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	init_spel();
+ 545              		.loc 1 232 0
+ 546 009e FFF7FEFF 		bl	init_spel
+ 233:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT ppadd=&padd;
+ 547              		.loc 1 233 0
+ 548 00a2 4E4B     		ldr	r3, .L18
+ 549 00a4 BB65     		str	r3, [r7, #88]
+ 234:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT pball = &ball;
+ 550              		.loc 1 234 0
+ 551 00a6 4E4B     		ldr	r3, .L18+4
+ 552 00a8 7B65     		str	r3, [r7, #84]
+ 235:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_1 = &square_1;
+ 553              		.loc 1 235 0
+ 554 00aa 4E4B     		ldr	r3, .L18+8
+ 555 00ac 3B65     		str	r3, [r7, #80]
+ 236:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_2 = &square_2;
+ 556              		.loc 1 236 0
+ 557 00ae 4E4B     		ldr	r3, .L18+12
+ 558 00b0 FB64     		str	r3, [r7, #76]
+ 237:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_3 = &square_3;
+ 559              		.loc 1 237 0
+ 560 00b2 4E4B     		ldr	r3, .L18+16
+ 561 00b4 BB64     		str	r3, [r7, #72]
+ 238:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_4 = &square_4;
+ 562              		.loc 1 238 0
+ 563 00b6 4E4B     		ldr	r3, .L18+20
+ 564 00b8 7B64     		str	r3, [r7, #68]
+ 239:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_5 = &square_5;
+ 565              		.loc 1 239 0
+ 566 00ba 4E4B     		ldr	r3, .L18+24
+ 567 00bc 3B64     		str	r3, [r7, #64]
+ 240:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_6 = &square_6;
+ 568              		.loc 1 240 0
+ 569 00be 4E4B     		ldr	r3, .L18+28
+ 570 00c0 FB63     		str	r3, [r7, #60]
+ 241:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_7 = &square_7;
+ 571              		.loc 1 241 0
+ 572 00c2 4E4B     		ldr	r3, .L18+32
+ 573 00c4 BB63     		str	r3, [r7, #56]
+ 242:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_8 = &square_8;
+ 574              		.loc 1 242 0
+ 575 00c6 4E4B     		ldr	r3, .L18+36
+ 576 00c8 7B63     		str	r3, [r7, #52]
+ 243:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT sq_9 = &square_9;
+ 577              		.loc 1 243 0
+ 578 00ca 4E4B     		ldr	r3, .L18+40
+ 579 00cc 3B63     		str	r3, [r7, #48]
+ 244:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	POBJECT arr[] = {sq_1, sq_2, sq_3, sq_4, sq_5, sq_6, sq_7, sq_8, sq_9};
+ 580              		.loc 1 244 0
+ 581 00ce 0821     		movs	r1, #8
+ 582 00d0 7B18     		adds	r3, r7, r1
+ 583 00d2 3A6D     		ldr	r2, [r7, #80]
+ 584 00d4 1A60     		str	r2, [r3]
+ 585 00d6 7B18     		adds	r3, r7, r1
+ 586 00d8 FA6C     		ldr	r2, [r7, #76]
+ 587 00da 5A60     		str	r2, [r3, #4]
+ 588 00dc 7B18     		adds	r3, r7, r1
+ 589 00de BA6C     		ldr	r2, [r7, #72]
+ 590 00e0 9A60     		str	r2, [r3, #8]
+ 591 00e2 7B18     		adds	r3, r7, r1
+ 592 00e4 7A6C     		ldr	r2, [r7, #68]
+ 593 00e6 DA60     		str	r2, [r3, #12]
+ 594 00e8 7B18     		adds	r3, r7, r1
+ 595 00ea 3A6C     		ldr	r2, [r7, #64]
+ 596 00ec 1A61     		str	r2, [r3, #16]
+ 597 00ee 7B18     		adds	r3, r7, r1
+ 598 00f0 FA6B     		ldr	r2, [r7, #60]
+ 599 00f2 5A61     		str	r2, [r3, #20]
+ 600 00f4 7B18     		adds	r3, r7, r1
+ 601 00f6 BA6B     		ldr	r2, [r7, #56]
+ 602 00f8 9A61     		str	r2, [r3, #24]
+ 603 00fa 7B18     		adds	r3, r7, r1
+ 604 00fc 7A6B     		ldr	r2, [r7, #52]
+ 605 00fe DA61     		str	r2, [r3, #28]
+ 606 0100 7B18     		adds	r3, r7, r1
+ 607 0102 3A6B     		ldr	r2, [r7, #48]
+ 608 0104 1A62     		str	r2, [r3, #32]
+ 245:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	
+ 246:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_init();
+ 609              		.loc 1 246 0
+ 610 0106 FFF7FEFF 		bl	graphic_init
+ 247:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #ifndef	SIMULATOR
+ 248:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	graphic_clear_screen();
+ 249:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** #endif
+ 250:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	int test = (sizeof(arr) / sizeof(arr[0]));
+ 611              		.loc 1 250 0
+ 612 010a 0923     		movs	r3, #9
+ 613 010c FB62     		str	r3, [r7, #44]
+ 251:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	int x = 0;
+ 614              		.loc 1 251 0
+ 615 010e 0023     		movs	r3, #0
+ 616 0110 7B66     		str	r3, [r7, #100]
+ 252:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	int i = 0;
+ 617              		.loc 1 252 0
+ 618 0112 0023     		movs	r3, #0
+ 619 0114 3B66     		str	r3, [r7, #96]
+ 253:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	for (; i <= (test-1); i++, x += 10){
+ 620              		.loc 1 253 0
+ 621 0116 2DE0     		b	.L13
+ 622              	.L14:
+ 254:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //				if(x > 64)
+ 255:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 					
+ 256:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[i]->set_speed(arr[i], x, 0);
+ 623              		.loc 1 256 0 discriminator 2
+ 624 0118 0821     		movs	r1, #8
+ 625 011a 7B18     		adds	r3, r7, r1
+ 626 011c 3A6E     		ldr	r2, [r7, #96]
+ 627 011e 9200     		lsls	r2, r2, #2
+ 628 0120 D358     		ldr	r3, [r2, r3]
+ 629 0122 1B6A     		ldr	r3, [r3, #32]
+ 630 0124 0C00     		movs	r4, r1
+ 631 0126 7A18     		adds	r2, r7, r1
+ 632 0128 396E     		ldr	r1, [r7, #96]
+ 633 012a 8900     		lsls	r1, r1, #2
+ 634 012c 8858     		ldr	r0, [r1, r2]
+ 635 012e 796E     		ldr	r1, [r7, #100]
+ 636 0130 0022     		movs	r2, #0
+ 637 0132 9847     		blx	r3
+ 638              	.LVL0:
+ 257:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[i]->move(arr[i]);
+ 639              		.loc 1 257 0 discriminator 2
+ 640 0134 2100     		movs	r1, r4
+ 641 0136 7B18     		adds	r3, r7, r1
+ 642 0138 3A6E     		ldr	r2, [r7, #96]
+ 643 013a 9200     		lsls	r2, r2, #2
+ 644 013c D358     		ldr	r3, [r2, r3]
+ 645 013e DB69     		ldr	r3, [r3, #28]
+ 646 0140 0C00     		movs	r4, r1
+ 647 0142 7A18     		adds	r2, r7, r1
+ 648 0144 396E     		ldr	r1, [r7, #96]
+ 649 0146 8900     		lsls	r1, r1, #2
+ 650 0148 8A58     		ldr	r2, [r1, r2]
+ 651 014a 1000     		movs	r0, r2
+ 652 014c 9847     		blx	r3
+ 653              	.LVL1:
+ 258:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[i]->set_speed(arr[i], 0, 0);
+ 654              		.loc 1 258 0 discriminator 2
+ 655 014e 2100     		movs	r1, r4
+ 656 0150 7B18     		adds	r3, r7, r1
+ 657 0152 3A6E     		ldr	r2, [r7, #96]
+ 658 0154 9200     		lsls	r2, r2, #2
+ 659 0156 D358     		ldr	r3, [r2, r3]
+ 660 0158 1B6A     		ldr	r3, [r3, #32]
+ 661 015a 7A18     		adds	r2, r7, r1
+ 662 015c 396E     		ldr	r1, [r7, #96]
+ 663 015e 8900     		lsls	r1, r1, #2
+ 664 0160 8858     		ldr	r0, [r1, r2]
+ 665 0162 0022     		movs	r2, #0
+ 666 0164 0021     		movs	r1, #0
+ 667 0166 9847     		blx	r3
+ 668              	.LVL2:
+ 253:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //				if(x > 64)
+ 669              		.loc 1 253 0 discriminator 2
+ 670 0168 3B6E     		ldr	r3, [r7, #96]
+ 671 016a 0133     		adds	r3, r3, #1
+ 672 016c 3B66     		str	r3, [r7, #96]
+ 673 016e 7B6E     		ldr	r3, [r7, #100]
+ 674 0170 0A33     		adds	r3, r3, #10
+ 675 0172 7B66     		str	r3, [r7, #100]
+ 676              	.L13:
+ 253:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //				if(x > 64)
+ 677              		.loc 1 253 0 is_stmt 0 discriminator 1
+ 678 0174 FB6A     		ldr	r3, [r7, #44]
+ 679 0176 013B     		subs	r3, r3, #1
+ 680 0178 3A6E     		ldr	r2, [r7, #96]
+ 681 017a 9A42     		cmp	r2, r3
+ 682 017c CCDD     		ble	.L14
+ 683              	.L17:
+ 259:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //				arr[i]->draw(arr[i]);
+ 260:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	}
+ 261:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //	graphic_draw_screen();
+ 262:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 	while(1){
+ 263:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		clear_backBuffer();
+ 684              		.loc 1 263 0 is_stmt 1
+ 685 017e FFF7FEFF 		bl	clear_backBuffer
+ 264:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		pball->move(pball);
+ 686              		.loc 1 264 0
+ 687 0182 7B6D     		ldr	r3, [r7, #84]
+ 688 0184 DB69     		ldr	r3, [r3, #28]
+ 689 0186 7A6D     		ldr	r2, [r7, #84]
+ 690 0188 1000     		movs	r0, r2
+ 691 018a 9847     		blx	r3
+ 692              	.LVL3:
+ 265:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		delay_milli(20);
+ 266:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		ppadd->move(ppadd);
+ 693              		.loc 1 266 0
+ 694 018c BB6D     		ldr	r3, [r7, #88]
+ 695 018e DB69     		ldr	r3, [r3, #28]
+ 696 0190 BA6D     		ldr	r2, [r7, #88]
+ 697 0192 1000     		movs	r0, r2
+ 698 0194 9847     		blx	r3
+ 699              	.LVL4:
+ 267:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		padd_studs(pball,ppadd);
+ 700              		.loc 1 267 0
+ 701 0196 BA6D     		ldr	r2, [r7, #88]
+ 702 0198 7B6D     		ldr	r3, [r7, #84]
+ 703 019a 1100     		movs	r1, r2
+ 704 019c 1800     		movs	r0, r3
+ 705 019e FFF7FEFF 		bl	padd_studs
+ 706              	.LBB2:
+ 268:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		p->move(p);
+ 269:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		for (int f = 0; f <= (test-1); f++){
+ 707              		.loc 1 269 0
+ 708 01a2 0023     		movs	r3, #0
+ 709 01a4 FB65     		str	r3, [r7, #92]
+ 710 01a6 0EE0     		b	.L15
+ 711              	.L16:
+ 270:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[f]->draw(arr[f]);
+ 712              		.loc 1 270 0 discriminator 3
+ 713 01a8 0821     		movs	r1, #8
+ 714 01aa 7B18     		adds	r3, r7, r1
+ 715 01ac FA6D     		ldr	r2, [r7, #92]
+ 716 01ae 9200     		lsls	r2, r2, #2
+ 717 01b0 D358     		ldr	r3, [r2, r3]
+ 718 01b2 5B69     		ldr	r3, [r3, #20]
+ 719 01b4 7A18     		adds	r2, r7, r1
+ 720 01b6 F96D     		ldr	r1, [r7, #92]
+ 721 01b8 8900     		lsls	r1, r1, #2
+ 722 01ba 8A58     		ldr	r2, [r1, r2]
+ 723 01bc 1000     		movs	r0, r2
+ 724 01be 9847     		blx	r3
+ 725              	.LVL5:
+ 269:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[f]->draw(arr[f]);
+ 726              		.loc 1 269 0 discriminator 3
+ 727 01c0 FB6D     		ldr	r3, [r7, #92]
+ 728 01c2 0133     		adds	r3, r3, #1
+ 729 01c4 FB65     		str	r3, [r7, #92]
+ 730              	.L15:
+ 269:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 				arr[f]->draw(arr[f]);
+ 731              		.loc 1 269 0 is_stmt 0 discriminator 1
+ 732 01c6 FB6A     		ldr	r3, [r7, #44]
+ 733 01c8 013B     		subs	r3, r3, #1
+ 734 01ca FA6D     		ldr	r2, [r7, #92]
+ 735 01cc 9A42     		cmp	r2, r3
+ 736 01ce EBDD     		ble	.L16
+ 737              	.LBE2:
+ 271:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //				if(x > 64)
+ 272:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //					x = x-65;
+ 273:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		}
+ 274:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		
+ 275:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		sq_1->draw(sq_1);
+ 276:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		sq_2->draw(sq_2);
+ 277:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		sq_3->draw(sq_3);
+ 278:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** //		Pship->move_sp(Pship);
+ 279:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_draw_screen();
+ 738              		.loc 1 279 0 is_stmt 1
+ 739 01d0 FFF7FEFF 		bl	graphic_draw_screen
+ 280:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		//delay_milli(40); //25 fps
+ 281:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		graphic_clear_screen();
+ 740              		.loc 1 281 0
+ 741 01d4 FFF7FEFF 		bl	graphic_clear_screen
+ 263:C:/Users/Andre/Desktop/DAT390_labb_v4/spel\main.c **** 		pball->move(pball);
+ 742              		.loc 1 263 0
+ 743 01d8 D1E7     		b	.L17
+ 744              	.L19:
+ 745 01da C046     		.align	2
+ 746              	.L18:
+ 747 01dc 40020000 		.word	padd
+ 748 01e0 1C020000 		.word	ball
+ 749 01e4 D8000000 		.word	square_1
+ 750 01e8 FC000000 		.word	square_2
+ 751 01ec 20010000 		.word	square_3
+ 752 01f0 44010000 		.word	square_4
+ 753 01f4 68010000 		.word	square_5
+ 754 01f8 8C010000 		.word	square_6
+ 755 01fc B0010000 		.word	square_7
+ 756 0200 D4010000 		.word	square_8
+ 757 0204 F8010000 		.word	square_9
+ 758              		.cfi_endproc
+ 759              	.LFE3:
+ 761              	.Letext0:
+ 762              		.file 2 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/game_startup.h"
+ 763              		.file 3 "C:/Users/Andre/Desktop/DAT390_labb_v4/spel/ship.xbm"
